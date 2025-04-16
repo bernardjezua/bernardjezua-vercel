@@ -54,6 +54,14 @@ export default function Navbar() {
           </li>
           <li>
             <Link
+              href="#certifications"
+              className="text-black no-underline hover:text-gray-500 hover:underline hover:underline-offset-4 hover:decoration-gray-300"
+            >
+              Certifications
+            </Link>
+          </li>
+          <li>
+            <Link
               href="#projects"
               className="text-black no-underline hover:text-gray-500 hover:underline hover:underline-offset-4 hover:decoration-gray-300"
             >
@@ -66,14 +74,6 @@ export default function Navbar() {
               className="text-black no-underline hover:text-gray-500 hover:underline hover:underline-offset-4 hover:decoration-gray-300"
             >
               Designs
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="#certifications"
-              className="text-black no-underline hover:text-gray-500 hover:underline hover:underline-offset-4 hover:decoration-gray-300"
-            >
-              Certifications
             </Link>
           </li>
           <li>
