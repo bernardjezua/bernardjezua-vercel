@@ -34,6 +34,16 @@ export default function Certifications() {
 
   const certifications = [
     {
+      title: "Python Data Associate",
+      image: "/assets/certs/11.png",
+      description:
+        "Completed two timed exams that assessed Python data management and exploratory analysis. Completed a project that addresses a business problem.",
+      issuer: "DataCamp",
+      date: "April 2025 (expires April 2027)",
+      links: [{ text: "View", url: "https://www.datacamp.com/certificate/PDA0013994944597" }],
+      skills: ["Python"]
+    },
+    {
       title: "JavaScript Essentials",
       image: "/assets/certs/10.jpg",
       description:
