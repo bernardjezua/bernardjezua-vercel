@@ -34,6 +34,16 @@ export default function Certifications() {
 
   const certifications = [
     {
+      title: "Google UX Design Professional Certificate",
+      image: "/assets/certs/12.jpg",
+      description:
+        "Completed a 7-course series regarding UX design program covering user research, wireframing, prototyping, and usability testing.",
+      issuer: "Google",
+      date: "May 2025",
+      links: [{ text: "View", url: "https://www.coursera.org/account/accomplishments/specialization/1O1N179PZ4CY" }],
+      skills: ["User Experience", "User Interface", "Wireframing", "Prototyping"]
+    },
+    {
       title: "Python Data Associate",
       image: "/assets/certs/11.png",
       description:
