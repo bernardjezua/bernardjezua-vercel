@@ -13,9 +13,11 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Stellar Portfolio",
-  description: "A stellar portfolio showcasing my work and skills",
-    generator: 'v0.dev'
+  title: "Bernard Jezua Tandang",
+  description: "Crafting stellar user experiences through frontend development and UI/UX design.",
+  icons: {
+    icon: "/favicon.ico",
+  }
 }
 
 export default function RootLayout({
