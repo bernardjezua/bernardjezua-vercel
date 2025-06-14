@@ -1,29 +1,29 @@
-import Navbar from "@/components/navbar"
-import Profile from "@/components/profile"
-import About from "@/components/about"
-import Skills from "@/components/skills"
-import Projects from "@/components/projects"
-import Designs from "@/components/designs"
-import Certifications from "@/components/certifications"
-import Contact from "@/components/contact"
-import Footer from "@/components/footer"
-import MobileNav from "@/components/mobile-nav"
+import { AboutSection } from "@/components/about-section"
+import { CertificationsSection } from "@/components/certifications-section"
+import { ContactSection } from "@/components/contact-section"
+import { DesignsSection } from "@/components/designs-section"
+import { Footer } from "@/components/footer"
+import { Header } from "@/components/header"
+import { HeroSection } from "@/components/hero-section"
+import { ProjectsSection } from "@/components/projects-section"
+import { SkillsSection } from "@/components/skills-section"
+import { StarBackground } from "@/components/star-background"
+import { StarCursor } from "@/components/star-cursor"
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <Navbar />
-      <MobileNav />
-      <div className="pt-20">
-        <Profile />
-        <About />
-        <Skills />
-        <Certifications />
-        <Projects />
-        <Designs />
-        <Contact />
-        <Footer />
-      </div>
-    </main>
+    <div className="min-h-screen">
+      <StarBackground />
+      <StarCursor />
+      <Header />
+      <HeroSection />
+      <AboutSection />
+      <SkillsSection />
+      <CertificationsSection />
+      <ProjectsSection />
+      <DesignsSection />
+      <ContactSection />
+      <Footer />
+    </div>
   )
 }
