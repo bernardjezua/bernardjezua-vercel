@@ -190,7 +190,7 @@ export function ProjectsSection() {
       <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
         <DialogContent className="sm:max-w-2xl bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-medium text-gray-900 dark:text-white">
+            <DialogTitle className="text-lg md:text-xl font-medium text-gray-900 dark:text-white">
               {selectedProject?.title}
             </DialogTitle>
           </DialogHeader>
@@ -205,7 +205,7 @@ export function ProjectsSection() {
             )}
           </div>
           <div className="mt-4">
-            <p className="text-gray-700 dark:text-gray-300">{selectedProject?.description}</p>
+            <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">{selectedProject?.description}</p>
           </div>
           <div className="flex flex-wrap gap-2 mt-4">
             {selectedProject?.skills.map((skill) => (

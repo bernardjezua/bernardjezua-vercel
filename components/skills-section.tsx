@@ -37,6 +37,7 @@ export function SkillsSection() {
     { name: "C", icon: "https://profilinator.rishav.dev/skills-assets/c-original.svg" },
     { name: "Java", icon: "https://profilinator.rishav.dev/skills-assets/java-original-wordmark.svg" },
     { name: "Android", icon: "https://profilinator.rishav.dev/skills-assets/android-original-wordmark.svg" },
+    { name: "Bash", icon: "https://profilinator.rishav.dev/skills-assets/gnu_bash-icon.svg" },
     { name: "Git", icon: "https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" },
     { name: "Linux", icon: "https://profilinator.rishav.dev/skills-assets/linux-original.svg" },
   ];
@@ -61,7 +62,7 @@ export function SkillsSection() {
             <Card className="border-0 bg-gray-50 dark:bg-gray-800/50 backdrop-blur-md hover:shadow-md transition-all">
               <CardContent className="p-4 flex flex-col items-center gap-6 md:gap-8">
                 <img src={skill.icon} alt={`${skill.name} icon`} className="w-12 h-12" />
-                <span className="font-semibold text-gray-800 dark:text-gray-100">
+                <span className="text-sm md:text-md font-semibold text-gray-800 dark:text-gray-100">
                     {skill.name}
                 </span>
               </CardContent>

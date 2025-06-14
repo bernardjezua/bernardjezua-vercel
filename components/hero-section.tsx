@@ -71,7 +71,7 @@ export function HeroSection() {
         </motion.div>
 
         <motion.h1
-          className="text-4xl md:text-5xl font-semibold mb-4 pb-2 bg-gradient-to-r from-purple-600 via-blue-500 to-purple-600 bg-clip-text text-transparent"
+          className="text-3xl md:text-4xl font-semibold bg-gradient-to-r from-purple-600 via-blue-500 to-purple-600 bg-clip-text text-transparent"
           initial={{opacity: 0}}
           animate={{opacity: 1}}
           transition={{duration: 0.8, delay: 0.4}}
@@ -81,7 +81,7 @@ export function HeroSection() {
         </motion.h1>
 
         <motion.p
-          className="text-xl md:text-2xl mb-8 text-gray-700 dark:text-gray-300"
+          className="text-lg md:text-xl mb-8 text-gray-700 dark:text-gray-300"
           initial={{opacity: 0}}
           animate={{opacity: 1}}
           transition={{duration: 0.8, delay: 0.6}}
@@ -99,14 +99,14 @@ export function HeroSection() {
         >
           <Button
             asChild
-            className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 text-white">
+            className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 text-white text-sm md:text-md">
             <a href="#projects">View Projects</a>
           </Button>
 
           <Button
             asChild
             variant="outline"
-            className="border-purple-500 text-purple-600 hover:bg-purple-50 dark:text-purple-400 dark:hover:bg-purple-950">
+            className="border-purple-500 text-purple-600 hover:bg-purple-50 dark:text-purple-400 dark:hover:bg-purple-950 text-sm md:text-md">
             <a href="#contact">Contact Me</a>
           </Button>
         </motion.div>
@@ -119,7 +119,7 @@ export function HeroSection() {
         transition={{duration: 0.5, delay: 1.2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse"}}
       >
         <Link href="#about">
-          <div className="w-8 h-10 border-2 border-gray-500 dark:border-gray-400 rounded-full relative">
+          <div className="w-6 h-10 border-2 border-gray-500 dark:border-gray-400 rounded-full relative">
             <span className="absolute top-2 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-gray-500 dark:bg-gray-400 animate-pulse" />
           </div>
         </Link>

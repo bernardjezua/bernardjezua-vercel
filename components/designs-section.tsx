@@ -137,7 +137,7 @@ export function DesignsSection() {
       <Dialog open={!!selectedDesign} onOpenChange={(open) => !open && setSelectedDesign(null)}>
         <DialogContent className="sm:max-w-xl bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-medium text-gray-900 dark:text-white">
+            <DialogTitle className="text-lg md:text-xl font-medium text-gray-900 dark:text-white">
               {selectedDesign?.title}
             </DialogTitle>
           </DialogHeader>
@@ -152,7 +152,7 @@ export function DesignsSection() {
             )}
           </div>
           <div className="mt-4">
-            <p className="text-gray-700 dark:text-gray-300">{selectedDesign?.description}</p>
+            <p className="text-gray-700 dark:text-gray-300 text-sm sm:text-base">{selectedDesign?.description}</p>
           </div>
           <DialogDescription className="flex flex-wrap gap-2 mt-2">
             {selectedDesign?.skills.map((skill) => (

@@ -307,7 +307,7 @@ export function CertificationsSection() {
           className="w-full max-w-xl p-6 sm:p-8 rounded-md sm:rounded-lg bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800">
           {/* Title and Header */}
           <DialogHeader className="mb-4">
-            <DialogTitle className="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-gray-50">
+            <DialogTitle className="text-lg md:text-xl font-semibold text-gray-900 dark:text-gray-50">
               {selectedCertification?.title}
             </DialogTitle>
             <DialogDescription className="flex justify-between items-center">

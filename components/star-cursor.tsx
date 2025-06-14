@@ -16,6 +16,7 @@ export function StarCursor() {
   const [trail, setTrail] = useState<TrailPoint[]>([])
   const { resolvedTheme } = useTheme()
   const animationFrameRef = useRef<number>()
+  const inactiveTimeout = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -23,11 +24,18 @@ export function StarCursor() {
       setMousePosition(newPosition)
       setIsVisible(true)
 
+      // Reset inactive timeout
+      if (inactiveTimeout.current) {
+        clearTimeout(inactiveTimeout.current)
+      }
+      inactiveTimeout.current = setTimeout(() => {
+        setIsVisible(false)
+      }, 3000)
+
       // Add to trail more frequently for smoother trail
       const now = Date.now()
       setTrail((prev) => {
         const newTrail = [...prev, { x: newPosition.x, y: newPosition.y, timestamp: now }]
-        // Keep trail points for longer (600ms instead of 300ms)
         return newTrail.filter((point) => now - point.timestamp < 600)
       })
 
@@ -66,10 +74,11 @@ export function StarCursor() {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
       }
+      if (inactiveTimeout.current) {
+        clearTimeout(inactiveTimeout.current)
+      }
     }
   }, [])
-
-  if (!isVisible) return null
 
   const isDark = resolvedTheme === "dark"
 
@@ -87,32 +96,32 @@ export function StarCursor() {
             key={`${point.timestamp}-${index}`}
             className="fixed pointer-events-none z-[9998]"
             style={{
-              left: point.x - 6, // Larger offset for bigger trail stars
+              left: point.x - 6,
               top: point.y - 6,
-              opacity: opacity * 0.9, // Much higher opacity (0.9 instead of 0.6)
+              opacity:opacity * 0.9,
               transform: `scale(${scale})`,
               filter: `blur(${blur}px)`,
-            }}
-          >
+              transition: "opacity 0.5s ease-out",
+            }}>
             {/* Larger trail stars with glow */}
             <div className="relative w-3 h-3">
               {/* Glow effect for trail stars */}
               <div
                 className={`absolute inset-0 ${isDark ? "bg-white" : "bg-gray-700"}`}
                 style={{
-                  clipPath:
+                    clipPath:
                     "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
-                  filter: isDark ? `blur(2px) opacity(${opacity * 0.5})` : `blur(2px) opacity(${opacity * 0.4})`,
-                  transform: "scale(1.5)",
+                    filter: isDark ? `blur(2px) opacity(${opacity * 0.5})` : `blur(2px) opacity(${opacity * 0.4})`,
+                    transform: "scale(1.5)", 
                 }}
               />
               {/* Main trail star */}
               <div
                 className={`absolute inset-0 ${isDark ? "bg-white" : "bg-gray-700"}`}
-                style={{
-                  clipPath:
+                style={{ 
+                    clipPath:
                     "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
-                  filter: isDark
+                    filter: isDark
                     ? `drop-shadow(0 0 4px rgba(255, 255, 255, ${opacity * 0.8}))`
                     : `drop-shadow(0 0 4px rgba(0, 0, 0, ${opacity * 0.6}))`,
                 }}
@@ -124,25 +133,25 @@ export function StarCursor() {
 
       {/* Main Star Cursor */}
       <div
-        className="fixed pointer-events-none z-[9999] transition-transform duration-100 ease-out"
-        style={{
+        className="fixed pointer-events-none z-[9999] transition-opacity duration-500 ease-out"
+        style={{ 
           left: mousePosition.x - 10,
           top: mousePosition.y - 10,
-          transform: isHovering ? "scale(1.3)" : "scale(1)",
-        }}
-      >
+          transform: isHovering ? "scale(1.3)" : "scale(1)", 
+         opacity: isVisible ? 1 : 0 
+        }}>
         <div className="relative w-5 h-5">
           {/* Outer glow when hovering */}
           {isHovering && (
             <div
               className={`absolute inset-0 ${isDark ? "bg-white" : "bg-gray-800"}`}
-              style={{
+              style={{ 
                 clipPath:
-                  "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
-                filter: isDark ? "blur(4px) opacity(0.4)" : "blur(4px) opacity(0.3)",
-                transform: "scale(1.3)",
+                    "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
+                filter: isDark ? "blur(4px) opacity(0.4)" : "blur(4px) opacity(0.3)", 
+                transform: "scale(1.3)", 
                 animation: "pulse-glow 2s ease-in-out infinite",
-              }}
+              }} 
             />
           )}
 
@@ -150,44 +159,45 @@ export function StarCursor() {
           {isHovering && (
             <div
               className={`absolute inset-0 ${isDark ? "bg-white" : "bg-gray-700"}`}
-              style={{
+              style={{ 
                 clipPath:
-                  "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
-                filter: isDark ? "blur(2px) opacity(0.3)" : "blur(2px) opacity(0.2)",
-                transform: "scale(1.2)",
-              }}
+                    "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
+                filter: isDark ? "blur(2px) opacity(0.3)" : "blur(2px) opacity(0.2)", 
+                transform: "scale(1.2)", 
+              }} 
             />
           )}
 
           {/* Main star shape */}
           <div
             className={`absolute inset-0 ${isDark ? "bg-white" : "bg-gray-800"}`}
-            style={{
+            style={{ 
               clipPath:
                 "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
               filter: isHovering
                 ? isDark
-                  ? "drop-shadow(0 0 12px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 24px rgba(255, 255, 255, 0.6))"
-                  : "drop-shadow(0 0 12px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 24px rgba(0, 0, 0, 0.4))"
+                    ? "drop-shadow(0 0 12px rgba(255, 255, 255, 0.9)) drop-shadow(0 0 24px rgba(255, 255, 255, 0.6))"
+                    : "drop-shadow(0 0 12px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 24px rgba(0, 0, 0, 0.4))"
                 : isDark
-                  ? "drop-shadow(0 0 4px rgba(255, 255, 255, 0.5))"
-                  : "drop-shadow(0 0 4px rgba(0, 0, 0, 0.3))",
-            }}
+                    ? "drop-shadow(0 0 4px rgba(255, 255, 255, 0.5))"
+                    : "drop-shadow(0 0 4px rgba(0, 0, 0, 0.3))",
+            }} 
           />
 
           {/* Star twinkle effect when hovering */}
           {isHovering && (
             <div
               className={`absolute inset-0 ${isDark ? "bg-white" : "bg-gray-700"}`}
-              style={{
+              style={{ 
                 clipPath:
-                  "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
-                filter: isDark ? "blur(1px)" : "blur(1px)",
-                animation: "star-twinkle 1s ease-in-out infinite",
-                transform: "scale(1.1)",
-              }}
+                    "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
+                filter: isDark ? "blur(1px)" : "blur(1px)", 
+                animation: "star-twinkle 1s ease-in-out infinite", 
+                transform: "scale(1.1)", 
+              }} 
             />
           )}
+
         </div>
 
         <style jsx>{`

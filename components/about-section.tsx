@@ -49,15 +49,15 @@ export function AboutSection() {
                     </div>
                   </div>
                   <div className="flex-grow">
-                    <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">Hello, I'm Bernard!</h3>
-                    <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    <h3 className="text-lg md:text-xl font-semibold text-gray-800 dark:text-white mb-3">Hello, I'm Bernard!</h3>
+                    <p className="text-sm md:text-md text-gray-700 dark:text-gray-300 mb-4">
                       I'm a passionate UI/UX Developer that develops intuitive and user-friendly mobile and web applications. With a background in both design and
                       development, I bring a unique perspective to every project.
                     </p>
-                    <p className="text-gray-700 dark:text-gray-300 mb-6">
+                    <p className="text-sm md:text-md text-gray-700 dark:text-gray-300 mb-6">
                       I created this student portfolio to document my projects throughout my stay in the university. It's been quite a rollercoaster and I'm hoping to graduate by July 2026. I'm also into learning new things so feel free to connect with me if you share the same interests!
                     </p>
-                    <p className="text-gray-700 dark:text-gray-300 mb-6">
+                    <p className="text-sm md:text-md text-gray-700 dark:text-gray-300 mb-6">
                       When I'm not coding, you can find me exploring new technologies, scrolling through social media, or stargazing - which inspired the cosmic theme of this portfolio!
                     </p>
                     <Button
@@ -89,12 +89,12 @@ export function AboutSection() {
                       </div>
                     </div>
                     <div className="flex-grow">
-                      <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-1">Education</h3>
+                      <h3 className="text-lg md:text-xl font-semibold text-gray-800 dark:text-white mb-1">Education</h3>
                       <h4 className="text-base font-medium text-gray-800 dark:text-white">
                         University of the Philippines Los Baños
                       </h4>
-                      <p className="text-gray-700 dark:text-gray-300">B.S. Computer Science</p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">2021 - Present</p>
+                      <p className="text-sm md:text-md text-gray-700 dark:text-gray-300">B.S. Computer Science</p>
+                      <p className="text-sm md:text-md text-gray-600 dark:text-gray-400">2021 - Present</p>
                     </div>
                   </div>
                 </CardContent>
@@ -117,8 +117,8 @@ export function AboutSection() {
                       </div>
                     </div>
                     <div className="flex-grow">
-                      <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-1">Experience</h3>
-                      <p className="text-gray-700 dark:text-gray-300">Looking for opportunities</p>
+                      <h3 className="text-lg md:text-xl font-semibold text-gray-800 dark:text-white mb-1">Experience</h3>
+                      <p className="text-sm md:text-md text-gray-700 dark:text-gray-300">Looking for opportunities</p>
                     </div>
                   </div>
                 </CardContent>
@@ -141,9 +141,9 @@ export function AboutSection() {
                       </div>
                     </div>
                     <div className="flex-grow">
-                      <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-1">Projects</h3>
+                      <h3 className="text-lg md:text-xl font-semibold text-gray-800 dark:text-white mb-1">Projects</h3>
                       <p className="text-gray-700 dark:text-gray-300 font-medium">7+ completed projects</p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
+                      <p className="text-sm md:text-md text-gray-600 dark:text-gray-400">
                         Mobile apps, web applications, and design prototypes
                       </p>
                     </div>
