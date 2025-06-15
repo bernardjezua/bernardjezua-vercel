@@ -1,47 +1,20 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import { useEffect, useRef } from "react";
-
-interface Star {
-  x: number;
-  y: number;
-  size: number;
- opacity: number;
-  speed: number;
-  twinkleSpeed: number;
-  twinklePhase: number;
-}
-
-interface Constellation {
-  stars: { x: number; y: number }[];
-}
-
-interface ShootingStar {
-  x: number;
-  y: number;
-  length: number;
-  speed: number;
-  angle: number;
- opacity: number;
-  life: number;
-  maxLife: number;
-  color: string;
-}
+import { useTheme } from "next-themes";
 
 export function StarBackground() {
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const canvasRef = useRef(null);
   const { resolvedTheme } = useTheme();
 
   // Store data in refs
-  const animationRef = useRef<number | undefined>(undefined);
-  const timeRef = useRef<number>(0);
+  const animationRef = useRef(null);
   const lastScroll = useRef(0);
   const scrollSpeed = useRef(0);
   const lastShootingStarTime = useRef(0);
-  const stars = useRef<Star[]>([]);
-  const constellations = useRef<Constellation[]>([]);
-  const shootingStars = useRef<ShootingStar[]>([]);
+  const stars = useRef([]);
+  const constellations = useRef([]);
+  const shootingStars = useRef([]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -82,7 +55,7 @@ export function StarBackground() {
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           size: Math.random() * (isDark ? 2 : 2.2) + (isDark ? 0.5 : 0.7),
-         opacity: Math.random() * (isDark ? 0.8 : 0.6) + (isDark ? 0.2 : 0.3),
+          opacity: Math.random() * (isDark ? 0.8 : 0.6) + (isDark ? 0.2 : 0.3),
           speed: Math.random() * 0.05 + 0.01,
           twinkleSpeed: Math.random() * 0.02 + 0.01,
           twinklePhase: Math.random() * Math.PI * 2,
@@ -122,7 +95,7 @@ export function StarBackground() {
       }
     }
 
-    function createShootingStar(now: number) {
+    function createShootingStar(now) {
       if (!canvas) return;
 
       const isDark = resolvedTheme === "dark";
@@ -160,29 +133,31 @@ export function StarBackground() {
       });
     }
 
-    function updateShootingStars(now: number) {
-      shootingStars.current.forEach((star, index) => {
+    function updateShootingStars(now) {
+      shootingStars.current = shootingStars.current.filter((star) => {
         // Update position
         star.x += Math.cos(star.angle) * star.speed;
         star.y += Math.sin(star.angle) * star.speed;
 
-        // Update life andopacity
+        // Update life
         star.life++;
+
+        // Fade after 70% of its maxLife
         if (star.life > star.maxLife * 0.7) {
-          star.opacity = Math.max(0, 1 - (star.life - star.maxLife * 0.7) / (star.maxLife * 0.3));  
+          const fadeProgress = (star.life - star.maxLife * 0.7) / (star.maxLife * 0.3);
+          star.opacity = Math.max(0, 1 - fadeProgress);
         }
 
-        // Remove if offscreen or finished
-        if (star.x > canvas!.width + 100 ||
-            star.y > canvas!.height + 100 ||
-            star.x < -100 ||
-            star.life >= star.maxLife) {
-          shootingStars.current.splice(index, 1);
-        }
+        return (
+          star.x < canvas.width + 100 &&
+          star.x > -100 &&
+          star.y < canvas.height + 100 &&
+          star.opacity > 0
+        );
       });
     }
 
-    function draw(now: number) {
+    function draw(now) {
       if (!ctx) return;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -190,7 +165,7 @@ export function StarBackground() {
       const isDark = resolvedTheme === "dark";
 
       // Create shooting star
-      if (now - lastShootingStarTime.current > 20000) {
+      if (now - lastShootingStarTime.current > 10000) { // 10-second interval
         createShootingStar(now);
         lastShootingStarTime.current = now;
       }
@@ -208,13 +183,9 @@ export function StarBackground() {
 
         // Create gradient for the trail
         const gradient = ctx.createLinearGradient(tailX, tailY, star.x, star.y);
-
-        const headColor = star.color;
-        const tailColor = star.color.replace(/1\)$/, "0)");
-
-        gradient.addColorStop(0, tailColor);
-        gradient.addColorStop(0.8, headColor);
-        gradient.addColorStop(1, headColor);
+        gradient.addColorStop(0, star.color.replace(/1\)$/, `${star.opacity * 0.5})`)); // Fade toward trail
+        gradient.addColorStop(0.8, star.color.replace(/1\)$/, `${star.opacity})`)); // Main color
+        gradient.addColorStop(1, star.color.replace(/1\)$/, `${star.opacity})`));
 
         // Draw trail
         ctx.save();
@@ -222,6 +193,8 @@ export function StarBackground() {
 
         ctx.lineWidth = 3;
         ctx.lineCap = "round";
+
+        ctx.globalAlpha = star.opacity;
 
         ctx.beginPath();
         ctx.moveTo(tailX, tailY);
@@ -232,7 +205,7 @@ export function StarBackground() {
         // Head
         ctx.beginPath();
         ctx.arc(star.x, star.y, 2, 0, Math.PI * 2);
-        ctx.fillStyle = headColor;
+        ctx.fillStyle = star.color.replace(/1\)$/, `${star.opacity})`) ;
         ctx.fill();
 
         // Glow
@@ -244,8 +217,8 @@ export function StarBackground() {
           star.y,
           8
         );
-        glowGradient.addColorStop(0, headColor);
-        glowGradient.addColorStop(0.5, star.color.replace(/1\)$/, "0.3)"));
+        glowGradient.addColorStop(0, star.color.replace(/1\)$/, `${star.opacity})`));
+        glowGradient.addColorStop(0.5, star.color.replace(/1\)$/, `${star.opacity * 0.3})`));
         glowGradient.addColorStop(1, "transparent");
 
         ctx.fillStyle = glowGradient;
@@ -278,8 +251,8 @@ export function StarBackground() {
             (star.y + lastScroll.current * 0.1) % canvas.height,
             star.size * 3
           );
-          gradient.addColorStop(0, `rgba(255, 255, 255, ${twinkleOpacity})`);
-          gradient.addColorStop(0.5, `rgba(255, 255, 255, ${twinkleOpacity * 0.3})`);
+          gradient.addColorStop(0, "rgba(255, 255, 255," + twinkleOpacity + ")");
+          gradient.addColorStop(0.5, "rgba(255, 255, 255," + (twinkleOpacity * 0.3) + ")");
           gradient.addColorStop(1, "transparent");
 
           ctx.fillStyle = gradient;
@@ -364,7 +337,7 @@ export function StarBackground() {
     animationRef.current = requestAnimationFrame(draw);
 
     return () => {
-      cancelAnimationFrame(animationRef.current!);
+      cancelAnimationFrame(animationRef.current);
       window.removeEventListener("resize", resizeCanvas);
       window.removeEventListener("scroll", handleScroll);
     };
