@@ -86,21 +86,19 @@ export function Header() {
             </div>
           </Link>
 
-          {/* Desktop Menu */}
-          <nav className="hidden md:flex gap-4 ml-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                aria-label={item.name}
-                href={item.href}
-                className="text-gray-700 dark:text-gray-300 px-3 py-1 rounded-md font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
-                {item.name}
-              </Link>
-            ))}
-          </nav>
-
           {/* Actions placed directly after links to avoid additional space */}
           <div className="flex items-center gap-2 ml-auto">
+            <nav className="hidden md:flex gap-4 ml-4">
+              {navItems.map((item) => (
+                <Link
+                  key={item.name}
+                  aria-label={item.name}
+                  href={item.href}
+                  className="text-gray-700 dark:text-gray-300 px-3 py-1 rounded-md font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
+                  {item.name}
+                </Link>
+              ))}
+            </nav>
             <ThemeToggle />
           </div>
         </div>
