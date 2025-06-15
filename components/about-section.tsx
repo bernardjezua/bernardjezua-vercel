@@ -17,8 +17,8 @@ export function AboutSection() {
   }
 
   return (
-    <section id="about" className="py-20 relative">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-20 px-4">
+      <div className="container">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

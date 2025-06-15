@@ -9,6 +9,7 @@ import { ProjectsSection } from "@/components/projects-section"
 import { SkillsSection } from "@/components/skills-section"
 import { StarBackground } from "@/components/star-background"
 import { StarCursor } from "@/components/star-cursor"
+import { FloatingActionButton } from "@/components/floating-action-btn"
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <ProjectsSection />
       <DesignsSection />
       <ContactSection />
+      <FloatingActionButton />
       <Footer />
     </div>
   )

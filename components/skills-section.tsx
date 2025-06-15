@@ -11,18 +11,18 @@ interface Skill {
 
 export function SkillsSection() {
   const frontendSkills: Skill[] = [
-    { name: "React.js", icon: "https://profilinator.rishav.dev/skills-assets/react-original-wordmark.svg" },
+    { name: "React", icon: "https://profilinator.rishav.dev/skills-assets/react-original-wordmark.svg" },
     { name: "Next.js", icon: "https://profilinator.rishav.dev/skills-assets/nextjs.png" },
     { name: "JavaScript", icon: "https://profilinator.rishav.dev/skills-assets/javascript-original.svg" },
     { name: "TypeScript", icon: "https://profilinator.rishav.dev/skills-assets/typescript-original.svg" },
-    { name: "HTML", icon: "https://profilinator.rishav.dev/skills-assets/html5-original-wordmark.svg" },
-    { name: "CSS", icon: "https://profilinator.rishav.dev/skills-assets/css3-original-wordmark.svg" },
+    { name: "HTML5", icon: "https://profilinator.rishav.dev/skills-assets/html5-original-wordmark.svg" },
+    { name: "CSS3", icon: "https://profilinator.rishav.dev/skills-assets/css3-original-wordmark.svg" },
     { name: "Flutter", icon: "https://profilinator.rishav.dev/skills-assets/flutterio-icon.svg" },
     { name: "Tailwind CSS", icon: "https://profilinator.rishav.dev/skills-assets/tailwindcss.svg" },
   ];
 
   const backendSkills: Skill[] = [
-    { name: "Google Firebase", icon: "https://profilinator.rishav.dev/skills-assets/firebase.png" },
+    { name: "Firebase", icon: "https://profilinator.rishav.dev/skills-assets/firebase.png" },
     { name: "Python", icon: "https://profilinator.rishav.dev/skills-assets/python-original.svg" },
     { name: "Node.js", icon: "https://profilinator.rishav.dev/skills-assets/nodejs-original-wordmark.svg" },
     { name: "Express.js", icon: "https://profilinator.rishav.dev/skills-assets/express-original-wordmark.svg" },
@@ -36,7 +36,9 @@ export function SkillsSection() {
     { name: "Dart", icon: "https://profilinator.rishav.dev/skills-assets/dartlang-icon.svg" },
     { name: "C", icon: "https://profilinator.rishav.dev/skills-assets/c-original.svg" },
     { name: "Java", icon: "https://profilinator.rishav.dev/skills-assets/java-original-wordmark.svg" },
-    { name: "Android Studio", icon: "https://profilinator.rishav.dev/skills-assets/android-original-wordmark.svg" },
+    { name: "Android", icon: "https://profilinator.rishav.dev/skills-assets/android-original-wordmark.svg" },
+    { name: "Bash", icon: "https://profilinator.rishav.dev/skills-assets/gnu_bash-icon.svg" },
+    { name: "Git", icon: "https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" },
     { name: "Linux", icon: "https://profilinator.rishav.dev/skills-assets/linux-original.svg" },
   ];
 
@@ -72,7 +74,7 @@ export function SkillsSection() {
   }
 
   return (
-    <section id="skills" className="py-20 relative">
+    <section id="skills" className="py-20 px-4">
       <div className="container px-4">
         <motion.div
           initial={{ opacity: 0 }}

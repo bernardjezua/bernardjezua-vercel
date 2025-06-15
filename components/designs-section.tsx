@@ -73,8 +73,8 @@ export function DesignsSection() {
   ]
 
   return (
-    <section id="designs" className="py-20 relative">
-      <div className="container mx-auto px-4">
+    <section id="designs" className="py-20 px-4">
+      <div className="container">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -88,7 +88,7 @@ export function DesignsSection() {
           <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-500 mx-auto"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-6">
           {designs.map((design, index) => (
             <motion.div
               key={design.title}

@@ -36,8 +36,8 @@ export function ContactSection() {
           viewport={{once: true}}
         >
           <Card className="border-0 p-6 rounded-lg shadow-md bg-gray-50 dark:bg-gray-900">
-            <h3 className="text-2xl font-semibold mb-4">Get In Touch</h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
+            <h3 className="text-xl md:text-2xl font-semibold mb-4">Get In Touch</h3>
+            <p className="text-gray-600 dark:text-gray-400 mb-6 text-md md:text-lg">
               Have a project in mind or just want to say hello? Feel free to reach out directly.
             </p>
 

@@ -174,8 +174,8 @@ export function CertificationsSection() {
   const hasMoreToShow = certifications.length > 3
 
   return (
-    <section id="certifications" className="py-20 relative">
-      <div className="container mx-auto px-4">
+    <section id="certifications" className="py-20 px-4">
+      <div className="container">
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -224,7 +224,7 @@ export function CertificationsSection() {
           </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-6">
           {visibleCertifications.map((cert, index) => (
             <motion.div
               key={cert.title}

@@ -26,7 +26,7 @@ export function HeroSection() {
   };
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden pt-16">
+    <section id="home" className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden pt-16">
       <motion.div
         className="text-center z-10 px-4"
         initial={{opacity: 0, y: 20}}
@@ -119,9 +119,7 @@ export function HeroSection() {
         transition={{duration: 0.5, delay: 1.2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse"}}
       >
         <Link href="#about">
-          <div className="w-6 h-10 border-2 border-gray-500 dark:border-gray-400 rounded-full relative">
-            <span className="absolute top-2 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-gray-500 dark:bg-gray-400 animate-pulse" />
-          </div>
+          <ArrowDown className="text-gray-500 dark:text-gray-400" size={24} />
         </Link>
       </motion.div>
     </section>
