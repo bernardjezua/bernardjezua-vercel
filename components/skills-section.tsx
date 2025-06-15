@@ -33,7 +33,6 @@ export function SkillsSection() {
   ];
 
   const miscSkills: Skill[] = [
-    { name: "Git", icon: "https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" },
     { name: "Dart", icon: "https://profilinator.rishav.dev/skills-assets/dartlang-icon.svg" },
     { name: "C", icon: "https://profilinator.rishav.dev/skills-assets/c-original.svg" },
     { name: "Java", icon: "https://profilinator.rishav.dev/skills-assets/java-original-wordmark.svg" },
@@ -89,12 +88,34 @@ export function SkillsSection() {
         </motion.div>
 
         <Tabs defaultValue="frontend" className="w-full">
-          <TabsList className="grid grid-cols-4 mb-8 w-full max-w-2xl mx-auto">
-            <TabsTrigger value="frontend">Frontend</TabsTrigger>
-            <TabsTrigger value="backend">Backend</TabsTrigger>
-            <TabsTrigger value="misc">Miscellaneous</TabsTrigger>
-            <TabsTrigger value="design">Design</TabsTrigger>
-          </TabsList>
+          <div className="mb-16 md:mb-10"> {/* Added overflow handling */}
+            <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-2 w-full max-w-2xl mx-auto bg-transparent">
+              <TabsTrigger 
+                value="frontend"
+                className="flex-1 min-w-[120px] md:min-w-0 rounded-lg border border-gray-200 dark:border-gray-700 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:border-transparent transition-all py-2 px-3 text-sm md:text-base md:py-3 md:px-4"
+              >
+                Frontend
+              </TabsTrigger>
+              <TabsTrigger 
+                value="backend"
+                className="flex-1 min-w-[120px] md:min-w-0 rounded-lg border border-gray-200 dark:border-gray-700 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:border-transparent transition-all py-2 px-3 text-sm md:text-base md:py-3 md:px-4"
+              >
+                Backend
+              </TabsTrigger>
+              <TabsTrigger 
+                value="misc"
+                className="flex-1 min-w-[120px] md:min-w-0 rounded-lg border border-gray-200 dark:border-gray-700 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:border-transparent transition-all py-2 px-3 text-sm md:text-base md:py-3 md:px-4"
+              >
+                Miscellaneous
+              </TabsTrigger>
+              <TabsTrigger 
+                value="design"
+                className="flex-1 min-w-[120px] md:min-w-0 rounded-lg border border-gray-200 dark:border-gray-700 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:border-transparent transition-all py-2 px-3 text-sm md:text-base md:py-3 md:px-4"
+              >
+                Design
+              </TabsTrigger>
+            </TabsList>
+          </div>
 
           <TabsContent value="frontend">
             {renderSkills(frontendSkills)}
@@ -116,4 +137,3 @@ export function SkillsSection() {
     </section>
   )
 }
-
