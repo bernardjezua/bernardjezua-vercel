@@ -146,16 +146,9 @@ export function Header() {
                 </li>
               ))}
             </ul>
-
-            {/* Footer with ThemeToggle */}
-            <div className="absolute bottom-4 left-0 right-0 px-4">
-              <ThemeToggle />
-            </div>
           </div>
         </div>
       )}
-
     </>
   );
 }
-
