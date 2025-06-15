@@ -72,30 +72,32 @@ export function Header() {
             {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </Button>
 
-          {/* Logo */}
-          <Link aria-label="Logo" href="/">
-            <div className="flex items-center">
-              <div className="relative h-12 w-24">
-                {resolvedTheme === "dark" ? (
-                    <Image src="/assets/light.png" alt="Logo" fill priority />
-                ) : (
-                    <Image src="/assets/dark.png" alt="Logo" fill priority />
-                )}
+          {/* Logo — displayed only when side drawer is closed*/}
+          {!mobileMenuOpen && (
+            <Link aria-label="Logo" href="/">
+              <div className="flex items-center">
+                <div className="relative h-12 w-24">
+                    {resolvedTheme === "dark" ? (
+                        <Image src="/assets/light.png" alt="Logo" fill priority />
+                    ) : (
+                        <Image src="/assets/dark.png" alt="Logo" fill priority />
+                    )}
 
+                </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          )}
 
           {/* Actions placed directly after links to avoid additional space */}
           <div className="flex items-center gap-2 ml-auto">
             <nav className="hidden md:flex gap-4 ml-4">
               {navItems.map((item) => (
                 <Link
-                  key={item.name}
-                  aria-label={item.name}
-                  href={item.href}
-                  className="text-gray-700 dark:text-gray-300 px-3 py-1 rounded-md font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
-                  {item.name}
+                    key={item.name}
+                    aria-label={item.name}
+                    href={item.href}
+                    className="text-gray-700 dark:text-gray-300 px-3 py-1 rounded-md font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
+                    {item.name}
                 </Link>
               ))}
             </nav>
@@ -117,31 +119,30 @@ export function Header() {
 
           {/* Side panel */}
           <div className="absolute left-0 top-0 bottom-0 w-3/4 max-w-sm p-4 bg-gray-50 dark:bg-gray-900 shadow-md">
-            {/* Logo */}
-            <Link aria-label="Logo" href="/" onClick={handleNavClick}>
-              <div className="flex items-center mb-4">
-                <div className="relative h-12 w-24">
-                    {resolvedTheme === "dark" ? (
-                        <Image src="/assets/light.png" alt="Logo" fill priority />
-                    ) : (
-                        <Image src="/assets/dark.png" alt="Logo" fill priority />
-                    )}
+            {/* We leave the X button to close at the top by reuse the Button we used to open it */}
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label="Close Menu"
+              onClick={handleNavClick}
+              className="mb-4">
+              <X size={20} />
+            </Button>
 
-                </div>
-              </div>
-            </Link>
+            {/* Spacer before links */}
+            <div className="mb-4" />
 
             {/* Menu List */}
             <ul className="flex flex-col gap-2">
               {navItems.map((item) => (
                 <li key={item.name}>
-                    <Link
+                  <Link
                     aria-label={item.name}
                     onClick={handleNavClick}
                     href={item.href}
                     className="block px-4 py-2 rounded-md text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
                     {item.name}
-                    </Link>
+                  </Link>
                 </li>
               ))}
             </ul>
