@@ -7,7 +7,7 @@ import { Github, Linkedin, Facebook, Mail, Phone, MapPin } from "lucide-react"
 export function ContactSection() {
   const contactInfo = [
     { icon: <Mail className="h-5 w-5" />, text: "bernardjezuaml@gmail.com" },
-    { icon: <Phone className="h-5 w-5" />, text: "+63 993 493 4597" },
+    { icon: <Phone className="h-5 w-5" />, text: "+63 936 328 2646" },
     { icon: <MapPin className="h-5 w-5" />, text: "Laguna, Philippines" },
   ]
 
