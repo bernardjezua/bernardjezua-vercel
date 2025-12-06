@@ -118,7 +118,7 @@ export function AboutSection() {
                     </div>
                     <div className="flex-grow">
                       <h3 className="text-lg md:text-xl font-semibold text-gray-800 dark:text-white mb-1">Experience</h3>
-                      <p className="text-sm md:text-md text-gray-700 dark:text-gray-300">Looking for opportunities</p>
+                      <p className="text-sm md:text-md text-gray-700 dark:text-gray-300">2 years in UX Design and 0.3 years in Software Development.</p>
                     </div>
                   </div>
                 </CardContent>
