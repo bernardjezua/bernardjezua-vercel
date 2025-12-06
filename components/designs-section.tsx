@@ -28,21 +28,34 @@ export function DesignsSection() {
 
   const designs: Design[] = [
     {
-      title: "CosMarket: Buy, Sell, and Rent Cosplays",
-      image: "/assets/cosmarket.png",
+      title: "ElbiMart: Quick Grocery List & Cart",
+      image: "/assets/designs/elbimart.png",
       description:
-        "CosMarket is a buy and sell market application prototype designed to revolutionize the cosplay community by offering a seamless platform for looking at cosplay costumes and accessories.",
+        "ElbiMart is a high-fidelity prototype of a user-friendly grocery shopping application. ElbiMart aims to make grocery stores near you to be quick, simple, and clutter-free by providing a minimalistic application that guides you through your shopping list.",
       links: [
         {
           text: "View",
-          url: "https://www.figma.com/proto/SSEdzQioOieUqdKdcsgdTi/CosMarket?node-id=0-1&t=yofgEwZVk05q8LH7-1",
+          url: "https://www.figma.com/proto/a1nuvuvaCC6gtiQP3G36wf/ElbiMart?node-id=0-1&t=tcAJ1ua2ihy5x38K-1",
         },
       ],
-      skills: ["Figma"],
+      skills: ["Figma", "Adobe Photoshop", "Adobe Stock"],
+    },
+    {
+      title: "Payonnect: Smart Umbrella Sharing System",
+      image: "/assets/designs/payonnect.png",
+      description:
+        "Payonnect is a convenient and eco-friendly solution that allows commuters to borrow and return umbrellas through automated kiosks using QR codes or RFID cards. The system tracks transactions, manages inventory and applies fair penalties for damaged or unreturned umbrellas.",
+      links: [
+        {
+          text: "View",
+          url: "https://www.figma.com/proto/RlG6aQ2d63tmPoXhW4illq/Payonnect-UI?node-id=0-1&t=J6pZEMdVyumrEHaA-1",
+        },
+      ],
+      skills: ["Figma", "Canva", "Adobe Photoshop"],
     },
     {
       title: "FastSnap: Quick Mobile Video Editor",
-      image: "/assets/fastsnap.png",
+      image: "/assets/designs/fastsnap.png",
       description:
         "FastSnap is a mobile video editor prototype made using Figma. It is designed to offer an intuitive user experience for users who edit videos on the go.",
       links: [
@@ -59,7 +72,7 @@ export function DesignsSection() {
     },
     {
       title: "Tic Tac Toe: Galaxy Edition",
-      image: "/assets/tictac.png",
+      image: "/assets/designs/tictac.png",
       description:
         "A cosmic twist on the classic game! Play Tic Tac Toe against a friend or an AI with a stunning galaxy-themed design. Featuring our own Moon and our neighbor, Mars as the game pieces. May the best cosmic being win!",
       links: [
