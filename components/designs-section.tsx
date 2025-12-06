@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ExternalLink } from "lucide-react"
+import { ExternalLink, ChevronDown, ChevronUp } from "lucide-react"
 import Image from "next/image"
 import { useState } from "react"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
@@ -25,6 +25,7 @@ interface Design {
 export function DesignsSection() {
   const [selectedDesign, setSelectedDesign] = useState<Design | null>(null)
   const [hoveredDesign, setHoveredDesign] = useState<string | null>(null)
+  const [showAll, setShowAll] = useState(false) 
 
   const designs: Design[] = [
     {
@@ -85,6 +86,9 @@ export function DesignsSection() {
     },
   ]
 
+  const visibleDesigns = showAll ? designs : designs.slice(0, 3)
+  const hasMoreToShow = designs.length > 3
+
   return (
     <section id="designs" className="py-20 px-4">
       <div className="container">
@@ -102,7 +106,8 @@ export function DesignsSection() {
         </motion.div>
 
         <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-6">
-          {designs.map((design, index) => (
+          {/* Changed 'designs' to 'visibleDesigns' */}
+          {visibleDesigns.map((design, index) => (
             <motion.div
               key={design.title}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -145,6 +150,27 @@ export function DesignsSection() {
             </motion.div>
           ))}
         </div>
+        
+        {hasMoreToShow && (
+          <motion.div
+            className="flex justify-center mt-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            <Button variant="outline" onClick={() => setShowAll(!showAll)} className="flex items-center gap-2 px-6">
+              {showAll ? (
+                <>
+                  Show Less <ChevronUp className="h-4 w-4" />
+                </>
+              ) : (
+                <>
+                  Show More <ChevronDown className="h-4 w-4" />
+                </>
+              )}
+            </Button>
+          </motion.div>
+        )}
       </div>
 
       <Dialog open={!!selectedDesign} onOpenChange={(open) => !open && setSelectedDesign(null)}>
