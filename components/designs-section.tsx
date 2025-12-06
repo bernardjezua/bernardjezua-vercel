@@ -56,7 +56,7 @@ export function DesignsSection() {
     },
     {
       title: "CosMarket: Buy, Sell, and Rent Cosplays",
-      image: "/assets/cosmarket.png",
+      image: "/assets/designs/cosmarket.png",
       description:
         "CosMarket is a buy and sell market application prototype designed to revolutionize the cosplay community by offering a seamless platform for looking at cosplay costumes and accessories.",
       links: [
