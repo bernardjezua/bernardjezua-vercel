@@ -42,14 +42,14 @@ export function CertificationsSection() {
 
   const certifications: Certification[] = [
     {
-      title: "Introduction to Front-End Development",
+      title: "Microsoft UX Design Specialization",
       image: "/assets/certs/13.jpg",
       description:
-        "Completed a course covering HTML, CSS, JavaScript, and React fundamentals, which includes knowing the importance of web accessibility and design choices.",
+        "Earned a professional certificate in UX Design, gaining proficiency in user research, wireframing, prototyping, visual design, and accessibility.",
       issuer: "Meta",
       date: "June 2025",
-      links: [{ text: "View", url: "https://www.coursera.org/account/accomplishments/certificate/V6G4WY7S7YJJ" }],
-      skills: ["HTML", "CSS", "JavaScript", "React"],
+      links: [{ text: "View", url: "https://www.coursera.org/account/accomplishments/specialization/1A1H6DDFITX2" }],
+      skills: ["Figma", "Canva", "Adobe Photoshop", "User Experience"],
     },
     {
       title: "Google UX Design Professional Certificate",
@@ -59,7 +59,7 @@ export function CertificationsSection() {
       issuer: "Google",
       date: "May 2025",
       links: [{ text: "View", url: "https://www.coursera.org/account/accomplishments/specialization/1O1N179PZ4CY" }],
-      skills: ["User Experience", "User Interface", "Wireframing", "Prototyping"],
+      skills: ["Figma", "Adobe Photoshop", "User Experience", "User Interface", "Wireframing", "Prototyping"],
     },
     {
       title: "Python Data Associate",
