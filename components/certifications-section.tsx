@@ -33,6 +33,7 @@ const badgeImages = [
   "/assets/badges/badge5.png",
   "/assets/badges/badge6.png",
   "/assets/badges/badge7.png",
+  "/assets/badges/badge8.png"
 ]
 
 export function CertificationsSection() {
