@@ -44,7 +44,7 @@ export function CertificationsSection() {
   const certifications: Certification[] = [
     {
       title: "Microsoft UX Design Specialization",
-      image: "/assets/certs/13.jpg",
+      image: "/assets/certs/13.png",
       description:
         "Earned a professional certificate in UX Design, gaining proficiency in user research, wireframing, prototyping, visual design, and accessibility.",
       issuer: "Microsoft",
