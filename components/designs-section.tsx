@@ -55,6 +55,19 @@ export function DesignsSection() {
       skills: ["Figma", "Canva", "Adobe Photoshop"],
     },
     {
+      title: "CosMarket: Buy, Sell, and Rent Cosplays",
+      image: "/assets/cosmarket.png",
+      description:
+        "CosMarket is a buy and sell market application prototype designed to revolutionize the cosplay community by offering a seamless platform for looking at cosplay costumes and accessories.",
+      links: [
+        {
+          text: "View",
+          url: "https://www.figma.com/proto/SSEdzQioOieUqdKdcsgdTi/CosMarket?node-id=0-1&t=yofgEwZVk05q8LH7-1",
+        },
+      ],
+      skills: ["Figma"],
+    },
+    {
       title: "FastSnap: Quick Mobile Video Editor",
       image: "/assets/designs/fastsnap.png",
       description:

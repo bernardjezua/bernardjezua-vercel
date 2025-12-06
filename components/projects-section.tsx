@@ -30,7 +30,7 @@ export function ProjectsSection() {
   const projects: Project[] = [
     {
       title: "UP GWA Calculator",
-      image: "/assets/upgwacalc.png",
+      image: "/assets/projs/upgwacalc.png",
       description:
         "UP GWA Calculator is a web application that allows students to calculate their General Weighted Average (GWA) based on their grades and units. It provides a user-friendly interface for inputting grades and units, and calculates the GWA in real-time.",
       links: [{ text: "View", url: "https://up-gwa.vercel.app" }],
@@ -38,7 +38,7 @@ export function ProjectsSection() {
     },
     {
       title: "ICS-ASTRA: Alumni Tracking System",
-      image: "/assets/astra.png",
+      image: "/assets/projs/astra.png",
       description:
         "The ICS Alumni Synced Tracking for Relations and Advancement (ICS-ASTRA) is a progressive web application that is designed to bridge the gap between the institute and its alumni by providing a platform for streamlined communication and tracking.",
       skills: ["Next.js", "Tailwind CSS", "TypeScript"],
@@ -53,7 +53,7 @@ export function ProjectsSection() {
     },
     {
       title: "FoodUP: Food and Restaurant Review Application",
-      image: "/assets/foodup.png",
+      image: "/assets/projs/foodup.png",
       description:
         "FoodUP is an information system that records food reviews and items from establishments. Transformed several pages from Figma to Tkinter and debugged frontend data inaccuracy issues.",
       links: [{ text: "GitHub", url: "https://github.com/bernardjezua/FoodUP" }],
@@ -61,7 +61,7 @@ export function ProjectsSection() {
     },
     {
       title: "HATID: An E-Commerce Application",
-      image: "/assets/hatid.png",
+      image: "/assets/projs/hatid.png",
       description:
         "HATID is an e-commerce platform design idea for the Department of Agriculture (DA) to efficiently manage the distribution of agricultural products to the public market.",
       links: [{ text: "GitHub", url: "https://github.com/bernardjezua/hatid" }],
@@ -69,7 +69,7 @@ export function ProjectsSection() {
     },
     {
       title: "LOLCODE Interpreter",
-      image: "/assets/lolcode.png",
+      image: "/assets/projs/lolcode.png",
       description:
         "This project implements a LOLCODE interpreter in Python and it executes programs that are written in the LOLCODE language. Implemented algorithms in interpreting operations and statements that capture the delimiters and execute their functionalities.",
       links: [{ text: "GitHub", url: "https://github.com/bernardjezua/LOLCODE-Interpreter" }],
@@ -77,7 +77,7 @@ export function ProjectsSection() {
     },
     {
       title: "QSPS: Quadratic Spline and Polynomial Solver",
-      image: "/assets/qsps.png",
+      image: "/assets/projs/qsps.png",
       description:
         "QSPS is an R Shiny application that allows users to perform quadratic spline interpolation and polynomial regression analysis. The user interface was designed with custom CSS for aesthetic appeal.",
       links: [{ text: "GitHub", url: "https://github.com/bernardjezua/QSPS" }],
@@ -85,7 +85,7 @@ export function ProjectsSection() {
     },
     {
       title: "Viper's Shootout: Mini Shooting Game",
-      image: "/assets/viper.png",
+      image: "/assets/projs/viper.png",
       description:
         "Viper's Shootout is a mini-shooting game written in Java and implemented using JavaFX and Eclipse IDE. The game is inspired by VALORANT and its character, Viper.",
       links: [
