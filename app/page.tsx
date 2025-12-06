@@ -8,14 +8,14 @@ import { HeroSection } from "@/components/hero-section"
 import { ProjectsSection } from "@/components/projects-section"
 import { SkillsSection } from "@/components/skills-section"
 import { StarBackground } from "@/components/star-background"
-import { StarCursor } from "@/components/star-cursor"
+// import { StarCursor } from "@/components/star-cursor"
 import { FloatingActionButton } from "@/components/floating-action-btn"
 
 export default function Home() {
   return (
     <div>
       <StarBackground />
-      <StarCursor />
+      {/* <StarCursor /> */}
       <Header />
       <HeroSection />
       <AboutSection />
