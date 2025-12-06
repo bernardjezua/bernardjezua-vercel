@@ -47,8 +47,8 @@ export function CertificationsSection() {
       image: "/assets/certs/13.jpg",
       description:
         "Earned a professional certificate in UX Design, gaining proficiency in user research, wireframing, prototyping, visual design, and accessibility.",
-      issuer: "Meta",
-      date: "June 2025",
+      issuer: "Microsoft",
+      date: "November 2025",
       links: [{ text: "View", url: "https://www.coursera.org/account/accomplishments/specialization/1A1H6DDFITX2" }],
       skills: ["Figma", "Canva", "Adobe Photoshop", "User Experience"],
     },
