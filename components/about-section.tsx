@@ -142,7 +142,7 @@ export function AboutSection() {
                     </div>
                     <div className="flex-grow">
                       <h3 className="text-lg md:text-xl font-semibold text-gray-800 dark:text-white mb-1">Projects</h3>
-                      <p className="text-gray-700 dark:text-gray-300 font-medium">10+ Completeed Projects/Prototypes</p>
+                      <p className="text-gray-700 dark:text-gray-300 font-medium">10+ Completed Projects/Prototypes</p>
                       <p className="text-sm md:text-md text-gray-600 dark:text-gray-400">
                         Web applications, mobile apps, and design prototypes.
                       </p>
