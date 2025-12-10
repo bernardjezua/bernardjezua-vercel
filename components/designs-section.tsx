@@ -45,7 +45,7 @@ export function DesignsSection() {
       title: "Payonnect: Smart Umbrella Sharing System",
       image: "/assets/designs/payonnect.png",
       description:
-        "Payonnect is a convenient and eco-friendly solution that allows commuters to borrow and return umbrellas through automated kiosks using QR codes or RFID cards. The system tracks transactions, manages inventory and applies fair penalties for damaged or unreturned umbrellas.",
+        "Payonnect is an eco-friendly solution that allows commuters to borrow and return umbrellas through automated kiosks using QR codes. The system tracks transactions, manages inventory, and applies fair penalties for damaged or unreturned umbrellas.",
       links: [
         {
           text: "View Prototype",
