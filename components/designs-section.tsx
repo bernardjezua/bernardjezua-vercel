@@ -56,7 +56,7 @@ export function DesignsSection() {
           url: "https://www.behance.net/gallery/240213963/Payonnect-Smart-Umbrella-Sharing-System",
         }
       ],
-      skills: ["Figma", "Canva", "Adobe Photoshop"],
+      skills: ["Figma", "Adobe Photoshop", "Adobe Stock", "Canva"],
     },
     {
       title: "CosMarket: Buy, Sell, and Rent Cosplays",
@@ -73,7 +73,7 @@ export function DesignsSection() {
           url: "https://www.behance.net/gallery/240193177/CosMarket-Buy-Sell-and-Rent-Cosplays",
         }
       ],
-      skills: ["Figma"],
+      skills: ["Figma", "Adobe Photoshop", "Canva"],
     },
     {
       title: "FastSnap: Quick Mobile Video Editor",
@@ -90,7 +90,7 @@ export function DesignsSection() {
           url: "https://www.behance.net/gallery/240175301/FastSnap-Quick-Mobile-Video-Editor",
         }
       ],
-      skills: ["Figma", "Adobe Photoshop"],
+      skills: ["Figma", "Adobe Photoshop", "Canva"],
     },
     {
       title: "Tic Tac Toe: Galaxy Edition",
