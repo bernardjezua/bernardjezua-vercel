@@ -35,7 +35,7 @@ export function DesignsSection() {
         "ElbiMart is a high-fidelity prototype of a user-friendly grocery shopping application. ElbiMart aims to make grocery stores near you to be quick, simple, and clutter-free by providing a minimalistic application that guides you through your shopping list.",
       links: [
         {
-          text: "View",
+          text: "View Prototype",
           url: "https://www.figma.com/proto/a1nuvuvaCC6gtiQP3G36wf/ElbiMart?node-id=0-1&t=tcAJ1ua2ihy5x38K-1",
         },
       ],
@@ -48,7 +48,7 @@ export function DesignsSection() {
         "Payonnect is a convenient and eco-friendly solution that allows commuters to borrow and return umbrellas through automated kiosks using QR codes or RFID cards. The system tracks transactions, manages inventory and applies fair penalties for damaged or unreturned umbrellas.",
       links: [
         {
-          text: "View",
+          text: "View Prototype",
           url: "https://www.figma.com/proto/RlG6aQ2d63tmPoXhW4illq/Payonnect-UI?node-id=0-1&t=J6pZEMdVyumrEHaA-1",
         },
       ],
@@ -61,9 +61,13 @@ export function DesignsSection() {
         "CosMarket is a buy and sell market application prototype designed to revolutionize the cosplay community by offering a seamless platform for looking at cosplay costumes and accessories.",
       links: [
         {
-          text: "View",
+          text: "View Prototype",
           url: "https://www.figma.com/proto/SSEdzQioOieUqdKdcsgdTi/CosMarket?node-id=0-1&t=yofgEwZVk05q8LH7-1",
         },
+        {
+          text: "Case Study",
+          url: "https://www.behance.net/gallery/240193177/CosMarket-Buy-Sell-and-Rent-Cosplays",
+        }
       ],
       skills: ["Figma"],
     },
@@ -74,13 +78,13 @@ export function DesignsSection() {
         "FastSnap is a mobile video editor prototype made using Figma. It is designed to offer an intuitive user experience for users who edit videos on the go.",
       links: [
         {
-          text: "Layouts",
-          url: "https://www.figma.com/design/G8YLkwGD8wgNtwrnYaceT4/FastSnap?node-id=20-2&t=VCLJEgt4FHC3olAj-1",
-        },
-        {
-          text: "View",
+          text: "View Prototype",
           url: "https://www.figma.com/proto/G8YLkwGD8wgNtwrnYaceT4/FastSnap?node-id=20-2&t=JVajyBlgcZPb3tl2-1",
         },
+        {
+          text: "Case Study",
+          url: "https://www.behance.net/gallery/240175301/FastSnap-Quick-Mobile-Video-Editor",
+        }
       ],
       skills: ["Figma", "Adobe Photoshop"],
     },
