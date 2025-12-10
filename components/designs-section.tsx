@@ -49,8 +49,12 @@ export function DesignsSection() {
       links: [
         {
           text: "View Prototype",
-          url: "https://www.figma.com/proto/RlG6aQ2d63tmPoXhW4illq/Payonnect-UI?node-id=0-1&t=J6pZEMdVyumrEHaA-1",
+          url: "https://www.figma.com/proto/RlG6aQ2d63tmPoXhW4illq/Payonnect?node-id=17-1016&t=KB1KZxBf45Ny16SZ-1",
         },
+        {
+          text: "Case Study",
+          url: "https://www.behance.net/gallery/240213963/Payonnect-Smart-Umbrella-Sharing-System",
+        }
       ],
       skills: ["Figma", "Canva", "Adobe Photoshop"],
     },
