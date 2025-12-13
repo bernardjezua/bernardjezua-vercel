@@ -29,7 +29,7 @@ export function DesignsSection() {
 
   const designs: Design[] = [
     {
-      title: "ElbiMart: Local Grocery Shopping Application",
+      title: "ElbiMart: Quick Grocery List and Cart",
       image: "/assets/designs/elbimart.png",
       description:
         "ElbiMart is a high-fidelity prototype of a user-friendly grocery shopping application. ElbiMart aims to make grocery stores near you to be quick, simple, and clutter-free by providing a minimalistic application that guides you through your shopping list.",
