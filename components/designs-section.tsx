@@ -29,7 +29,7 @@ export function DesignsSection() {
 
   const designs: Design[] = [
     {
-      title: "ElbiMart: Quick Grocery List & Cart",
+      title: "ElbiMart: Local Grocery Shopping Application",
       image: "/assets/designs/elbimart.png",
       description:
         "ElbiMart is a high-fidelity prototype of a user-friendly grocery shopping application. ElbiMart aims to make grocery stores near you to be quick, simple, and clutter-free by providing a minimalistic application that guides you through your shopping list.",
@@ -38,8 +38,12 @@ export function DesignsSection() {
           text: "View Prototype",
           url: "https://www.figma.com/proto/a1nuvuvaCC6gtiQP3G36wf/ElbiMart?node-id=0-1&t=tcAJ1ua2ihy5x38K-1",
         },
+        {
+          text: "Case Study",
+          url: "https://www.behance.net/gallery/240397559/ElbiMart-Local-Grocery-Shopping-Application",
+        }
       ],
-      skills: ["Figma", "Adobe Photoshop", "Adobe Stock"],
+      skills: ["Figma", "Adobe Lightroom", "Adobe Photoshop", "Adobe Stock"],
     },
     {
       title: "Payonnect: Smart Umbrella Sharing System",
