@@ -40,7 +40,7 @@ export function DesignsSection() {
         },
         {
           text: "Case Study",
-          url: "https://www.behance.net/gallery/240397559/ElbiMart-Local-Grocery-Shopping-Application",
+          url: "https://www.behance.net/gallery/240397559/ElbiMart-Quick-Grocery-List-and-Cart",
         }
       ],
       skills: ["Figma", "Adobe Lightroom", "Adobe Photoshop", "Adobe Stock"],
