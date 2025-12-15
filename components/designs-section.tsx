@@ -20,6 +20,7 @@ interface Design {
   description: string
   links?: DesignLink[]
   skills: string[]
+  date?: string
 }
 
 export function DesignsSection() {
@@ -44,6 +45,7 @@ export function DesignsSection() {
         }
       ],
       skills: ["Figma", "Adobe Lightroom", "Adobe Photoshop", "Adobe Stock"],
+      date: "October - November 2025",
     },
     {
       title: "Payonnect: Smart Umbrella Sharing System",
@@ -61,6 +63,7 @@ export function DesignsSection() {
         }
       ],
       skills: ["Figma", "Adobe Photoshop", "Adobe Stock", "Canva"],
+      date: "October 2025",
     },
     {
       title: "CosMarket: Buy, Sell, and Rent Cosplays",
@@ -78,6 +81,7 @@ export function DesignsSection() {
         }
       ],
       skills: ["Figma", "Adobe Photoshop", "Canva"],
+      date: "March - May 2025",
     },
     {
       title: "FastSnap: Quick Mobile Video Editor",
@@ -95,6 +99,7 @@ export function DesignsSection() {
         }
       ],
       skills: ["Figma", "Adobe Photoshop", "Canva"],
+      date: "March - May 2024",
     },
     {
       title: "Tic Tac Toe: Galaxy Edition",
@@ -108,6 +113,7 @@ export function DesignsSection() {
         },
       ],
       skills: ["Figma", "Canva"],
+      date: "January 2024",
     },
   ]
 
@@ -158,6 +164,9 @@ export function DesignsSection() {
                     }`}
                   >
                     <h3 className="text-white text-lg font-semibold">{design.title}</h3>
+                    {design.date && (
+                        <p className="text-white/80 text-sm mb-2">{design.date}</p>
+                    )}
                     <div className="flex flex-wrap gap-2 mt-2">
                       {design.skills.map((skill) => (
                         <Badge
@@ -204,6 +213,9 @@ export function DesignsSection() {
             <DialogTitle className="text-lg md:text-xl font-medium text-gray-900 dark:text-white">
               {selectedDesign?.title}
             </DialogTitle>
+            {selectedDesign?.date && (
+              <p className="text-sm text-gray-500 dark:text-gray-400 -mt-2">{selectedDesign.date}</p>
+            )}
           </DialogHeader>
           <div className="relative aspect-video w-full overflow-hidden rounded-md">
             {selectedDesign && (

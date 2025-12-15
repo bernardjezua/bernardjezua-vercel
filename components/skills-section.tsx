@@ -10,42 +10,51 @@ interface Skill {
 }
 
 export function SkillsSection() {
-  const frontendSkills: Skill[] = [
-    { name: "React", icon: "https://profilinator.rishav.dev/skills-assets/react-original-wordmark.svg" },
-    { name: "Next.js", icon: "https://profilinator.rishav.dev/skills-assets/nextjs.png" },
+
+  const progBackendSkills: Skill[] = [
+    { name: "Python", icon: "https://profilinator.rishav.dev/skills-assets/python-original.svg" },
+    { name: "C", icon: "https://profilinator.rishav.dev/skills-assets/c-original.svg" },
+    { name: "Dart", icon: "https://profilinator.rishav.dev/skills-assets/dartlang-icon.svg" },
+    { name: "Java", icon: "https://profilinator.rishav.dev/skills-assets/java-original-wordmark.svg" },
+    { name: "R", icon: "https://profilinator.rishav.dev/skills-assets/r.svg" },
+    { name: "PHP", icon: "https://profilinator.rishav.dev/skills-assets/php-original.svg"},
     { name: "JavaScript", icon: "https://profilinator.rishav.dev/skills-assets/javascript-original.svg" },
     { name: "TypeScript", icon: "https://profilinator.rishav.dev/skills-assets/typescript-original.svg" },
-    { name: "HTML5", icon: "https://profilinator.rishav.dev/skills-assets/html5-original-wordmark.svg" },
-    { name: "CSS3", icon: "https://profilinator.rishav.dev/skills-assets/css3-original-wordmark.svg" },
-    { name: "Flutter", icon: "https://profilinator.rishav.dev/skills-assets/flutterio-icon.svg" },
-    { name: "Tailwind CSS", icon: "https://profilinator.rishav.dev/skills-assets/tailwindcss.svg" },
+    { name: "Express.js", icon: "https://profilinator.rishav.dev/skills-assets/express-original-wordmark.svg" },
+    { name: "Node.js", icon: "https://profilinator.rishav.dev/skills-assets/nodejs-original-wordmark.svg" },
+    { name: "Laravel", icon: "https://profilinator.rishav.dev/skills-assets/laravel-plain-wordmark.svg"},
+    { name: "Lumen", icon: "https://www.svgrepo.com/show/354019/lumen.svg"}
   ];
 
-  const backendSkills: Skill[] = [
-    { name: "Firebase", icon: "https://profilinator.rishav.dev/skills-assets/firebase.png" },
-    { name: "Python", icon: "https://profilinator.rishav.dev/skills-assets/python-original.svg" },
-    { name: "Node.js", icon: "https://profilinator.rishav.dev/skills-assets/nodejs-original-wordmark.svg" },
-    { name: "Express.js", icon: "https://profilinator.rishav.dev/skills-assets/express-original-wordmark.svg" },
-    { name: "MongoDB", icon: "https://profilinator.rishav.dev/skills-assets/mongodb-original-wordmark.svg" },
+  const frontendWebSkills: Skill[] = [
+    { name: "Git", icon: "https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" },
+    { name: "GitLab", icon: "https://profilinator.rishav.dev/skills-assets/gitlab.svg"},
+    { name: "Flutter", icon: "https://profilinator.rishav.dev/skills-assets/flutterio-icon.svg"},
+    { name: "React", icon: "https://profilinator.rishav.dev/skills-assets/react-original-wordmark.svg" },
+    { name: "HTML", icon: "https://profilinator.rishav.dev/skills-assets/html5-original-wordmark.svg" },
+    { name: "CSS", icon: "https://profilinator.rishav.dev/skills-assets/css3-original-wordmark.svg" },
+    { name: "Next.js", icon: "https://profilinator.rishav.dev/skills-assets/nextjs.png" },
+    { name: "Tailwind CSS", icon: "https://profilinator.rishav.dev/skills-assets/tailwindcss.svg" },
+    { name: "Sass", icon: "https://upload.wikimedia.org/wikipedia/commons/9/96/Sass_Logo_Color.svg"},
+    { name: "Ant Design", icon: "https://cdn.worldvectorlogo.com/logos/ant-design-2.svg"},
+    { name: "Axios", icon: "https://icon.icepanel.io/Technology/svg/Azios.svg"},
+  ];
+
+  const databaseSkills: Skill[] = [
     { name: "MySQL", icon: "https://profilinator.rishav.dev/skills-assets/mysql-original-wordmark.svg" },
     { name: "MariaDB", icon: "https://profilinator.rishav.dev/skills-assets/mariadb.png" },
-    { name: "R", icon: "https://profilinator.rishav.dev/skills-assets/r.svg" },
+    { name: "MongoDB", icon: "https://profilinator.rishav.dev/skills-assets/mongodb-original-wordmark.svg" },
+    { name: "Google Firebase", icon: "https://profilinator.rishav.dev/skills-assets/firebase.png" },
   ];
 
-  const miscSkills: Skill[] = [
-    { name: "Dart", icon: "https://profilinator.rishav.dev/skills-assets/dartlang-icon.svg" },
-    { name: "C", icon: "https://profilinator.rishav.dev/skills-assets/c-original.svg" },
-    { name: "Java", icon: "https://profilinator.rishav.dev/skills-assets/java-original-wordmark.svg" },
-    { name: "Android", icon: "https://profilinator.rishav.dev/skills-assets/android-original-wordmark.svg" },
-    { name: "Bash", icon: "https://profilinator.rishav.dev/skills-assets/gnu_bash-icon.svg" },
-    { name: "Git", icon: "https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg" },
-    { name: "Linux", icon: "https://profilinator.rishav.dev/skills-assets/linux-original.svg" },
-  ];
-
-  const designSkills: Skill[] = [
+  const designOthersSkills: Skill[] = [
     { name: "Figma", icon: "https://profilinator.rishav.dev/skills-assets/figma-icon.svg" },
-    { name: "Photoshop", icon: "https://profilinator.rishav.dev/skills-assets/photoshop-plain.svg" },
-    { name: "Canva", icon: "https://www.edigitalagency.com.au/wp-content/uploads/Canva-icon-gradient-png-900x900.png" },
+    { name: "Adobe Photoshop", icon: "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" },
+    { name: "Adobe Lightroom", icon: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Adobe_Photoshop_Lightroom_CC_logo.svg" },
+    { name: "Adobe Stock", icon: "https://cdn-1.webcatalog.io/catalog/adobe-stock/adobe-stock-icon-filled-256.webp?v=1714773139376" },
+    { name: "Canva", icon: "https://cdn.brandfetch.io/id9mVQlyB1/w/400/h/400/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B" },
+    { name: "Bash", icon: "https://profilinator.rishav.dev/skills-assets/gnu_bash-icon.svg" },
+    { name: "Linux", icon: "https://profilinator.rishav.dev/skills-assets/linux-original.svg" },
   ];
 
   const renderSkills = (skills: Skill[]) => {
@@ -60,7 +69,7 @@ export function SkillsSection() {
             viewport={{ once: true }}
           >
             <Card className="border-0 bg-gray-50 dark:bg-gray-800/50 backdrop-blur-md hover:shadow-md transition-all">
-              <CardContent className="p-4 flex flex-col items-center gap-6 md:gap-8">
+              <CardContent className="p-4 flex flex-col items-center gap-2 md:gap-4">
                 <img src={skill.icon} alt={`${skill.name} icon`} className="w-12 h-12" />
                 <span className="text-sm md:text-md font-semibold text-gray-800 dark:text-gray-100">
                     {skill.name}
@@ -89,50 +98,50 @@ export function SkillsSection() {
           <div className="w-20 h-1 bg-gradient-to-r from-purple-600 to-blue-500 mx-auto"></div>
         </motion.div>
 
-        <Tabs defaultValue="frontend" className="w-full">
+        <Tabs defaultValue="progBackend" className="w-full">
           <div className="mb-16 md:mb-10"> {/* Added overflow handling */}
             <TabsList className="grid grid-cols-2 md:grid-cols-4 gap-2 w-full max-w-2xl mx-auto bg-transparent">
               <TabsTrigger 
-                value="frontend"
+                value="progBackend"
                 className="flex-1 min-w-[120px] md:min-w-0 rounded-lg border border-gray-200 dark:border-gray-700 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:border-transparent transition-all py-2 px-3 text-sm md:text-base md:py-3 md:px-4"
               >
-                Frontend
+                PLs & Backend
               </TabsTrigger>
               <TabsTrigger 
-                value="backend"
+                value="frontendWeb"
                 className="flex-1 min-w-[120px] md:min-w-0 rounded-lg border border-gray-200 dark:border-gray-700 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:border-transparent transition-all py-2 px-3 text-sm md:text-base md:py-3 md:px-4"
               >
-                Backend
+                Frontend & Web
               </TabsTrigger>
               <TabsTrigger 
-                value="misc"
+                value="database"
                 className="flex-1 min-w-[120px] md:min-w-0 rounded-lg border border-gray-200 dark:border-gray-700 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:border-transparent transition-all py-2 px-3 text-sm md:text-base md:py-3 md:px-4"
               >
-                Miscellaneous
+                Database
               </TabsTrigger>
               <TabsTrigger 
-                value="design"
+                value="designOthers"
                 className="flex-1 min-w-[120px] md:min-w-0 rounded-lg border border-gray-200 dark:border-gray-700 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-500 data-[state=active]:text-white data-[state=active]:border-transparent transition-all py-2 px-3 text-sm md:text-base md:py-3 md:px-4"
               >
-                Design
+                Design & Others
               </TabsTrigger>
             </TabsList>
           </div>
 
-          <TabsContent value="frontend">
-            {renderSkills(frontendSkills)}
+          <TabsContent value="progBackend">
+            {renderSkills(progBackendSkills)}
           </TabsContent>
 
-          <TabsContent value="backend">
-            {renderSkills(backendSkills)}
+          <TabsContent value="frontendWeb">
+            {renderSkills(frontendWebSkills)}
           </TabsContent>
 
-          <TabsContent value="misc">
-            {renderSkills(miscSkills)}
+          <TabsContent value="database">
+            {renderSkills(databaseSkills)}
           </TabsContent>
 
-          <TabsContent value="design">
-            {renderSkills(designSkills)}
+          <TabsContent value="designOthers">
+            {renderSkills(designOthersSkills)}
           </TabsContent>
         </Tabs>
       </div>

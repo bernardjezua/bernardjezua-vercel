@@ -6,10 +6,10 @@ import { Button } from "@/components/ui/button"
 import { Download, GraduationCap, Briefcase, FolderKanban, User } from "lucide-react"
 
 export function AboutSection() {
-  const handleDownloadCV = () => {
+  const handleDownloadResume = () => {
     const link = document.createElement("a")
-    link.href = "/assets/Tandang_CV.pdf"
-    link.download = "Tandang_CV.pdf"
+    link.href = "/assets/Bernard_Resume_UX.pdf"
+    link.download = "Bernard_Resume_UX.pdf"
     link.target = "_blank"
     document.body.appendChild(link)
     link.click()
@@ -51,20 +51,20 @@ export function AboutSection() {
                   <div className="flex-grow">
                     <h3 className="text-lg md:text-xl font-semibold text-gray-800 dark:text-white mb-3">Hello, I'm Bernard!</h3>
                     <p className="text-sm md:text-md text-gray-700 dark:text-gray-300 mb-4">
-                      I'm a passionate UI/UX Developer that develops intuitive and user-friendly mobile and web applications. With a background in both design and
-                      development, I bring a unique perspective to every project.
+                      I'm a passionate UI/UX Designer and Frontend Developer that likes to develop intuitive and user-friendly mobile and web applications. With a background in both design and
+                      development, I bring a unique perspective to every project. I also like engaging with people!
                     </p>
                     <p className="text-sm md:text-md text-gray-700 dark:text-gray-300 mb-6">
-                      I created this student portfolio to document my projects throughout my stay in the university. It's been quite a rollercoaster and I'm hoping to graduate by July 2026. I'm also into learning new things so feel free to connect with me if you share the same interests!
+                      I created this student portfolio to document my projects and designs throughout my stay in the university. It's been quite a rollercoaster and I'm hoping to graduate by July 2026. I'm also into learning new things so feel free to connect with me if you share the same interests!
                     </p>
                     <p className="text-sm md:text-md text-gray-700 dark:text-gray-300 mb-6">
-                      When I'm not coding, you can find me exploring new technologies, scrolling through social media, or stargazing - which inspired the cosmic theme of this portfolio!
+                      When I'm not coding, you can find me exploring new technologies, participating in online courses, or stargazing - which inspired the cosmic theme of this portfolio! I hope to gain more work experience before graduating.
                     </p>
                     <Button
-                      onClick={handleDownloadCV}
+                      onClick={handleDownloadResume}
                       className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 text-white"
                     >
-                      <Download className="mr-2 h-4 w-4" /> Download CV
+                      <Download className="mr-2 h-4 w-4" /> Download Resume
                     </Button>
                   </div>
                 </div>
@@ -94,7 +94,7 @@ export function AboutSection() {
                         University of the Philippines Los Baños
                       </h4>
                       <p className="text-sm md:text-md text-gray-700 dark:text-gray-300">B.S. Computer Science</p>
-                      <p className="text-sm md:text-md text-gray-600 dark:text-gray-400">2021 - Present</p>
+                      <p className="text-sm md:text-md text-gray-600 dark:text-gray-400">2021 - 2026</p>
                     </div>
                   </div>
                 </CardContent>
@@ -118,7 +118,7 @@ export function AboutSection() {
                     </div>
                     <div className="flex-grow">
                       <h3 className="text-lg md:text-xl font-semibold text-gray-800 dark:text-white mb-1">Experience</h3>
-                      <p className="text-sm md:text-md text-gray-700 dark:text-gray-300">2 years in UX Design and 0.3 years in Software Development.</p>
+                      <p className="text-sm md:text-md text-gray-700 dark:text-gray-300">0.3 years in Software Development. Looking for UX Design Roles.</p>
                     </div>
                   </div>
                 </CardContent>

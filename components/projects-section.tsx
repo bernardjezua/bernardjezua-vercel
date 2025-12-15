@@ -20,6 +20,7 @@ interface Project {
   description: string
   links?: ProjectLink[]
   skills: string[]
+  date?: string
 }
 
 export function ProjectsSection() {
@@ -27,6 +28,7 @@ export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [hoveredProject, setHoveredProject] = useState<string | null>(null)
 
+  // 2. MODIFIED: Added 'date' to each project object
   const projects: Project[] = [
     {
       title: "UP GWA Calculator",
@@ -35,6 +37,7 @@ export function ProjectsSection() {
         "UP GWA Calculator is a web application that allows students to calculate their General Weighted Average (GWA) based on their grades and units. It provides a user-friendly interface for inputting grades and units, and calculates the GWA in real-time.",
       links: [{ text: "View", url: "https://up-gwa.vercel.app" }],
       skills: ["Next.js", "Tailwind CSS", "Vercel"],
+      date: "June 2025",
     },
     {
       title: "ICS-ASTRA: Alumni Tracking System",
@@ -42,6 +45,7 @@ export function ProjectsSection() {
       description:
         "The ICS Alumni Synced Tracking for Relations and Advancement (ICS-ASTRA) is a progressive web application that is designed to bridge the gap between the institute and its alumni by providing a platform for streamlined communication and tracking.",
       skills: ["Next.js", "Tailwind CSS", "TypeScript"],
+      date: "February - May 2025",
     },
     {
       title: "Traveler: A Genshin-Inspired Mobile Slam Book Application",
@@ -50,6 +54,7 @@ export function ProjectsSection() {
         "Traveler is a mobile slambook application inspired by Genshin Impact that allows users to add, update, and delete their friends through a slambook form or a QR code.",
       links: [{ text: "GitHub", url: "https://github.com/bernardjezua/traveler" }],
       skills: ["Flutter", "Dart", "Google Firebase"],
+      date: "June - July 2024",
     },
     {
       title: "FoodUP: Food and Restaurant Review Application",
@@ -58,6 +63,7 @@ export function ProjectsSection() {
         "FoodUP is an information system that records food reviews and items from establishments. Transformed several pages from Figma to Tkinter and debugged frontend data inaccuracy issues.",
       links: [{ text: "GitHub", url: "https://github.com/bernardjezua/FoodUP" }],
       skills: ["Python", "Tkinter", "SQL", "MariaDB", "Figma"],
+      date: "February - June 2024",
     },
     {
       title: "HATID: An E-Commerce Application",
@@ -66,6 +72,7 @@ export function ProjectsSection() {
         "HATID is an e-commerce platform design idea for the Department of Agriculture (DA) to efficiently manage the distribution of agricultural products to the public market.",
       links: [{ text: "GitHub", url: "https://github.com/bernardjezua/hatid" }],
       skills: ["React", "Express", "Node.js", "MongoDB", "Tailwind CSS"],
+      date: "November 2023 - January 2024",
     },
     {
       title: "LOLCODE Interpreter",
@@ -74,6 +81,7 @@ export function ProjectsSection() {
         "This project implements a LOLCODE interpreter in Python and it executes programs that are written in the LOLCODE language. Implemented algorithms in interpreting operations and statements that capture the delimiters and execute their functionalities.",
       links: [{ text: "GitHub", url: "https://github.com/bernardjezua/LOLCODE-Interpreter" }],
       skills: ["Python", "Tkinter"],
+      date: "November 2023 - January 2024",
     },
     {
       title: "QSPS: Quadratic Spline and Polynomial Solver",
@@ -82,6 +90,7 @@ export function ProjectsSection() {
         "QSPS is an R Shiny application that allows users to perform quadratic spline interpolation and polynomial regression analysis. The user interface was designed with custom CSS for aesthetic appeal.",
       links: [{ text: "GitHub", url: "https://github.com/bernardjezua/QSPS" }],
       skills: ["R", "R Shiny", "CSS"],
+      date: "November - December 2023",
     },
     {
       title: "Viper's Shootout: Mini Shooting Game",
@@ -90,9 +99,9 @@ export function ProjectsSection() {
         "Viper's Shootout is a mini-shooting game written in Java and implemented using JavaFX and Eclipse IDE. The game is inspired by VALORANT and its character, Viper.",
       links: [
         { text: "GitHub", url: "https://github.com/bernardjezua/viper" },
-        { text: "Preview", url: "https://drive.google.com/file/d/1sZJoVnwqbOKodjO6NM9zShKxo8Jjxcw3/view?usp=sharing" },
       ],
       skills: ["Java", "JavaFX", "Adobe Photoshop", "Canva"],
+      date: "July - August 2023",
     },
   ]
 
@@ -142,6 +151,9 @@ export function ProjectsSection() {
                     }`}
                   >
                     <h3 className="text-white text-lg font-semibold line-clamp-2">{project.title}</h3>
+                    {project.date && (
+                      <p className="text-white/80 text-sm mb-2">{project.date}</p>
+                    )}
                     <div className="flex flex-wrap gap-2 mt-2">
                       {project.skills.slice(0, 4).map((skill) => (
                         <Badge
@@ -193,6 +205,9 @@ export function ProjectsSection() {
             <DialogTitle className="text-lg md:text-xl font-medium text-gray-900 dark:text-white">
               {selectedProject?.title}
             </DialogTitle>
+            {selectedProject?.date && (
+               <p className="text-sm text-gray-500 dark:text-gray-400 -mt-2">{selectedProject.date}</p>
+            )}
           </DialogHeader>
           <div className="relative aspect-video w-full overflow-hidden rounded-md">
             {selectedProject && (

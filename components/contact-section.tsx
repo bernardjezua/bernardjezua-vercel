@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
-import { Github, Linkedin, Facebook, Mail, Phone, MapPin } from "lucide-react"
+import { Github, Linkedin, Facebook, Mail, Phone, PaintBucket, MapPin } from "lucide-react"
 
 export function ContactSection() {
   const contactInfo = [
     { icon: <Mail className="h-5 w-5" />, text: "bernardjezuaml@gmail.com" },
-    { icon: <Phone className="h-5 w-5" />, text: "+63 936 328 2646" },
+    { icon: <PaintBucket className="h-5 w-5" />, text: "behance.net/bernardjezua" },
     { icon: <MapPin className="h-5 w-5" />, text: "Laguna, Philippines" },
   ]
 
