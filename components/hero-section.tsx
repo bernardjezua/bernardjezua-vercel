@@ -1,128 +1,88 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { ArrowDown } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import Image from "next/image"
-import { useTheme } from "next-themes"
-import { useState } from "react"
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
+import Link from "next/link";
+import Image from "next/image";
 
 export function HeroSection() {
-  // Store mouse position for 3D rotation
-  const [rotate, setRotate] = useState({ x: 0, y: 0 });
-  const { resolvedTheme } = useTheme()
-
-  const handleMouseMove = (e) => {
-    const rect = e.target.getBoundingClientRect();
-    // Calculate rotation based on mouse pos within the box
-    const x = (e.clientX - rect.left - rect.width / 2) / (rect.width / 2);
-    const y = (e.clientY - rect.top - rect.height / 2) / (rect.height / 2);
-    setRotate({ x: y * 10, y: x * 10 });
-  };
-
-  const handleMouseLeave = () => {
-    setRotate({ x: 0, y: 0 });
-  };
-
   return (
-    <section id="home" className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden pt-16">
-      <motion.div
-        className="text-center z-10 px-4"
-        initial={{opacity: 0, y: 20}}
-        animate={{opacity: 1, y: 0}}
-        transition={{duration: 0.8}}
+    <section id="home" className="relative flex flex-col justify-center px-8 md:px-20 min-h-screen w-full overflow-hidden bg-black">
+      <div className="absolute top-0 left-0 w-full h-full z-0 opacity-30 pointer-events-none">
+        <ShaderGradientCanvas style={{ pointerEvents: 'none' }} pointerEvents="none" lazyLoad={false}>
+          <ShaderGradient
+            animate="on"
+            enableTransition={false}
+            brightness={1.1}
+            color1="#3B82F6"
+            color2="#8B5CF6"
+            color3="#000000"
+            cAzimuthAngle={180}
+            cDistance={3.9}
+            cPolarAngle={115}
+            cameraZoom={1}
+            positionX={-0.5}
+            positionY={0.1}
+            positionZ={0}
+            rotationZ={235}
+            shader="defaults"
+            type="waterPlane"
+            uDensity={1.1}
+            uFrequency={5.5}
+            uSpeed={0.1}
+            uStrength={2.4}
+            uTime={0.2}
+            wireframe={false}
+          />
+        </ShaderGradientCanvas>
+      </div>
 
-      >
-        {/* 3D Image with hover effects and glow */}
+      <div className="relative z-10 max-w-7xl mt-32 md:mt-0">
         <motion.div
-          className="inline-block mb-4 perspective-1000"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          onMouseMove={(e) => handleMouseMove(e)}
-          onMouseLeave={handleMouseLeave}
-          animate={{ rotateX: rotate.x, rotateY: rotate.y, scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}>
-          
-          {/* 3D frame with shadow and glow (dark only) */}
-          <div
-            className={`relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 ${
-              resolvedTheme === "dark"
-                ? "border-purple-400 shadow-[0_20px_50px_rgb(128,0,128,0.7)]"
-                : "border-purple-400 shadow-none"
-            } transform-style-preserve-3d`}
+          className="pointer-events-none"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="text-xs md:text-sm uppercase tracking-[0.4em] text-white/50 mb-6 block font-medium">
+            UI/UX Designer & Frontend Developer
+          </span>
+          <h1 className="text-6xl md:text-[6vw] lg:text-[7vw] font-bold leading-[0.85] tracking-tighter text-white">
+            CRAFTING <br />
+            <span className="text-white/40">STELLAR EXPERIENCES.</span>
+          </h1>
+
+          <motion.div
+            className="mt-12 flex flex-col sm:flex-row gap-6 items-start sm:items-center pointer-events-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 1 }}
           >
-            {/* Image */}
-            <Image src="/assets/Profile.png" alt="Profile Picture" fill className="object-cover z-10" />
-
-            {/* Astronaut-like effects (dark only) */}
-            {resolvedTheme === "dark" && (
-              <>
-                <div className="absolute inset-0 rounded-full bg-purple-500/20 filter blur-md transform translate-z-[-20px]" />
-
-                {/* Optional: small spark-like elements */}
-                <div className="absolute bottom-0 left-0 w-2 h-2 rounded-full bg-blue-500 transform translate-z-[-10px] animate-pulse" />
-                <div className="absolute top-0 right-0 w-2 h-2 rounded-full bg-purple-500 transform translate-z-[-10px] animate-pulse delay-500" />
-              </>
-            )}
-
-          </div>
+            <Link href="#projects" className="group flex items-center bg-black text-white rounded-full pl-6 pr-2 py-2 hover:bg-neutral-900 transition-colors border border-white/10 shadow-lg">
+              <span className="text-sm font-semibold uppercase tracking-widest mr-4">View Projects</span>
+              <div className="bg-bern-blue p-2 rounded-full text-white group-hover:scale-110 transition-transform relative overflow-hidden flex items-center justify-center">
+                <ArrowRight size={16} strokeWidth={3} className="transition-transform duration-300 group-hover:translate-x-[150%]" />
+                <ArrowRight size={16} strokeWidth={3} className="absolute -translate-x-[150%] transition-transform duration-300 group-hover:translate-x-0" />
+              </div>
+            </Link>
+            <Link href="#contact" className="group flex items-center bg-white text-black rounded-full px-6 py-3.5 hover:bg-neutral-200 transition-colors shadow-lg">
+              <span className="text-sm font-semibold uppercase tracking-widest">Contact Me</span>
+            </Link>
+          </motion.div>
         </motion.div>
 
-        <motion.h1
-          className="text-3xl md:text-4xl font-semibold bg-gradient-to-r from-purple-600 via-blue-500 to-purple-600 bg-clip-text text-transparent"
-          initial={{opacity: 0}}
-          animate={{opacity: 1}}
-          transition={{duration: 0.8, delay: 0.4}}
-
-        >
-          Bernard Jezua Tandang
-        </motion.h1>
-
-        <motion.p
-          className="text-lg md:text-xl mb-8 text-gray-700 dark:text-gray-300"
-          initial={{opacity: 0}}
-          animate={{opacity: 1}}
-          transition={{duration: 0.8, delay: 0.6}}
-
-        >
-          Frontend Developer & UI/UX Designer
-        </motion.p>
-
-        <motion.div
-          className="flex flex-wrap gap-4 justify-center"
-          initial={{opacity: 0}}
-          animate={{opacity: 1}}
-          transition={{duration: 0.8, delay: 0.8}}
-
-        >
-          <Button
-            asChild
-            className="bg-gradient-to-r from-purple-600 to-blue-500 hover:from-purple-700 hover:to-blue-600 text-white text-sm md:text-md">
-            <a href="#projects">View Projects</a>
-          </Button>
-
-          <Button
-            asChild
-            variant="outline"
-            className="border-purple-500 text-purple-600 hover:bg-purple-50 dark:text-purple-400 dark:hover:bg-purple-950 text-sm md:text-md">
-            <a href="#contact">Contact Me</a>
-          </Button>
-        </motion.div>
-      </motion.div>
-
+      </div>
       <motion.div
-        className="absolute bottom-8 flex items-center justify-center"
-        initial={{opacity: 0, y: 10}}
-        animate={{opacity: 1, y: 0}}
-        transition={{duration: 0.5, delay: 1.2, repeat: Number.POSITIVE_INFINITY, repeatType: "reverse"}}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 1 }}
+        className="absolute bottom-12 right-8 md:right-20 max-w-sm text-right z-10 hidden md:block"
       >
-        <Link href="#about">
-          <ArrowDown className="text-gray-500 dark:text-gray-400" size={24} />
-        </Link>
+        <p className="text-lg text-white/60 leading-relaxed italic">
+          "I enjoy talking to people, empathizing with them, and coming up with design solutions."
+        </p>
       </motion.div>
     </section>
-  )
+  );
 }
-

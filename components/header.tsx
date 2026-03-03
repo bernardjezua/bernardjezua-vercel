@@ -1,32 +1,45 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 
 import { Menu, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const { resolvedTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isLightSection, setIsLightSection] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 10);
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setHidden(true);
+      } else if (currentScrollY < lastScrollY) {
+        setHidden(false);
+      }
+      setLastScrollY(currentScrollY);
+
+      const aboutEl = document.getElementById("about");
+      if (aboutEl) {
+        const rect = aboutEl.getBoundingClientRect();
+        if (rect.top <= 80 && rect.bottom >= 80) {
+          setIsLightSection(true);
+        } else {
+          setIsLightSection(false);
+        }
+      }
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   // Prevent body scroll when the side drawer is opened
   useEffect(() => {
@@ -54,55 +67,60 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-gray-50/90 dark:bg-gray-900/90 backdrop-blur-md shadow-md py-2"
-            : "bg-transparent py-4"
-        }`}
+        className={`fixed left-0 top-0 w-full z-50 transition-transform duration-500 ease-(--transition-ease) ${
+          hidden ? "-translate-y-full" : "translate-y-0"
+        } ${scrolled ? "py-4" : "py-6"}`}
       >
-        {/* Left-Aligned Wrapper with max width and padding */}
-        <div className="flex items-center gap-4 px-4">
-          {/* Mobile Menu Button first (on left) */}
-          <Button
-            variant="ghost"
-            size="icon"
-            aria-label="Toggle Menu"
-            onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="md:hidden">
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </Button>
-
-          {/* Logo — displayed only when side drawer is closed*/}
-          {!mobileMenuOpen && (
-            <Link aria-label="Logo" href="/">
-              <div className="flex items-center">
-                <div className="relative h-12 w-24">
-                    {resolvedTheme === "dark" ? (
-                        <Image src="/assets/light.png" alt="Logo" fill priority />
-                    ) : (
-                        <Image src="/assets/dark.png" alt="Logo" fill priority />
-                    )}
-
+        {/* Main Grid Layout */}
+        <div className="grid grid-cols-[auto_1fr_auto] items-center px-6 md:px-12 w-full gap-4">
+          
+          {/* Left: Logo */}
+          <div className="flex items-center">
+            {/* Mobile Menu Button currently visible to avoid messing layout, but mostly for left padding equivalence */}
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label="Toggle Menu"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              className={`md:hidden ${isLightSection ? "text-black" : "text-white"} mr-4 transition-colors duration-300`}>
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </Button>
+            
+            {!mobileMenuOpen && (
+              <Link aria-label="Logo" href="/">
+                <div className="relative h-12 w-9 transition-transform duration-300 hover:scale-105">
+                  <Image src="/logo.png" alt="Logo" fill priority className={`object-contain transition-all duration-500 ${isLightSection ? "invert" : ""}`} />
                 </div>
-              </div>
-            </Link>
-          )}
+              </Link>
+            )}
+          </div>
 
-          {/* Actions placed directly after links to avoid additional space */}
-          <div className="flex items-center gap-2 ml-auto">
-            <nav className="hidden md:flex gap-4 ml-4">
+          {/* Center: Liquid Glass Nav Pill */}
+          <div className="hidden md:flex justify-center w-full">
+            <nav className={`flex items-center gap-2 px-6 py-3 rounded-full border transition-all duration-500 ${
+              scrolled 
+                ? (isLightSection ? "bg-black/5 backdrop-blur-xl shadow-lg border-black/10" : "bg-white/5 backdrop-blur-xl shadow-lg border-white/10")
+                : "bg-transparent border-transparent"
+            }`}>
               {navItems.map((item) => (
                 <Link
                     key={item.name}
                     aria-label={item.name}
                     href={item.href}
-                    className="text-gray-700 dark:text-gray-300 px-3 py-1 rounded-md font-semibold hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
+                    className={`relative px-4 py-2 text-xs uppercase tracking-[0.2em] font-medium rounded-full transition-all duration-300 ${
+                      isLightSection 
+                        ? "text-black/60 hover:text-black hover:bg-black/10" 
+                        : "text-white/60 hover:text-white hover:bg-white/10"
+                    }`}
+                >
                     {item.name}
                 </Link>
               ))}
             </nav>
-            <ThemeToggle />
           </div>
+
+          {/* Right: Empty div for grid balance */}
+          <div className="hidden md:block w-[52px]" />
         </div>
       </header>
 
@@ -114,33 +132,21 @@ export function Header() {
             aria-label="Close Menu"
             aria-hidden
             onClick={handleNavClick}
-            className="absolute inset-0 bg-black/50"
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
           />
 
           {/* Side panel */}
-          <div className="absolute left-0 top-0 bottom-0 w-3/4 max-w-sm p-4 bg-gray-50 dark:bg-gray-900 shadow-md">
-            {/* We leave the X button to close at the top by reuse the Button we used to open it */}
-            <Button
-              variant="ghost"
-              size="icon"
-              aria-label="Close Menu"
-              onClick={handleNavClick}
-              className="mb-4">
-              <X size={20} />
-            </Button>
-
-            {/* Spacer before links */}
-            <div className="mb-4" />
+          <div className="absolute left-0 top-0 bottom-0 w-3/4 max-w-sm pt-24 pb-8 bg-[#0a0a0a] border-r border-white/10 shadow-2xl overflow-y-auto">
 
             {/* Menu List */}
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-6 px-8">
               {navItems.map((item) => (
                 <li key={item.name}>
                   <Link
                     aria-label={item.name}
                     onClick={handleNavClick}
                     href={item.href}
-                    className="block px-4 py-2 rounded-md text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800">
+                    className="block text-2xl font-bold tracking-tighter text-white/70 hover:text-bern-blue transition-colors">
                     {item.name}
                   </Link>
                 </li>
