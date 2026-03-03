@@ -31,17 +31,25 @@ export function LoadingScreen({ children }: { children: React.ReactNode }) {
     return () => clearTimeout(timer);
   }, []);
 
-  // Create a grid of blocks for the pixelated transition
-  const gridX = 20;
-  const gridY = 10;
-  const totalBlocks = gridX * gridY;
-  
-  // Pre-calculate randomized delays for the pixel dissolve
+  const [gridX, setGridX] = useState(20);
+  const [gridY, setGridY] = useState(10);
   const [shuffledDelays, setShuffledDelays] = useState<number[]>([]);
+
   useEffect(() => {
+    // Calculate precise grid so blocks form perfect squares
+    // We pick a target block size, e.g. 80px
+    const blockSize = 80;
+    const x = Math.ceil(window.innerWidth / blockSize);
+    const y = Math.ceil(window.innerHeight / blockSize);
+    setGridX(x);
+    setGridY(y);
+
+    const totalBlocks = x * y;
     const delays = Array.from({ length: totalBlocks }).map(() => 1.8 + Math.random() * 0.6);
     setShuffledDelays(delays);
-  }, [totalBlocks]);
+  }, []);
+
+  const totalBlocks = gridX * gridY;
 
   return (
     <>

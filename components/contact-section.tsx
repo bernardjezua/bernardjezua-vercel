@@ -47,10 +47,10 @@ export function ContactSection() {
            viewport={{ once: true }}
            className="w-full text-center lg:text-left"
         >
-          <span className="text-xs md:text-sm uppercase tracking-[0.4em] text-lime-400 mb-6 block font-medium">
+          <span className="text-[10px] md:text-sm uppercase tracking-[0.4em] text-lime-400 mb-6 block font-medium">
             Want to connect?
           </span>
-          <h2 className="text-6xl md:text-[5vw] lg:text-[6vw] font-bold leading-[0.85] tracking-tighter text-white">
+          <h2 className="text-5xl md:text-6xl lg:text-[6vw] font-bold leading-[0.85] tracking-tighter text-white">
             LET'S <br className="hidden lg:block" />
             <span className="text-white/40">WORK</span> <br className="hidden lg:block" />
             TOGETHER.
@@ -59,46 +59,45 @@ export function ContactSection() {
 
         {/* Right Column - Links */}
         <motion.div
-           className="flex flex-col gap-4"
+           className="flex flex-col gap-3 md:gap-4"
            initial={{ opacity: 0, scale: 0.95 }}
            whileInView={{ opacity: 1, scale: 1 }}
            transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
            viewport={{ once: true }}
         >
-          <a href="https://linkedin.com/in/bernardjezua" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-5 md:p-6 rounded-2xl bg-white/5 hover:bg-lime-500/20 border border-white/10 hover:border-lime-500/50 transition-all duration-300 backdrop-blur-md">
+          <a href="https://linkedin.com/in/bernardjezua" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 md:p-6 rounded-2xl bg-white/5 hover:bg-lime-500/20 border border-white/10 hover:border-lime-500/50 transition-all duration-300 backdrop-blur-md">
             <div>
-              <p className="text-xs text-lime-400 font-semibold mb-1 uppercase tracking-widest">LinkedIn</p>
-              <p className="text-base sm:text-lg md:text-xl text-white font-medium group-hover:text-lime-300 transition-colors">linkedin.com/in/bernardjezua</p>
+              <p className="text-[10px] md:text-xs text-lime-400 font-semibold mb-0.5 md:mb-1 uppercase tracking-widest">LinkedIn</p>
+              <p className="text-sm sm:text-base md:text-xl text-white font-medium group-hover:text-lime-300 transition-colors">linkedin.com/in/bernardjezua</p>
             </div>
-            <ArrowUpRight className="w-6 h-6 text-white/50 group-hover:text-lime-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+            <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-white/50 group-hover:text-lime-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
           </a>
           
-          <a href="https://behance.net/bernardjezua" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-5 md:p-6 rounded-2xl bg-white/5 hover:bg-lime-500/20 border border-white/10 hover:border-lime-500/50 transition-all duration-300 backdrop-blur-md">
+          <a href="https://behance.net/bernardjezua" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 md:p-6 rounded-2xl bg-white/5 hover:bg-lime-500/20 border border-white/10 hover:border-lime-500/50 transition-all duration-300 backdrop-blur-md">
             <div>
-              <p className="text-xs text-lime-400 font-semibold mb-1 uppercase tracking-widest">Behance</p>
-              <p className="text-base sm:text-lg md:text-xl text-white font-medium group-hover:text-lime-300 transition-colors">behance.net/bernardjezua</p>
+              <p className="text-[10px] md:text-xs text-lime-400 font-semibold mb-0.5 md:mb-1 uppercase tracking-widest">Behance</p>
+              <p className="text-sm sm:text-base md:text-xl text-white font-medium group-hover:text-lime-300 transition-colors">behance.net/bernardjezua</p>
             </div>
-            <ArrowUpRight className="w-6 h-6 text-white/50 group-hover:text-lime-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+             <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-white/50 group-hover:text-lime-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
           </a>
 
-          <a href="mailto:bernardjezuaml@gmail.com" className="group flex items-center justify-between p-5 md:p-6 rounded-2xl bg-white/5 hover:bg-lime-500/20 border border-white/10 hover:border-lime-500/50 transition-all duration-300 backdrop-blur-md">
+          <a href="https://github.com/bernardjezua" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-4 md:p-6 rounded-2xl bg-white/5 hover:bg-lime-500/20 border border-white/10 hover:border-lime-500/50 transition-all duration-300 backdrop-blur-md">
             <div>
-              <p className="text-xs text-lime-400 font-semibold mb-1 uppercase tracking-widest">Email</p>
-              <p className="text-base sm:text-lg md:text-xl text-white font-medium group-hover:text-lime-300 transition-colors">bernardjezuaml@gmail.com</p>
+              <p className="text-[10px] md:text-xs text-lime-400 font-semibold mb-0.5 md:mb-1 uppercase tracking-widest">GitHub</p>
+              <p className="text-sm sm:text-base md:text-xl text-white font-medium group-hover:text-lime-300 transition-colors">github.com/bernardjezua</p>
             </div>
-            <ArrowUpRight className="w-6 h-6 text-white/50 group-hover:text-lime-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+             <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-white/50 group-hover:text-lime-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
           </a>
 
-          <a href="https://github.com/bernardjezua" target="_blank" rel="noopener noreferrer" className="group flex items-center justify-between p-5 md:p-6 rounded-2xl bg-white/5 hover:bg-lime-500/20 border border-white/10 hover:border-lime-500/50 transition-all duration-300 backdrop-blur-md">
+          <a href="mailto:bernardjezuaml@gmail.com" className="group flex items-center justify-between p-4 md:p-6 rounded-2xl bg-white/5 hover:bg-lime-500/20 border border-white/10 hover:border-lime-500/50 transition-all duration-300 backdrop-blur-md">
             <div>
-              <p className="text-xs text-lime-400 font-semibold mb-1 uppercase tracking-widest">GitHub</p>
-              <p className="text-base sm:text-lg md:text-xl text-white font-medium group-hover:text-lime-300 transition-colors">github.com/bernardjezua</p>
+              <p className="text-[10px] md:text-xs text-lime-400 font-semibold mb-0.5 md:mb-1 uppercase tracking-widest">Email</p>
+              <p className="text-sm sm:text-base md:text-xl text-white font-medium group-hover:text-lime-300 transition-colors">bernardjezuaml@gmail.com</p>
             </div>
-            <ArrowUpRight className="w-6 h-6 text-white/50 group-hover:text-lime-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+             <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6 text-white/50 group-hover:text-lime-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
           </a>
         </motion.div>
       </div>
     </section>
   )
 }
-

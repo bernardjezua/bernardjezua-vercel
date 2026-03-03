@@ -127,7 +127,7 @@ export function DesignsSection() {
               onClick={() => setSelectedDesign(design)}
             >
               <div className="relative aspect-[4/3] bg-[#1a1a1a] border border-white/5 rounded-sm overflow-hidden mb-6 p-4 sm:p-6 flex items-center justify-center">
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors z-10 duration-500"></div>
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10 duration-500"></div>
                 <div className="relative w-full h-full transform group-hover:scale-[1.02] transition-transform duration-700 ease-out shadow-2xl">
                   <Image
                     src={design.image || "/placeholder.svg?height=600&width=800"}
@@ -239,7 +239,7 @@ export function DesignsSection() {
                 
                 <div className="flex flex-wrap gap-4 w-full">
                   {selectedDesign?.links?.map((link, i) => (
-                    <Button key={i} asChild variant={i === 0 ? "default" : "outline"} className={`rounded-none uppercase tracking-widest text-xs sm:text-sm font-bold gap-2 py-6 px-8 ${i === 0 ? "bg-bern-blue hover:bg-bern-blue/90 text-white hover:text-white" : "border-white/10 text-white hover:bg-white/5 hover:text-white"}`}>
+                    <Button key={i} asChild variant={i === 0 ? "default" : "outline"} className={`rounded-none uppercase tracking-widest text-xs sm:text-sm font-bold gap-2 py-6 px-8 ${i === 0 ? "bg-bern-blue hover:bg-bern-blue/90 text-white hover:text-white" : "border-white/10 text-black hover:bg-white/5 hover:text-white"}`}>
                       <a
                         href={link.url}
                         target="_blank"

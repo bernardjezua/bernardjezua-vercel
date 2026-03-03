@@ -145,7 +145,7 @@ export function ProjectsSection() {
               onClick={() => setSelectedProject(project)}
             >
               <div className="relative aspect-[4/3] bg-bern-card border border-white/5 rounded-sm overflow-hidden mb-6 p-4 sm:p-6 flex items-center justify-center">
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors z-10 duration-500"></div>
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10 duration-500"></div>
                 <div className="relative w-full h-full transform group-hover:scale-[1.02] transition-transform duration-700 ease-out shadow-2xl">
                   <Image
                     src={project.image || "/placeholder.svg?height=600&width=800"}

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title: "Bernard Jezua Tandang",
   description: "Crafting stellar user experiences through frontend development and UI/UX design.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/logo.png",
   }
 }
 
