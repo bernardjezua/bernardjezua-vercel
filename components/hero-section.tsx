@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export function HeroSection() {
   return (
-    <section id="home" className="relative flex flex-col justify-center px-8 md:px-20 min-h-screen w-full overflow-hidden bg-black">
+    <section id="home" className="relative flex flex-col justify-center min-h-screen w-full overflow-hidden bg-black">
       <div className="absolute top-0 left-0 w-full h-full z-0 opacity-30 pointer-events-none">
         <ShaderGradientCanvas style={{ pointerEvents: 'none' }} pointerEvents="none" lazyLoad={false}>
           <ShaderGradient
@@ -38,7 +38,7 @@ export function HeroSection() {
         </ShaderGradientCanvas>
       </div>
 
-      <div className="relative z-10 max-w-7xl mt-32 md:mt-0">
+      <div className="relative z-10 w-full max-w-[90rem] mx-auto px-6 md:px-20 mt-20 md:mt-0">
         <motion.div
           className="pointer-events-none"
           initial={{ opacity: 0, y: 40 }}
@@ -71,17 +71,19 @@ export function HeroSection() {
             </Link>
           </motion.div>
         </motion.div>
-
       </div>
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 1 }}
-        className="absolute bottom-12 right-8 md:right-20 max-w-sm text-right z-10 hidden md:block"
+        className="absolute bottom-12 right-0 w-full max-w-[90rem] mx-auto px-6 md:px-20 z-10 hidden md:block" // Wrapper keeps it in grid
       >
-        <p className="text-lg text-white/60 leading-relaxed italic">
-          "I enjoy talking to people, empathizing with them, and coming up with design solutions."
-        </p>
+        <div className="flex justify-end">
+          <p className="text-lg text-white/60 leading-relaxed italic max-w-sm text-right">
+            "I enjoy talking to people, empathizing with them, and coming up with design solutions."
+          </p>
+        </div>
       </motion.div>
     </section>
   );
