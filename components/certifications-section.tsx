@@ -43,8 +43,8 @@ export function CertificationsSection() {
       image: "/assets/certs/14.png",
       description: "Designed by Meta software engineering experts, this program covers building interactive web pages with React, HTML5, and CSS. Includes hands-on projects focusing on UI/UX principles, version control, and building a full front-end application capstone.",
       issuer: "Meta",
-      date: "Mar 2026",
-      links: [{ text: "View Credentials", url: "https://www.coursera.org/" }],
+      date: "Feb 2026",
+      links: [{ text: "View Credentials", url: "https://www.coursera.org/account/accomplishments/specialization/5BQXZYQ77BY4" }],
       skills: ["React", "HTML5", "CSS", "UI/UX", "Version Control"],
     },
     {
