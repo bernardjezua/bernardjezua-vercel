@@ -34,6 +34,7 @@ export function HeroSection() {
             uStrength={2.4}
             uTime={0.2}
             wireframe={false}
+            pixelDensity={1}
           />
         </ShaderGradientCanvas>
       </div>

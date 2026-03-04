@@ -33,6 +33,14 @@ export function ProjectsSection() {
 
   const projects: Project[] = [
     {
+      title: "PIVOT-PROFS: Profile & Records Organization for Faculty Service",
+      image: "/assets/projs/pivot.png", // Assuming this will be the path, update if different
+      description:
+        "A set of enhancements to the PIVOT website, designed specifically for faculty members of the University of the Philippines Open University (UPOU). It introduces three key features: Profile Management, Faculty Portfolio, and a Digitalized Faculty Service Record (FSR) form. These tools aim to streamline academic and professional record-keeping while improving the organization and accessibility of faculty data.",
+      skills: ["React", "PHP", "Laravel", "Lumen"],
+      date: "June - August 2025",
+    },
+    {
       title: "UP GWA Calculator",
       image: "/assets/projs/upgwacalc.png",
       description:
