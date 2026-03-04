@@ -122,14 +122,14 @@ export function ProjectsSection() {
         >
           <div>
             <h2 className="text-xs uppercase tracking-[0.4em] text-white/40 mb-4 block font-medium">
-              /03 Selected Works
+              /03 Projects
             </h2>
             <h3 className="text-4xl md:text-6xl font-bold tracking-tighter">
-              FEATURED <br className="hidden md:block" /> PROJECTS.
+              FEATURED <br className="hidden md:block" /> WORKS.
             </h3>
           </div>
           <p className="max-w-xs text-white/50 text-sm ">
-            A curated selection of my recent design and development projects.
+            A collection of software development projects designed to solve real-world problems.
           </p>
         </motion.div>
 
