@@ -5,19 +5,14 @@ import { ArrowRight } from "lucide-react";
 import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRef } from "react";
-import { useInView } from "framer-motion";
 
 export function HeroSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { margin: "0px 0px 500px 0px" });
-
   return (
-    <section ref={ref} id="home" className="relative flex flex-col justify-center min-h-screen w-full overflow-hidden bg-black">
+    <section id="home" className="relative flex flex-col justify-center min-h-screen w-full overflow-hidden bg-black">
       <div className="absolute top-0 left-0 w-full h-full z-0 opacity-30 pointer-events-none">
         <ShaderGradientCanvas style={{ pointerEvents: 'none' }} pointerEvents="none" lazyLoad={false} pixelDensity={0.5}>
           <ShaderGradient
-            animate={isInView ? "on" : "off"}
+            animate="on"
             enableTransition={false}
             brightness={1.1}
             color1="#3B82F6"
