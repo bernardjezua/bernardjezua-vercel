@@ -37,8 +37,8 @@ export function LoadingScreen({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // Calculate precise grid so blocks form perfect squares
-    // We pick a target block size, e.g. 80px
-    const blockSize = 80;
+    // Target a larger block size to reduce the number of DOM elements rendered on low-end devices
+    const blockSize = 150;
     const x = Math.ceil(window.innerWidth / blockSize);
     const y = Math.ceil(window.innerHeight / blockSize);
     setGridX(x);

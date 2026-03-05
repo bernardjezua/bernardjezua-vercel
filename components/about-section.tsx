@@ -96,8 +96,8 @@ export function AboutSection() {
               </div>
               <div>
                 <h4 className="text-lg font-bold mb-2">Experience</h4>
-                <p className="text-black/80 font-medium mb-1">0.3 years in Software Dev</p>
-                <p className="text-black/60 text-sm">Actively looking for UX Design Roles</p>
+                <p className="text-black/80 font-medium mb-1">0.3 years in Software Development</p>
+                <p className="text-black/60 text-sm">Actively looking for UX Design Roles.</p>
               </div>
             </motion.div>
 
@@ -115,7 +115,7 @@ export function AboutSection() {
               <div>
                 <h4 className="text-lg font-bold mb-2">Track Record</h4>
                 <p className="text-black/80 font-medium mb-1">10+ Completed Projects</p>
-                <p className="text-black/60 text-sm">Web apps, mobile apps, and design systems</p>
+                <p className="text-black/60 text-sm">Web apps, mobile apps, and design systems.</p>
               </div>
             </motion.div>
           </div>

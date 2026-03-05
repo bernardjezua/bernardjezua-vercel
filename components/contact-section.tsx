@@ -4,15 +4,19 @@ import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { ArrowUpRight } from "lucide-react"
 import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react"
+import { useRef } from "react"
+import { useInView } from "framer-motion"
 
 export function ContactSection() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { margin: "0px 0px 500px 0px" })
   return (
-    <section id="contact" className="relative flex flex-col justify-center px-8 md:px-20 min-h-screen overflow-hidden">
+    <section ref={ref} id="contact" className="relative flex flex-col justify-center px-8 md:px-20 min-h-screen overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute top-0 left-0 w-full h-full z-0 opacity-40 mix-blend-screen" style={{ pointerEvents: 'none' }}>
-        <ShaderGradientCanvas style={{ pointerEvents: 'none' }} pointerEvents="none" lazyLoad={false}>
+        <ShaderGradientCanvas style={{ pointerEvents: 'none' }} pointerEvents="none" lazyLoad={false} pixelDensity={0.5}>
           <ShaderGradient
-            animate="on"
+            animate={isInView ? "on" : "off"}
             enableTransition={false}
             brightness={1.2}
             color1="#84CC16" // Lime-500
