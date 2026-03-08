@@ -33,10 +33,17 @@ export function ProjectsSection() {
 
   const projects: Project[] = [
     {
+      title: "UPLB TRAIL: Terminal for Resource Access and Information Links",
+      image: "/assets/projs/trail.png",
+      description: "UPLB TRAIL is a web application that serves as a central directory of website and page links of the University of the Philippines Los Baños (UPLB). Students, faculty, and staff can easily find and access the resources they need. It uses Fuse.js for the backend with a modified scoring algorithm to provide a better search experience.",
+      links: [{ text: "View", url: "https://uplb-trail.vercel.app" }],
+      skills: ["Next.js", "Fuse.js", "Tailwind CSS", "Vercel"],
+      date: "February - March 2026",
+    },
+    {
       title: "PIVOT-PROFS: Profile & Records Organization for Faculty Service",
       image: "/assets/projs/pivot.png", // Assuming this will be the path, update if different
-      description:
-        "A set of enhancements to the PIVOT website, designed specifically for faculty members of the University of the Philippines Open University (UPOU). It introduces three key features: Profile Management, Faculty Portfolio, and a Digitalized Faculty Service Record (FSR) form. These tools aim to streamline academic and professional record-keeping while improving the organization and accessibility of faculty data.",
+      description: "A set of enhancements to the PIVOT website, designed specifically for faculty members of the University of the Philippines Open University (UPOU). It introduces three key features: Profile Management, Faculty Portfolio, and a Digitalized Faculty Service Record (FSR) form. These tools aim to streamline academic and professional record-keeping while improving the organization and accessibility of faculty data.",
       skills: ["React", "PHP", "Laravel", "Lumen"],
       date: "June - August 2025",
     },
