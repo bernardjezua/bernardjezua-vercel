@@ -66,6 +66,15 @@ export function CertificationsSection() {
       skills: ["Figma", "Adobe Photoshop", "UX", "UI", "Wireframing", "Prototyping"],
     },
     {
+      title: "Web Development Fundamentals",
+      image: "/assets/certs/15.png",
+      description: "Demonstrated knowledge of web development concepts, processes to develop, deploy, and test websites, and the tools and programming languages that web developers use.",
+      issuer: "IBM",
+      date: "May 2025",
+      links: [{ text: "View Credentials", url: "https://www.credly.com/badges/cb963c4f-8dcf-4063-bb1a-04be27a67d25/" }],
+      skills: ["HTML", "CSS", "JavaScript"],
+    },
+    {
       title: "Python Data Associate",
       image: "/assets/certs/11.png",
       description: "Completed two timed exams that assessed Python data management and exploratory analysis. Completed a project that addresses a business problem.",
@@ -78,7 +87,7 @@ export function CertificationsSection() {
       title: "JavaScript Essentials",
       image: "/assets/certs/10.jpg",
       description: "Comprehensive course covering JavaScript fundamentals, including variables, functions, and control structures.",
-      issuer: "Cisco Networking",
+      issuer: "Cisco Networking Academy",
       date: "Apr 2025",
       links: [{ text: "View Credentials", url: "https://www.credly.com/badges/084f57c0-ff61-47ce-b611-8963aaaeb0a5/linked_in_profile" }],
       skills: ["JavaScript", "CSS", "HTML"],
@@ -157,8 +166,8 @@ export function CertificationsSection() {
     },
   ]
 
-  const visibleCertifications = showAll ? certifications : certifications.slice(0, 5)
-  const hasMoreToShow = certifications.length > 5
+  const visibleCertifications = showAll ? certifications : certifications.slice(0, 6)
+  const hasMoreToShow = certifications.length > 6
 
   return (
     <section id="certifications" className="py-32 px-8 md:px-20 border-t border-black/10 bg-[#f0f0f0] text-black">
@@ -217,9 +226,9 @@ export function CertificationsSection() {
           {visibleCertifications.map((cert, index) => (
             <motion.div
               key={cert.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
+              transition={{ duration: 0.6, delay: index < 6 ? index * 0.1 : (index - 6) * 0.1 }}
               viewport={{ once: true }}
               onClick={() => setSelectedCertification(cert)}
               className="group border-b border-black/10 py-8 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-black/5 px-2 md:px-8 transition-colors duration-300"
@@ -228,7 +237,9 @@ export function CertificationsSection() {
                 <h3 className="text-xl md:text-2xl font-bold mb-2 group-hover:text-bern-blue transition-colors duration-300">{cert.title}</h3>
                 <p className="text-black/50 font-medium tracking-wide uppercase text-xs">{cert.issuer}</p>
               </div>
-              <div className="text-black/50 font-mono text-sm tracking-widest">{cert.date}</div>
+              <div className="flex items-center justify-between mt-auto">
+                <div className="text-black/50 font-mono text-sm tracking-widest">{cert.date}</div>
+              </div>
               <div className="hidden md:flex relative overflow-hidden w-12 h-12 rounded-full border border-black/10 items-center justify-center opacity-0 group-hover:opacity-100 group-hover:bg-white group-hover:text-black transition-all duration-300">
                 <ArrowUpRight className="absolute w-5 h-5 transition-transform duration-300 group-hover:translate-x-[150%] group-hover:-translate-y-[150%]" />
                 <ArrowUpRight className="absolute w-5 h-5 -translate-x-[150%] translate-y-[150%] transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0" />

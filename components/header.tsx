@@ -27,15 +27,19 @@ export function Header() {
       }
       setLastScrollY(currentScrollY);
 
-      const aboutEl = document.getElementById("about");
-      if (aboutEl) {
-        const rect = aboutEl.getBoundingClientRect();
-        if (rect.top <= 80 && rect.bottom >= 80) {
-          setIsLightSection(true);
-        } else {
-          setIsLightSection(false);
+      const lightSections = ["about", "certifications"];
+      let isLight = false;
+      for (const sectionId of lightSections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 80 && rect.bottom >= 80) {
+            isLight = true;
+            break;
+          }
         }
       }
+      setIsLightSection(isLight);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);

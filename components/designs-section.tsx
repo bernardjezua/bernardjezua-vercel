@@ -177,7 +177,7 @@ export function DesignsSection() {
           {/* Custom Back Button */}
           <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-50">
             <DialogClose asChild>
-              <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white gap-2 px-3">
+              <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white gap-2 px-3 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none">
                 <ChevronDown className="w-5 h-5 rotate-90" />
                 <span className="text-sm font-bold uppercase tracking-widest">Back</span>
               </Button>

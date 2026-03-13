@@ -67,7 +67,7 @@ export function HeroSection() {
                 <ArrowRight size={14} className="md:w-4 md:h-4 absolute -translate-x-[150%] transition-transform duration-300 group-hover:translate-x-0" strokeWidth={3} />
               </div>
             </Link>
-            <Link href="#contact" className="group flex items-center bg-white text-black rounded-full px-5 py-2.5 md:px-6 md:py-3.5 hover:bg-neutral-200 transition-colors shadow-lg">
+            <Link href="#contact" className="group flex items-center bg-white text-black rounded-full px-5 py-2.5 md:px-6 md:py-3.5 hover:bg-blue-600 hover:text-white transition-colors shadow-lg">
               <span className="text-xs md:text-sm font-semibold uppercase tracking-widest">Contact Me</span>
             </Link>
           </motion.div>

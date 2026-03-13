@@ -57,10 +57,10 @@ export function ProjectsSection() {
       date: "June 2025",
     },
     {
-      title: "ICS-ASTRA: Alumni Tracking System",
+      title: "ICS-ASTRA: Alumni Synced Tracking for Relations and Advancement",
       image: "/assets/projs/astra.png",
       description:
-        "The ICS Alumni Synced Tracking for Relations and Advancement (ICS-ASTRA) is a progressive web application that is designed to bridge the gap between the institute and its alumni by providing a platform for streamlined communication and tracking.",
+        "ICS-ASTRA is a progressive web application that is designed to bridge the gap between the institute and its alumni by providing a platform for streamlined communication and tracking.",
       skills: ["Next.js", "Tailwind CSS", "TypeScript"],
       date: "February - May 2025",
     },
@@ -154,7 +154,7 @@ export function ProjectsSection() {
               key={project.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index < 6 ? index * 0.1 : (index - 6) * 0.1 }}
               viewport={{ once: true }}
               className="group cursor-pointer mx-auto w-full max-w-[22rem] sm:max-w-none"
               onClick={() => setSelectedProject(project)}
@@ -197,13 +197,7 @@ export function ProjectsSection() {
         </div>
 
         {hasMoreToShow && (
-          <motion.div
-            className="flex justify-center mt-16"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
+          <div className="flex justify-center mt-16">
             <button
               onClick={() => setShowAll(!showAll)}
               className="group flex w-max items-center bg-transparent border border-white/20 text-white rounded-full px-8 py-4 hover:bg-white hover:text-black transition-colors"
@@ -225,7 +219,7 @@ export function ProjectsSection() {
                 )}
               </div>
             </button>
-          </motion.div>
+          </div>
         )}
       </div>
 
@@ -237,7 +231,7 @@ export function ProjectsSection() {
           {/* Custom Back Button */}
           <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-50">
             <DialogClose asChild>
-              <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white gap-2 px-3">
+              <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white gap-2 px-3 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none">
                 <ChevronDown className="w-5 h-5 rotate-90" />
                 <span className="text-sm font-bold uppercase tracking-widest">Back</span>
               </Button>
