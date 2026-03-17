@@ -31,7 +31,7 @@ export function DesignsSection() {
       title: "Alerto.ai: A Nationwide Flood Intelligence Powered by Project NOAH",
       image: "/assets/designs/alerto.png",
       description: "Alerto is a centralized, AI-driven intelligence web app prototype for Filipinos to visualize real-time flood risks, understand contributing factors, and prepare for potential disaster. It's main features consist of three, a nationwide 3D map, an AI assisted chat bot, and text alerts. Alerto placed 1st Runner-Up at the 42nd CS Week WarFrames Web Design Competition.",
-      links: [],
+      links: [{text: "View Prototype", url: "https://www.figma.com/design/J2JAe6kOOFEN7oFOHiucg8/Alerto.ai-by-Indev.UG?node-id=0-1&m=dev&t=dhLHF9Qfsx5rg5rj-1"}],
       skills: ["Figma"],
       date: "February 2026",
       award: "1st Runner-Up"
