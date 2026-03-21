@@ -153,11 +153,10 @@ export default function DigitalResumePage() {
               <GraduationCap className="text-emerald-400 w-6 h-6" />
               <h2 className="text-2xl font-bold tracking-tight">Education</h2>
             </div>
-            <h3 className="text-lg font-bold mb-1">University of the Philippines Los Baños</h3>
+            <p className="text-white/90 font-bold mb-1 text-lg">Bachelor of Science in Computer Science</p>
+            <h3 className="text-lg font-semibold mb-1">University of the Philippines Los Baños</h3>
             <p className="text-emerald-400/80 font-medium text-sm mb-4 tracking-wide uppercase">Aug. 2021 – July 2026</p>
-            <p className="text-white/90 font-semibold mb-4 text-lg">Bachelor of Science in Computer Science</p>
-            
-            <div className="relative mt-8 ml-1.5">
+            <div className="relative mt-6 ml-1.5">
               {/* Connecting line for Education */}
               <div className="absolute left-[3px] top-2 bottom-0 w-[2px] bg-emerald-500/20" />
               
