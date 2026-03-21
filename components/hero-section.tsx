@@ -60,8 +60,8 @@ export function HeroSection() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 1 }}
           >
-            <Link href="#projects" className="group flex items-center bg-black text-white rounded-full pl-5 pr-1 py-1 hover:bg-neutral-900 transition-colors border border-white/10 shadow-lg">
-              <span className="text-xs md:text-sm font-semibold uppercase tracking-widest mr-3 md:mr-4">View Projects</span>
+            <Link href="/resume" className="group flex items-center bg-black text-white rounded-full pl-5 pr-1 py-1 hover:bg-neutral-900 transition-colors border border-white/10 shadow-lg">
+              <span className="text-xs md:text-sm font-semibold uppercase tracking-widest mr-3 md:mr-4">Digital Resume</span>
               <div className="bg-bern-blue p-2 md:p-2 rounded-full text-white group-hover:scale-110 transition-transform relative overflow-hidden flex items-center justify-center">
                 <ArrowRight size={14} className="md:w-4 md:h-4 transition-transform duration-300 group-hover:translate-x-[150%]" strokeWidth={3} />
                 <ArrowRight size={14} className="md:w-4 md:h-4 absolute -translate-x-[150%] transition-transform duration-300 group-hover:translate-x-0" strokeWidth={3} />

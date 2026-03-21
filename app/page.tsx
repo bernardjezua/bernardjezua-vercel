@@ -17,10 +17,10 @@ export default function Home() {
         <Header />
         <HeroSection />
         <AboutSection />
-        <SkillsSection />
-        <CertificationsSection />
         <ProjectsSection />
         <DesignsSection />
+        <SkillsSection />
+        <CertificationsSection />
         <FloatingActionButton />
         <ContactSection />
         <Footer />

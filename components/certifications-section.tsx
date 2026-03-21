@@ -180,7 +180,7 @@ export function CertificationsSection() {
           className="mb-16"
         >
           <h2 className="text-xs uppercase tracking-[0.4em] text-black/50 mb-4 block font-medium">
-            /04 Certifications
+            /05 Certifications
           </h2>
           <h3 className="text-4xl md:text-6xl font-bold tracking-tighter">
             PROVING EXCELLENCE.

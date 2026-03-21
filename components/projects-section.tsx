@@ -137,7 +137,7 @@ export function ProjectsSection() {
         >
           <div>
             <h2 className="text-xs uppercase tracking-[0.4em] text-white/40 mb-4 block font-medium">
-              /03 Projects
+              /02 Projects
             </h2>
             <h3 className="text-4xl md:text-6xl font-bold tracking-tighter">
               FEATURED <br className="hidden md:block" /> WORKS.

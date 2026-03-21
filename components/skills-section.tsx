@@ -89,7 +89,7 @@ export function SkillsSection() {
           className="mb-16"
         >
           <h2 className="text-xs uppercase tracking-[0.4em] text-white/40 mb-4 block font-medium">
-            /02 Tech Stack
+            /04 Skills
           </h2>
           <h3 className="text-4xl md:text-6xl font-bold tracking-tighter">
             TOOLS OF THE TRADE.

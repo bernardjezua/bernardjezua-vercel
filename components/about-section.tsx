@@ -1,18 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Download, GraduationCap, Briefcase, FolderKanban, User } from "lucide-react"
+import { GraduationCap, Briefcase, FolderKanban, User } from "lucide-react"
 
 export function AboutSection() {
-  const handleDownloadResume = () => {
-    const link = document.createElement("a")
-    link.href = "/assets/Bernard_UXDesigner_Resume.pdf"
-    link.download = "Bernard_UXDesigner_Resume.pdf"
-    link.target = "_blank"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
 
   return (
     <section id="about" className="py-32 px-8 md:px-20 border-t border-black/10 bg-[#f0f0f0] text-black">
@@ -39,28 +30,24 @@ export function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="bg-white p-10 md:p-14 rounded-sm border border-black/5 flex flex-col justify-between"
+            className="relative overflow-hidden bg-cover bg-center p-10 md:p-14 rounded-sm border border-black/5 flex flex-col justify-between text-white"
+            style={{ backgroundImage: `url('/assets/profilepic.jpg')` }}
           >
-            <div>
-              <div className="mb-6 inline-flex p-3 bg-black/5 rounded-full">
-                <User className="h-6 w-6 text-bern-blue" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/30 z-0 pointer-events-none"></div>
+            <div className="relative z-10 w-full h-full flex flex-col justify-between">
+              <div>
+                <div className="mb-6 inline-flex p-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+                  <User className="h-6 w-6 text-white" />
+                </div>
+                <h4 className="text-2xl md:text-3xl font-bold mb-6 shadow-sm">Hello, I'm Bernard!</h4>
+                <p className="text-white/90 leading-relaxed max-w-md mb-6 font-medium text-shadow-sm">
+                  I'm a passionate UI/UX Designer and Frontend Developer that likes to develop intuitive and user-friendly mobile and web applications. With a background in both design and development, I bring a unique perspective to every project.
+                </p>
+                <p className="text-white/90 leading-relaxed max-w-md font-medium text-shadow-sm">
+                  When I'm not coding, you can find me exploring new technologies, participating in online courses, or stargazing - which inspired the cosmic theme of this portfolio!
+                </p>
               </div>
-              <h4 className="text-2xl font-bold mb-6">Hello, I'm Bernard!</h4>
-              <p className="text-black/70 leading-relaxed max-w-md mb-6 ">
-                I'm a passionate UI/UX Designer and Frontend Developer that likes to develop intuitive and user-friendly mobile and web applications. With a background in both design and development, I bring a unique perspective to every project.
-              </p>
-              <p className="text-black/70 leading-relaxed max-w-md  mb-12">
-                When I'm not coding, you can find me exploring new technologies, participating in online courses, or stargazing - which inspired the cosmic theme of this portfolio!
-              </p>
             </div>
-            
-            <button
-              onClick={handleDownloadResume}
-              className="group flex w-max items-center bg-black text-white rounded-full px-6 py-3 hover:bg-blue-600 transition-colors"
-            >
-              <Download className="mr-2 h-4 w-4 group-hover:-translate-y-1 transition-transform" /> 
-              <span className="text-sm font-semibold uppercase tracking-widest">Download Resume</span>
-            </button>
           </motion.div>
 
           {/* Stats / Details Cards */}
