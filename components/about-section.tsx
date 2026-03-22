@@ -43,7 +43,7 @@ export function AboutSection() {
                 </div>
                 <h4 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-2 text-white shadow-sm leading-tight tracking-tight">Hello, I'm Bernard!</h4>
                 <p className="text-white/90 text-[11px] md:text-xs lg:text-sm font-medium leading-relaxed mb-2">
-                  I'm a passionate UI/UX Designer and Frontend Developer that likes to develop intuitive and user-friendly mobile and web applications. I bring a unique perspective to every project with my background in both design and development.
+                  I like to develop intuitive and user-friendly designs and applications. I bring a unique perspective to every project with my background in both design and development.
                 </p>
               </div>
             </div>
@@ -57,13 +57,13 @@ export function AboutSection() {
             viewport={{ once: true }}
             className="relative overflow-hidden rounded-[1.5rem] aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] group cursor-pointer shadow-sm"
           >
-            <img src="/assets/pictures/profilepic_01.jpg" alt="Always Learning" className="absolute inset-0 w-full h-full object-cover object-[center_top] transition-transform duration-700 group-hover:scale-105" />
+            <img src="/assets/pictures/profilepic_01.jpg" alt="Iskolar ng Bayan" className="absolute inset-0 w-full h-full object-cover object-[center_top] transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-gradient-to-t group-hover:from-black/95 group-hover:via-black/80 group-hover:to-black/40 transition-all duration-500 flex flex-col justify-end p-4 md:p-6 lg:p-8">
               <div className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out flex flex-col">
                 <div className="mb-3 md:mb-4 inline-flex p-2 md:p-2.5 bg-white/20 backdrop-blur-md rounded-full border border-white/20 w-max shadow-lg">
                   <GraduationCap className="h-4 w-4 md:h-5 md:w-5 text-white" />
                 </div>
-                <h4 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-2 text-white shadow-sm leading-tight tracking-tight">Lifelong Learning</h4>
+                <h4 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-2 text-white shadow-sm leading-tight tracking-tight">Iskolar ng Bayan</h4>
                 <p className="text-white/90 text-xs lg:text-sm font-medium leading-relaxed">B.S. Computer Science</p>
                 <p className="text-white/90 text-[10px] lg:text-xs font-bold leading-relaxed text-white bg-white/20 backdrop-blur-sm w-max px-2 py-0.5 rounded-sm mt-1 mb-1 tracking-wider border border-white/10">2021 - 2026</p>
                 <p className="text-white/70 text-[10px] lg:text-xs font-medium leading-relaxed">University of the Philippines Los Baños</p>
@@ -79,14 +79,14 @@ export function AboutSection() {
             viewport={{ once: true }}
             className="relative overflow-hidden rounded-[1.5rem] aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] group cursor-pointer shadow-sm"
           >
-            <img src="/assets/pictures/profilepic_02.jpg" alt="Bridging Design and Code" className="absolute inset-0 w-full h-full object-cover object-[center_top] transition-transform duration-700 group-hover:scale-105" />
+            <img src="/assets/pictures/profilepic_02.jpg" alt="Empathy in Design" className="absolute inset-0 w-full h-full object-cover object-[center_top] transition-transform duration-700 group-hover:scale-105" />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-gradient-to-t group-hover:from-black/95 group-hover:via-black/80 group-hover:to-black/40 transition-all duration-500 flex flex-col justify-end p-4 md:p-6 lg:p-8">
               <div className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out flex flex-col">
                 <div className="mb-3 md:mb-4 inline-flex p-2 md:p-2.5 bg-white/20 backdrop-blur-md rounded-full border border-white/20 w-max shadow-lg">
                   <Briefcase className="h-4 w-4 md:h-5 md:w-5 text-white" />
                 </div>
-                <h4 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-2 text-white shadow-sm leading-tight tracking-tight">Bridging Design & Code</h4>
-                <p className="text-white/90 text-[11px] md:text-xs lg:text-sm font-medium leading-relaxed">I like to think of designs that would help other people navigate easily, sometimes I gather it from my own experience and solve it.</p>
+                <h4 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-2 text-white shadow-sm leading-tight tracking-tight">Empathy in Design</h4>
+                <p className="text-white/90 text-[11px] md:text-xs lg:text-sm font-medium leading-relaxed">I like to think of designs that would help other people navigate easily and ensure that they are user-friendly.</p>
               </div>
             </div>
           </motion.div>
