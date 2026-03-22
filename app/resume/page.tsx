@@ -345,7 +345,7 @@ export default function DigitalResumePage() {
                         <img src="/assets/pictures/involvement_00.png" alt="Involvement" />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold text-white/90 tracking-tight pr-16 md:pr-20">CASFC Chairperson</h3>
-                      <div className="flex flex-wrap items-center gap-3 mb-2">
+                      <div className="flex flex-wrap items-center gap-3 mb-5 pr-16 md:pr-0">
                         <span className="badge bg-purple-500/10 text-purple-400 border-purple-500/20">
                           Aug. 2022 – Oct. 2022
                         </span>
