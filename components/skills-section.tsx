@@ -66,7 +66,7 @@ export function SkillsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
             viewport={{ once: true }}
-            className="flex items-center gap-3 bg-bern-card border border-white/5 rounded-full px-5 py-3 hover:bg-white/5 transition-colors cursor-default group"
+            className="group skill-card"
           >
             <img src={skill.icon} alt={`${skill.name} icon`} className="w-5 h-5 object-contain grayscale group-hover:grayscale-0 transition-all duration-300" />
             <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
@@ -101,25 +101,25 @@ export function SkillsSection() {
             <TabsList className="grid grid-cols-2 gap-x-4 gap-y-4 sm:flex sm:w-max sm:gap-8 bg-transparent p-0 rounded-none h-auto w-full sm:mx-0 sm:justify-start">
               <TabsTrigger 
                 value="progBackend"
-                className="w-full sm:w-auto justify-center sm:justify-start rounded-none border-b-2 border-transparent data-[state=active]:border-bern-blue data-[state=active]:text-white text-white/50 data-[state=active]:bg-transparent px-2 sm:px-0 py-4 text-xs sm:text-sm md:text-base uppercase tracking-widest transition-all data-[state=active]:shadow-none"
+                className="tab-trigger"
               >
                 PLs & Backend
               </TabsTrigger>
               <TabsTrigger 
                 value="frontendWeb"
-                className="w-full sm:w-auto justify-center sm:justify-start rounded-none border-b-2 border-transparent data-[state=active]:border-bern-blue data-[state=active]:text-white text-white/50 data-[state=active]:bg-transparent px-2 sm:px-0 py-4 text-xs sm:text-sm md:text-base uppercase tracking-widest transition-all data-[state=active]:shadow-none"
+                className="tab-trigger"
               >
                 Frontend & Web
               </TabsTrigger>
               <TabsTrigger 
                 value="database"
-                className="w-full sm:w-auto justify-center sm:justify-start rounded-none border-b-2 border-transparent data-[state=active]:border-bern-blue data-[state=active]:text-white text-white/50 data-[state=active]:bg-transparent px-2 sm:px-0 py-4 text-xs sm:text-sm md:text-base uppercase tracking-widest transition-all data-[state=active]:shadow-none"
+                className="tab-trigger"
               >
                 Database
               </TabsTrigger>
               <TabsTrigger 
                 value="designOthers"
-                className="w-full sm:w-auto justify-center sm:justify-start rounded-none border-b-2 border-transparent data-[state=active]:border-bern-blue data-[state=active]:text-white text-white/50 data-[state=active]:bg-transparent px-2 sm:px-0 py-4 text-xs sm:text-sm md:text-base uppercase tracking-widest transition-all data-[state=active]:shadow-none"
+                className="tab-trigger"
               >
                 Design & Others
               </TabsTrigger>

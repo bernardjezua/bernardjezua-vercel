@@ -52,7 +52,7 @@ export function DesignsSection() {
       image: "/assets/designs/payonnect.png",
       description: "Payonnect is an eco-friendly solution that allows commuters to borrow and return umbrellas through automated kiosks using QR codes. The system tracks transactions, manages inventory, and applies fair penalties for damaged or unreturned umbrellas.",
       links: [
-        { text: "View Prototype", url: "https://www.figma.com/proto/RlG6aQ2d63tmPoXhW4illq/Payonnect?node-id=17-1016&t=KB1KZxBf45Ny16SZ-1" },
+        { text: "View Prototype", url: "https://www.figma.com/proto/RlG6aQ2d63tmPoXhW4illq/Payonnect?node-id=0-1&t=QdM3YvmaPDvcIitq-1" },
         { text: "Case Study", url: "https://www.behance.net/gallery/240213963/Payonnect-Smart-Umbrella-Sharing-System" }
       ],
       skills: ["Figma", "Photoshop", "Adobe Stock", "Canva"],
@@ -123,10 +123,10 @@ export function DesignsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group cursor-pointer mx-auto w-full max-w-[22rem] sm:max-w-none"
+              className="group design-card"
               onClick={() => setSelectedDesign(design)}
             >
-              <div className="relative aspect-[4/3] bg-[#1a1a1a] border border-white/5 rounded-sm overflow-hidden mb-6 p-4 sm:p-6 flex items-center justify-center">
+              <div className="design-image-wrapper bg-[#1a1a1a]">
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10 duration-500"></div>
                 <div className="relative w-full h-full transform group-hover:scale-[1.02] transition-transform duration-700 ease-out shadow-2xl">
                   <Image
@@ -152,14 +152,14 @@ export function DesignsSection() {
                     {design.skills.slice(0, 3).map((skill) => (
                       <span
                         key={skill}
-                        className="px-2.5 py-1 bg-white/5 text-white/70 text-[10px] uppercase font-medium tracking-wider rounded-full border border-white/10"
+                        className="design-skill-badge"
                       >
                         {skill}
                       </span>
                     ))}
                   </div>
                 </div>
-                <div className="w-12 h-12 flex-shrink-0 relative overflow-hidden rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
+                <div className="design-arrow-btn">
                   <ArrowUpRight className="absolute w-5 h-5 transition-transform duration-300 group-hover:translate-x-[150%] group-hover:-translate-y-[150%]" />
                   <ArrowUpRight className="absolute w-5 h-5 -translate-x-[150%] translate-y-[150%] transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0" />
                 </div>
@@ -177,69 +177,100 @@ export function DesignsSection() {
           {/* Custom Back Button */}
           <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-50">
             <DialogClose asChild>
-              <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white gap-2 px-3 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none">
+              <Button variant="ghost" className="text-white hover:bg-white/20 hover:text-white gap-2 px-3 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none backdrop-blur-md bg-black/20 rounded-full">
                 <ChevronDown className="w-5 h-5 rotate-90" />
-                <span className="text-sm font-bold uppercase tracking-widest">Back</span>
+                <span className="text-sm font-bold uppercase tracking-widest hidden sm:inline-block">Back</span>
               </Button>
             </DialogClose>
           </div>
 
-          <div className="flex flex-col sm:grid sm:grid-cols-2 h-full w-full overflow-y-auto sm:overflow-hidden">
-            {/* Top / Left Column - Image */}
-            <div className="relative w-full h-[40vh] sm:h-full bg-black/50 border-b border-white/5 sm:border-r flex flex-col justify-center p-4 sm:p-12 mt-16 sm:mt-0 pt-0">
-              <div className="relative w-full aspect-video sm:h-[70vh]">
-                {selectedDesign && (
-                  <Image
-                    src={selectedDesign.image || "/placeholder.svg?height=600&width=800"}
-                    alt={selectedDesign.title}
-                    fill
-                    className="object-contain"
-                  />
-                )}
-              </div>
+          <div className="flex flex-col sm:grid sm:grid-cols-12 h-full w-full overflow-y-auto sm:overflow-hidden">
+            {/* Top / Left Column - Visual (Image or Iframe) */}
+            <div className="relative w-full h-[70vh] shrink-0 sm:h-full sm:col-span-7 lg:col-span-8 bg-[#111] border-b border-white/5 sm:border-r flex flex-col pt-16 sm:pt-0">
+              {(() => {
+                const figmaLink = selectedDesign?.links?.find(l => l.url.includes("figma.com"));
+                if (figmaLink) {
+                  let protoUrl = figmaLink.url;
+                  // Force it into prototype presentation mode
+                  if (protoUrl.includes('/design/')) {
+                    protoUrl = protoUrl.replace('/design/', '/proto/');
+                  } else if (protoUrl.includes('/file/')) {
+                    protoUrl = protoUrl.replace('/file/', '/proto/');
+                  }
+                  
+                  // Ensure proper scaling and hidden UI for embedding standalone
+                  if (!protoUrl.includes('scaling=')) {
+                    protoUrl += (protoUrl.includes('?') ? '&' : '?') + 'scaling=scale-down-width';
+                  }
+                  if (!protoUrl.includes('hide-ui=')) {
+                    protoUrl += '&hide-ui=1';
+                  }
+
+                  const embedUrl = `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(protoUrl)}`;
+                  return (
+                    <iframe
+                      className="w-full h-full border-none"
+                      src={embedUrl}
+                      allowFullScreen
+                    />
+                  );
+                }
+                return (
+                  <div className="relative w-full h-full">
+                    {selectedDesign && (
+                      <Image
+                        src={selectedDesign.image || "/placeholder.svg?height=600&width=800"}
+                        alt={selectedDesign.title}
+                        fill
+                        className="object-cover"
+                      />
+                    )}
+                  </div>
+                );
+              })()}
             </div>
 
             {/* Bottom / Right Column - Content */}
-            <div className="p-6 sm:p-12 md:p-20 flex flex-col sm:overflow-y-auto h-auto sm:h-full">
-              <DialogHeader className="text-left relative mb-8">
-                <DialogTitle className="text-xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+            <div className="p-6 sm:p-8 lg:p-12 flex flex-col sm:overflow-y-auto h-auto sm:h-full sm:col-span-5 lg:col-span-4 bg-[#0a0a0a]">
+              <DialogHeader className="text-left relative mb-6 md:mb-8 mt-4 sm:mt-8">
+                <DialogTitle className="text-lg md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-3 leading-tight">
                   {selectedDesign?.title}
                 </DialogTitle>
                 {selectedDesign?.date && (
                    <div className="flex flex-col gap-3">
-                    <p className="text-xs md:text-sm text-white/50 uppercase tracking-widest">
+                    <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-widest">
                       {selectedDesign.date}
                     </p>
                   </div>
                 )}
               </DialogHeader>
 
-              <div className="mb-12 flex-grow">
-                <p className="text-white/70 leading-relaxed text-base md:text-lg">
+              <div className="mb-8 md:mb-12 flex-grow">
+                <p className="text-white/70 leading-relaxed text-sm md:text-base">
                   {selectedDesign?.description}
                 </p>
               </div>
               
-              <div className="flex flex-col gap-8 border-t border-white/10 pt-8 mt-auto">
+              <div className="flex flex-col gap-6 border-t border-white/10 pt-6 mt-auto">
                 <div className="flex flex-wrap gap-2">
                   {selectedDesign?.award && (
-                    <span className="px-3 py-1 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 text-yellow-500 text-xs sm:text-sm uppercase font-bold tracking-widest rounded-sm border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.1)]">
+                    <span className="px-2.5 py-1 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 text-yellow-500 text-[10px] sm:text-xs uppercase font-bold tracking-widest rounded-sm border border-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.1)]">
                       🏆 {selectedDesign.award}
                     </span>
                   )}
                   {selectedDesign?.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 bg-white/5 border border-white/10 text-white/70 text-xs sm:text-sm uppercase tracking-wider rounded-full"
+                      className="px-2.5 py-1 bg-white/5 border border-white/10 text-white/70 text-[10px] sm:text-xs uppercase tracking-wider rounded-full"
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
                 
-                <div className="flex flex-wrap gap-4 w-full">
-                  {selectedDesign?.links?.map((link, i) => (
-                    <Button key={i} asChild variant={i === 0 ? "default" : "outline"} className={`rounded-none uppercase tracking-widest text-xs sm:text-sm font-bold gap-2 py-6 px-8 ${i === 0 ? "bg-bern-blue hover:bg-bern-blue/90 text-white hover:text-white" : "border-white/10 text-black hover:bg-white/5 hover:text-white"}`}>
+                <div className="flex flex-wrap gap-3 w-full">
+                  {selectedDesign?.links?.filter(l => !l.url.includes("figma.com")).map((link, i) => (
+                    <Button key={i} asChild variant={i === 0 ? "default" : "outline"} className={`rounded-none uppercase tracking-widest text-[10px] sm:text-xs font-bold gap-2 py-4 px-6 ${i === 0 ? "bg-bern-blue hover:bg-bern-blue/90 text-white hover:text-white" : "border-white/10 text-white hover:bg-white/5 hover:text-white"}`}>
                       <a
                         href={link.url}
                         target="_blank"
@@ -247,7 +278,7 @@ export function DesignsSection() {
                         className="flex items-center group w-full justify-center"
                       >
                         {link.text}
-                        {i === 0 && <ExternalLink className="w-5 h-5 ml-2" />}
+                        <ExternalLink className="w-4 h-4 ml-2" />
                       </a>
                     </Button>
                   ))}

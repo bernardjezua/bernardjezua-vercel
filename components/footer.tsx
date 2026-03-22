@@ -40,7 +40,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="text-white/50 hover:text-white transition-colors hover:scale-110 duration-300"
+              className="footer-social-link"
             >
               <Github className="w-6 h-6" />
             </a>
@@ -49,7 +49,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="text-white/50 hover:text-white transition-colors hover:scale-110 duration-300"
+              className="footer-social-link"
             >
               <Linkedin className="w-6 h-6" />
             </a>
@@ -58,14 +58,14 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
-              className="text-white/50 hover:text-white transition-colors hover:scale-110 duration-300"
+              className="footer-social-link"
             >
               <Facebook className="w-6 h-6" />
             </a>
             <a
               href="mailto:bernardjezuaml@gmail.com"
               aria-label="Email"
-              className="text-white/50 hover:text-white transition-colors hover:scale-110 duration-300"
+              className="footer-social-link"
             >
               <Mail className="w-6 h-6" />
             </a>

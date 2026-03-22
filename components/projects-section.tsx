@@ -156,10 +156,10 @@ export function ProjectsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index < 6 ? index * 0.1 : (index - 6) * 0.1 }}
               viewport={{ once: true }}
-              className="group cursor-pointer mx-auto w-full max-w-[22rem] sm:max-w-none"
+              className="group project-card"
               onClick={() => setSelectedProject(project)}
             >
-              <div className="relative aspect-[4/3] bg-bern-card border border-white/5 rounded-sm overflow-hidden mb-6 p-4 sm:p-6 flex items-center justify-center">
+              <div className="project-image-wrapper">
                 <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors z-10 duration-500"></div>
                 <div className="relative w-full h-full transform group-hover:scale-[1.02] transition-transform duration-700 ease-out shadow-2xl">
                   <Image
@@ -180,14 +180,14 @@ export function ProjectsSection() {
                     {project.skills.slice(0, 3).map((skill) => (
                       <span
                         key={skill}
-                        className="px-2.5 py-1 bg-white/5 text-white/70 text-[10px] uppercase font-medium tracking-wider rounded-full border border-white/10"
+                        className="project-skill-badge"
                       >
                         {skill}
                       </span>
                     ))}
                   </div>
                 </div>
-                <div className="w-12 h-12 flex-shrink-0 relative overflow-hidden rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
+                <div className="project-arrow-btn">
                   <ArrowUpRight className="absolute w-5 h-5 transition-transform duration-300 group-hover:translate-x-[150%] group-hover:-translate-y-[150%]" />
                   <ArrowUpRight className="absolute w-5 h-5 -translate-x-[150%] translate-y-[150%] transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0" />
                 </div>
@@ -200,7 +200,7 @@ export function ProjectsSection() {
           <div className="flex justify-center mt-16">
             <button
               onClick={() => setShowAll(!showAll)}
-              className="group flex w-max items-center bg-transparent border border-white/20 text-white rounded-full px-8 py-4 hover:bg-white hover:text-black transition-colors"
+              className="group view-all-btn"
             >
               <span className="text-xs font-bold uppercase tracking-[0.2em] mr-3">
                 {showAll ? "Show Less" : "View All Projects"}
@@ -231,62 +231,93 @@ export function ProjectsSection() {
           {/* Custom Back Button */}
           <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-50">
             <DialogClose asChild>
-              <Button variant="ghost" className="text-white hover:bg-white/10 hover:text-white gap-2 px-3 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none">
+              <Button variant="ghost" className="text-white hover:bg-white/20 hover:text-white gap-2 px-3 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none backdrop-blur-md bg-black/20 rounded-full">
                 <ChevronDown className="w-5 h-5 rotate-90" />
-                <span className="text-sm font-bold uppercase tracking-widest">Back</span>
+                <span className="text-sm font-bold uppercase tracking-widest hidden sm:inline-block">Back</span>
               </Button>
             </DialogClose>
           </div>
 
-          <div className="flex flex-col sm:grid sm:grid-cols-2 h-full w-full overflow-y-auto sm:overflow-hidden">
-            {/* Top / Left Column - Image */}
-            <div className="relative w-full h-[40vh] sm:h-full bg-black/50 border-b border-white/5 sm:border-r flex flex-col justify-center p-4 sm:p-12 mt-16 sm:mt-0 pt-0">
-              <div className="relative w-full aspect-video sm:h-[70vh]">
-                {selectedProject && (
-                  <Image
-                    src={selectedProject.image || "/placeholder.svg?height=600&width=800"}
-                    alt={selectedProject.title}
-                    fill
-                    className="object-contain"
-                  />
-                )}
-              </div>
+          <div className="flex flex-col sm:grid sm:grid-cols-12 h-full w-full overflow-y-auto sm:overflow-hidden">
+            {/* Top / Left Column - Visual (Image or Iframe) */}
+            <div className="relative w-full h-[50vh] sm:h-full sm:col-span-7 lg:col-span-8 bg-[#111] border-b border-white/5 sm:border-r flex flex-col pt-16 sm:pt-0">
+              {(() => {
+                const figmaLink = selectedProject?.links?.find(l => l.url.includes("figma.com"));
+                if (figmaLink) {
+                  let protoUrl = figmaLink.url;
+                  // Force it into prototype presentation mode
+                  if (protoUrl.includes('/design/')) {
+                    protoUrl = protoUrl.replace('/design/', '/proto/');
+                  } else if (protoUrl.includes('/file/')) {
+                    protoUrl = protoUrl.replace('/file/', '/proto/');
+                  }
+                  
+                  // Ensure proper scaling and hidden UI for embedding standalone
+                  if (!protoUrl.includes('scaling=')) {
+                    protoUrl += (protoUrl.includes('?') ? '&' : '?') + 'scaling=scale-down-width';
+                  }
+                  if (!protoUrl.includes('hide-ui=')) {
+                    protoUrl += '&hide-ui=1';
+                  }
+
+                  const embedUrl = `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(protoUrl)}`;
+                  return (
+                    <iframe
+                      className="w-full h-full border-none"
+                      src={embedUrl}
+                      allowFullScreen
+                    />
+                  );
+                }
+                return (
+                  <div className="relative w-full h-full">
+                    {selectedProject && (
+                      <Image
+                        src={selectedProject.image || "/placeholder.svg?height=600&width=800"}
+                        alt={selectedProject.title}
+                        fill
+                        className="object-cover"
+                      />
+                    )}
+                  </div>
+                );
+              })()}
             </div>
 
             {/* Bottom / Right Column - Content */}
-            <div className="p-6 sm:p-12 md:p-20 flex flex-col sm:overflow-y-auto h-auto sm:h-full">
-              <DialogHeader className="text-left relative mb-8">
-                <DialogTitle className="text-xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+            <div className="p-6 sm:p-8 lg:p-12 flex flex-col sm:overflow-y-auto h-auto sm:h-full sm:col-span-5 lg:col-span-4 bg-[#0a0a0a]">
+              <DialogHeader className="text-left relative mb-6 md:mb-8 mt-4 sm:mt-8">
+                <DialogTitle className="text-lg md:text-2xl lg:text-3xl font-bold text-white mb-2 md:mb-3 leading-tight">
                   {selectedProject?.title}
                 </DialogTitle>
                 {selectedProject?.date && (
-                   <p className="text-xs md:text-sm text-white/50 uppercase tracking-widest mt-1">
+                   <p className="text-[10px] md:text-xs text-white/50 uppercase tracking-widest mt-1">
                       {selectedProject.date}
                    </p>
                 )}
               </DialogHeader>
 
-              <div className="mb-12 flex-grow">
-                <p className="text-white/70 leading-relaxed text-base md:text-lg">
+              <div className="mb-8 md:mb-12 flex-grow">
+                <p className="text-white/70 leading-relaxed text-sm md:text-base">
                   {selectedProject?.description}
                 </p>
               </div>
               
-              <div className="flex flex-col gap-8 border-t border-white/10 pt-8 mt-auto">
+              <div className="flex flex-col gap-6 border-t border-white/10 pt-6 mt-auto">
                 <div className="flex flex-wrap gap-2">
                   {selectedProject?.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 bg-white/5 border border-white/10 text-white/70 text-xs sm:text-sm uppercase tracking-wider rounded-full"
+                      className="px-2.5 py-1 bg-white/5 border border-white/10 text-white/70 text-[10px] sm:text-xs uppercase tracking-wider rounded-full"
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
                 
-                <div className="flex flex-wrap gap-4 w-full">
-                  {selectedProject?.links?.map((link, i) => (
-                    <Button key={i} asChild variant={i === 0 ? "default" : "outline"} className={`rounded-none uppercase tracking-widest text-xs sm:text-sm font-bold gap-2 py-6 px-8 ${i === 0 ? "bg-bern-blue hover:bg-bern-blue/90 text-white hover:text-white" : "border-white/10 text-white hover:bg-white/5 hover:text-white"}`}>
+                <div className="flex flex-wrap gap-3 w-full">
+                  {selectedProject?.links?.filter(l => !l.url.includes("figma.com")).map((link, i) => (
+                    <Button key={i} asChild variant={i === 0 ? "default" : "outline"} className={`rounded-none uppercase tracking-widest text-[10px] sm:text-xs font-bold gap-2 py-4 px-6 ${i === 0 ? "bg-bern-blue hover:bg-bern-blue/90 text-white hover:text-white" : "border-white/10 text-white hover:bg-white/5 hover:text-white"}`}>
                       <a
                         href={link.url}
                         target="_blank"
@@ -294,7 +325,7 @@ export function ProjectsSection() {
                         className="flex items-center group w-full justify-center"
                       >
                         {link.text}
-                        {i === 0 ? <ExternalLink className="w-5 h-5 ml-2" /> : <Github className="w-5 h-5 ml-2" />}
+                        {link.text.toLowerCase().includes("github") ? <Github className="w-4 h-4 ml-2" /> : <ExternalLink className="w-4 h-4 ml-2" />}
                       </a>
                     </Button>
                   ))}

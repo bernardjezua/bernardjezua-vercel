@@ -205,7 +205,7 @@ export function CertificationsSection() {
                   whileInView={{opacity: 1, scale: 1}}
                   transition={{duration: 0.3, delay: index * 0.05}}
                   viewport={{ once: true }}
-                  className="rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 bg-[#f5f5f5] border border-black/10 p-1.5 sm:p-2 md:p-4"
+                  className="cert-badge-wrapper"
                 >
                   <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20">
                     <Image
@@ -231,7 +231,7 @@ export function CertificationsSection() {
               transition={{ duration: 0.6, delay: index < 6 ? index * 0.1 : (index - 6) * 0.1 }}
               viewport={{ once: true }}
               onClick={() => setSelectedCertification(cert)}
-              className="group border-b border-black/10 py-8 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer hover:bg-black/5 px-2 md:px-8 transition-colors duration-300"
+              className="group cert-row"
             >
               <div className="flex-1">
                 <h3 className="text-xl md:text-2xl font-bold mb-2 group-hover:text-bern-blue transition-colors duration-300">{cert.title}</h3>
@@ -240,7 +240,7 @@ export function CertificationsSection() {
               <div className="flex items-center justify-between mt-auto">
                 <div className="text-black/50 font-mono text-sm tracking-widest">{cert.date}</div>
               </div>
-              <div className="hidden md:flex relative overflow-hidden w-12 h-12 rounded-full border border-black/10 items-center justify-center opacity-0 group-hover:opacity-100 group-hover:bg-white group-hover:text-black transition-all duration-300">
+              <div className="cert-arrow-btn">
                 <ArrowUpRight className="absolute w-5 h-5 transition-transform duration-300 group-hover:translate-x-[150%] group-hover:-translate-y-[150%]" />
                 <ArrowUpRight className="absolute w-5 h-5 -translate-x-[150%] translate-y-[150%] transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0" />
               </div>
@@ -258,7 +258,7 @@ export function CertificationsSection() {
           >
             <button
               onClick={() => setShowAll(!showAll)}
-              className="group flex w-max items-center bg-transparent border border-black/20 text-black rounded-full px-8 py-4 hover:bg-black hover:text-white transition-colors"
+              className="group cert-view-all-btn"
             >
               <span className="text-xs font-bold uppercase tracking-[0.2em] mr-3">
                 {showAll ? "Show Less" : "View All Certifications"}

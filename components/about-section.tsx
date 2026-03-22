@@ -18,94 +18,98 @@ export function AboutSection() {
           <h2 className="text-xs uppercase tracking-[0.4em] text-black/50 mb-4 block font-medium">
             /01 About Me
           </h2>
-          <h3 className="text-4xl md:text-6xl font-bold tracking-tighter">
+          <h3 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 md:mb-6">
             THE HUMAN <br /> BEHIND THE PIXELS.
           </h3>
+          <p className="text-lg md:text-xl text-black/60 font-medium italic max-w-2xl leading-relaxed border-l-2 border-bern-blue pl-4">
+            "I enjoy talking to people, empathizing with them, and coming up with design solutions."
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {/* Main Bio Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="relative overflow-hidden bg-cover bg-center p-10 md:p-14 rounded-sm border border-black/5 flex flex-col justify-between text-white"
-            style={{ backgroundImage: `url('/assets/profilepic.jpg')` }}
+            className="relative overflow-hidden rounded-[1.5rem] aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] group cursor-pointer shadow-sm"
           >
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/30 z-0 pointer-events-none"></div>
-            <div className="relative z-10 w-full h-full flex flex-col justify-between">
-              <div>
-                <div className="mb-6 inline-flex p-3 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-                  <User className="h-6 w-6 text-white" />
+            <img src="/assets/pictures/profilepic_00.jpg" alt="Bernard Jezua" className="absolute inset-0 w-full h-full object-cover object-[center_top] transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-gradient-to-t group-hover:from-black/95 group-hover:via-black/80 group-hover:to-black/40 transition-all duration-500 flex flex-col justify-end p-4 md:p-6 lg:p-8">
+              <div className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out flex flex-col">
+                <div className="mb-3 md:mb-4 inline-flex p-2 md:p-2.5 bg-white/20 backdrop-blur-md rounded-full border border-white/20 w-max shadow-lg">
+                  <User className="h-4 w-4 md:h-5 md:w-5 text-white" />
                 </div>
-                <h4 className="text-2xl md:text-3xl font-bold mb-6 shadow-sm">Hello, I'm Bernard!</h4>
-                <p className="text-white/90 leading-relaxed max-w-md mb-6 font-medium text-shadow-sm">
-                  I'm a passionate UI/UX Designer and Frontend Developer that likes to develop intuitive and user-friendly mobile and web applications. With a background in both design and development, I bring a unique perspective to every project.
-                </p>
-                <p className="text-white/90 leading-relaxed max-w-md font-medium text-shadow-sm">
-                  When I'm not coding, you can find me exploring new technologies, participating in online courses, or stargazing - which inspired the cosmic theme of this portfolio!
+                <h4 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-2 text-white shadow-sm leading-tight tracking-tight">Hello, I'm Bernard!</h4>
+                <p className="text-white/90 text-[11px] md:text-xs lg:text-sm font-medium leading-relaxed mb-2">
+                  I'm a passionate UI/UX Designer and Frontend Developer that likes to develop intuitive and user-friendly mobile and web applications. I bring a unique perspective to every project with my background in both design and development.
                 </p>
               </div>
             </div>
           </motion.div>
 
-          {/* Stats / Details Cards */}
-          <div className="flex flex-col gap-4">
-            {/* Education Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="flex-1 bg-white p-8 rounded-sm border border-black/5 flex items-start gap-6 group hover:bg-black/5 transition-colors"
-            >
-              <div className="inline-flex p-3 bg-black/5 rounded-full">
-                <GraduationCap className="h-6 w-6 text-bern-blue group-hover:scale-110 transition-transform" />
+          {/* Continuous Learning Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="relative overflow-hidden rounded-[1.5rem] aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] group cursor-pointer shadow-sm"
+          >
+            <img src="/assets/pictures/profilepic_01.jpg" alt="Always Learning" className="absolute inset-0 w-full h-full object-cover object-[center_top] transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-gradient-to-t group-hover:from-black/95 group-hover:via-black/80 group-hover:to-black/40 transition-all duration-500 flex flex-col justify-end p-4 md:p-6 lg:p-8">
+              <div className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out flex flex-col">
+                <div className="mb-3 md:mb-4 inline-flex p-2 md:p-2.5 bg-white/20 backdrop-blur-md rounded-full border border-white/20 w-max shadow-lg">
+                  <GraduationCap className="h-4 w-4 md:h-5 md:w-5 text-white" />
+                </div>
+                <h4 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-2 text-white shadow-sm leading-tight tracking-tight">Lifelong Learning</h4>
+                <p className="text-white/90 text-xs lg:text-sm font-medium leading-relaxed">B.S. Computer Science</p>
+                <p className="text-white/90 text-[10px] lg:text-xs font-bold leading-relaxed text-white bg-white/20 backdrop-blur-sm w-max px-2 py-0.5 rounded-sm mt-1 mb-1 tracking-wider border border-white/10">2021 - 2026</p>
+                <p className="text-white/70 text-[10px] lg:text-xs font-medium leading-relaxed">University of the Philippines Los Baños</p>
               </div>
-              <div>
-                <h4 className="text-lg font-bold mb-2">Education</h4>
-                <p className="text-black/80 font-medium mb-1">University of the Philippines Los Baños</p>
-                <p className="text-black/60 text-sm">B.S. Computer Science • 2021 - 2026</p>
-              </div>
-            </motion.div>
+            </div>
+          </motion.div>
 
-            {/* Experience Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              viewport={{ once: true }}
-              className="flex-1 bg-white p-8 rounded-sm border border-black/5 flex items-start gap-6 group hover:bg-black/5 transition-colors"
-            >
-              <div className="inline-flex p-3 bg-black/5 rounded-full">
-                <Briefcase className="h-6 w-6 text-bern-blue group-hover:scale-110 transition-transform" />
+          {/* Design & Code Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="relative overflow-hidden rounded-[1.5rem] aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] group cursor-pointer shadow-sm"
+          >
+            <img src="/assets/pictures/profilepic_02.jpg" alt="Bridging Design and Code" className="absolute inset-0 w-full h-full object-cover object-[center_top] transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-gradient-to-t group-hover:from-black/95 group-hover:via-black/80 group-hover:to-black/40 transition-all duration-500 flex flex-col justify-end p-4 md:p-6 lg:p-8">
+              <div className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out flex flex-col">
+                <div className="mb-3 md:mb-4 inline-flex p-2 md:p-2.5 bg-white/20 backdrop-blur-md rounded-full border border-white/20 w-max shadow-lg">
+                  <Briefcase className="h-4 w-4 md:h-5 md:w-5 text-white" />
+                </div>
+                <h4 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-2 text-white shadow-sm leading-tight tracking-tight">Bridging Design & Code</h4>
+                <p className="text-white/90 text-[11px] md:text-xs lg:text-sm font-medium leading-relaxed">I like to think of designs that would help other people navigate easily, sometimes I gather it from my own experience and solve it.</p>
               </div>
-              <div>
-                <h4 className="text-lg font-bold mb-2">Experience</h4>
-                <p className="text-black/80 font-medium mb-1">0.3 years in Software Development</p>
-                <p className="text-black/60 text-sm">Actively looking for UX Design Roles.</p>
-              </div>
-            </motion.div>
+            </div>
+          </motion.div>
 
-            {/* Projects Stats Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              viewport={{ once: true }}
-              className="flex-1 bg-white p-8 rounded-sm border border-black/5 flex items-start gap-6 group hover:bg-black/5 transition-colors"
-            >
-              <div className="inline-flex p-3 bg-black/5 rounded-full">
-                <FolderKanban className="h-6 w-6 text-bern-blue group-hover:scale-110 transition-transform" />
+          {/* Building Things Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="relative overflow-hidden rounded-[1.5rem] aspect-[3/4] md:aspect-[4/5] lg:aspect-[3/4] group cursor-pointer shadow-sm"
+          >
+            <img src="/assets/pictures/profilepic_03.jpg" alt="Building Things" className="absolute inset-0 w-full h-full object-cover object-[center_top] transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-gradient-to-t group-hover:from-black/95 group-hover:via-black/80 group-hover:to-black/40 transition-all duration-500 flex flex-col justify-end p-4 md:p-6 lg:p-8">
+              <div className="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out flex flex-col">
+                <div className="mb-3 md:mb-4 inline-flex p-2 md:p-2.5 bg-white/20 backdrop-blur-md rounded-full border border-white/20 w-max shadow-lg">
+                  <FolderKanban className="h-4 w-4 md:h-5 md:w-5 text-white" />
+                </div>
+                <h4 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-2 text-white shadow-sm leading-tight tracking-tight">Building Things</h4>
+                <p className="text-white/90 text-[11px] md:text-xs lg:text-sm font-medium leading-relaxed">10+ completed projects across web and mobile platforms over the course of my degree.</p>
               </div>
-              <div>
-                <h4 className="text-lg font-bold mb-2">Track Record</h4>
-                <p className="text-black/80 font-medium mb-1">10+ Completed Projects</p>
-                <p className="text-black/60 text-sm">Web apps, mobile apps, and design systems.</p>
-              </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
