@@ -21,8 +21,8 @@ export function AboutSection() {
           <h3 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 md:mb-6">
             THE HUMAN <br /> BEHIND THE PIXELS.
           </h3>
-          <p className="text-lg md:text-xl text-black/60 font-medium italic max-w-2xl leading-relaxed border-l-2 border-bern-blue pl-4">
-            "I enjoy talking to people, empathizing with them, and coming up with design solutions."
+          <p className="max-w-xs text-black/60 text-sm ">
+            I enjoy talking to people, empathizing with them, and coming up with design solutions.
           </p>
         </motion.div>
 
