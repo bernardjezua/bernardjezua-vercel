@@ -43,7 +43,7 @@ export function AboutSection() {
                 </div>
                 <h4 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-2 text-white shadow-sm leading-tight tracking-tight">Hello, I'm Bernard!</h4>
                 <p className="text-white/90 text-[11px] md:text-xs lg:text-sm font-medium leading-relaxed mb-2">
-                  I like to develop intuitive and user-friendly designs and applications. I bring a unique perspective to every project with my background in both design and development.
+                  I like to develop intuitive digital solutions. I bring a unique perspective to every project with my design and development skills.
                 </p>
               </div>
             </div>
