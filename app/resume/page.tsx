@@ -2,16 +2,59 @@
 
 import { useRef, useEffect, useState } from "react"
 import { motion, useScroll, useSpring } from "framer-motion"
-import { ArrowLeft, Briefcase, GraduationCap, Award, Users, Code2, Mail, Linkedin, Github, ArrowUp, Download, X, BadgeCheck } from "lucide-react"
+import { ArrowLeft, Briefcase, GraduationCap, Award, Users, Code2, Mail, Linkedin, Github, ArrowUp, Download, BadgeCheck } from "lucide-react"
 import Link from "next/link"
 import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react"
-import { Dialog, DialogContent, DialogClose, DialogTitle } from "@/components/ui/dialog"
 import "./styles.css"
+
+const InteractiveText = ({ text, className }: { text: string; className?: string }) => {
+  return (
+    <span className={`inline-flex flex-wrap ${className}`}>
+      {text.split("").map((char, index) => (
+        <span
+          key={index}
+          className="transition-all duration-300 hover:text-bern-blue hover:-translate-y-1 hover:scale-105 cursor-default inline-block"
+          style={{ whiteSpace: char === " " ? "pre" : "normal" }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </span>
+      ))}
+    </span>
+  );
+};
 
 export default function DigitalResumePage() {
   const timelineRef = useRef<HTMLDivElement>(null)
+  const cursorRef = useRef<HTMLDivElement>(null)
+  const idleTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const [showTopBtn, setShowTopBtn] = useState(false)
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [isMounted, setIsMounted] = useState(false)
+
+  // Smooth springs for the comet cursor
+  const springX = useSpring(0, { stiffness: 800, damping: 40 })
+  const springY = useSpring(0, { stiffness: 800, damping: 40 })
+
+  useEffect(() => {
+    setIsMounted(true)
+    const updateMousePosition = (ev: MouseEvent) => {
+      springX.set(ev.clientX)
+      springY.set(ev.clientY)
+
+      if (cursorRef.current) {
+        cursorRef.current.style.opacity = '1'
+      }
+
+      if (idleTimeoutRef.current) clearTimeout(idleTimeoutRef.current)
+      idleTimeoutRef.current = setTimeout(() => {
+        if (cursorRef.current) cursorRef.current.style.opacity = '0'
+      }, 3000)
+    }
+    window.addEventListener("mousemove", updateMousePosition)
+    return () => {
+      window.removeEventListener("mousemove", updateMousePosition)
+      if (idleTimeoutRef.current) clearTimeout(idleTimeoutRef.current)
+    }
+  }, [springX, springY])
 
   useEffect(() => {
     const handleScroll = () => setShowTopBtn(window.scrollY > 300)
@@ -58,6 +101,22 @@ export default function DigitalResumePage() {
 
   return (
     <main className="min-h-screen bg-black text-white selection:bg-white/30 selection:text-white overflow-hidden pb-12">
+      {/* Comet Cursor Effect */}
+      {isMounted && (
+        <motion.div
+           ref={cursorRef}
+           className="pointer-events-none fixed top-0 left-0 w-[240px] h-[240px] rounded-full z-[100] transition-opacity duration-1000 ease-in-out"
+           style={{
+             x: springX,
+             y: springY,
+             translateX: "-50%",
+             translateY: "-50%",
+             opacity: 0,
+             background: "radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(59, 130, 246, 0.08) 20%, rgba(0, 0, 0, 0) 60%)",
+           }}
+        />
+      )}
+
       {/* Dynamic Background Effect */}
       <div className="fixed top-0 left-0 w-full h-[120vh] z-0 opacity-20 pointer-events-none">
         <ShaderGradientCanvas style={{ pointerEvents: 'none' }} pointerEvents="none" lazyLoad={false} pixelDensity={0.5}>
@@ -110,11 +169,11 @@ export default function DigitalResumePage() {
           className="resume-header-card"
         >
           {/* 1:1 Profile Picture */}
-          <div className="shrink-0 relative w-32 h-32 md:w-40 md:h-40 rounded-full md:rounded-[1.5rem] overflow-hidden border-2 border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+          <div className="shrink-0 relative w-32 h-32 md:w-40 md:h-40 rounded-full md:rounded-[1.5rem] overflow-hidden border-2 border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-500 hover:shadow-[0_0_45px_rgba(59,130,246,0.3)] hover:border-blue-500/30 group cursor-default">
             <img 
               src="/assets/pictures/profilepic_00.jpg" 
               alt="Bernard Jezua" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           </div>
           
@@ -123,8 +182,8 @@ export default function DigitalResumePage() {
             <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-white/50 mb-3 block font-medium">
               Digital Resume
             </span>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-4 shadow-sm text-shadow-sm">
-              Bernard Jezua Tandang
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-4 shadow-sm text-shadow-sm pointer-events-auto">
+              <InteractiveText text="Bernard Jezua Tandang" />
             </h1>
             <p className="text-base md:text-lg text-white/80 max-w-2xl font-light text-shadow-sm">
               Aspiring UI/UX Designer & Frontend Developer with a passion of creating intuitive and user-friendly experiences. Here to lend a hand!
@@ -153,9 +212,11 @@ export default function DigitalResumePage() {
             viewport={{ once: true, margin: "-100px" }}
             className="section-card"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <GraduationCap className="text-emerald-400 w-6 h-6" />
-              <h2 className="text-2xl font-bold tracking-tight">Education</h2>
+            <div className="flex items-center gap-4 mb-8">
+              <div className="icon-circle border-emerald-500 text-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.5)]">
+                <GraduationCap className="w-5 h-5" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Education</h2>
             </div>
             <h3 className="text-white/90 font-bold mb-1 text-base md:text-lg tracking-tight">Bachelor of Science in Computer Science</h3>
             <p className="text-white/80 font-medium mb-1 text-sm md:text-base">University of the Philippines Los Baños</p>
@@ -167,7 +228,7 @@ export default function DigitalResumePage() {
               <ul className="space-y-6 text-white/80 text-sm md:text-base leading-relaxed font-light relative z-10">
                 <li className="relative pl-6">
                   <span className="education-dot" />
-                  <div><strong className="text-white font-medium block mb-0.5">Coursework:</strong> Human-Computer Interaction, UI/UX Design, Web and Mobile Development, Databases</div>
+                  <div><strong className="text-white font-medium block mb-0.5">Coursework:</strong> Human-Computer Interaction, Software Development, Databases</div>
                 </li>
                 <li className="relative pl-6">
                   <span className="education-dot" />
@@ -215,7 +276,7 @@ export default function DigitalResumePage() {
                   <div className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
                     <div className="timeline-card group-hover:border-blue-500/30 relative">
-                      <div className="story-box" onClick={() => setSelectedImage("/assets/pictures/experience_00.jpg")}>
+                      <div className="story-box">
                         <img src="/assets/pictures/experience_00.jpg" alt="Experience" />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">Software Engineer Intern</h3>
@@ -261,7 +322,7 @@ export default function DigitalResumePage() {
                   <div className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
                     <div className="timeline-card group-hover:border-purple-500/30 relative">
-                      <div className="story-box" onClick={() => setSelectedImage("/assets/pictures/involvement_03.jpg")}>
+                      <div className="story-box">
                         <img src="/assets/pictures/involvement_03.jpg" alt="Involvement" />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">Membership Division Head</h3>
@@ -289,7 +350,7 @@ export default function DigitalResumePage() {
                   <div className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-purple-500/60 shadow-[0_0_8px_rgba(168,85,247,0.4)] hover:bg-purple-500" />
                     <div className="timeline-card group-hover:border-purple-500/30 relative">
-                      <div className="story-box" onClick={() => setSelectedImage("/assets/pictures/involvement_02.png")}>
+                      <div className="story-box">
                         <img src="/assets/pictures/involvement_02.png" alt="Involvement" />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">Programs Committee Member</h3>
@@ -313,7 +374,7 @@ export default function DigitalResumePage() {
                   <div className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-purple-500/80 shadow-[0_0_8px_rgba(168,85,247,0.5)] hover:bg-purple-500" />
                     <div className="timeline-card group-hover:border-purple-500/30 relative">
-                      <div className="story-box" onClick={() => setSelectedImage("/assets/pictures/involvement_01.jpg")}>
+                      <div className="story-box">
                         <img src="/assets/pictures/involvement_01.jpg" alt="Involvement" />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">External Affairs Committee Member</h3>
@@ -341,7 +402,7 @@ export default function DigitalResumePage() {
                   <div className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-purple-500/40 shadow-[0_0_8px_rgba(168,85,247,0.3)] hover:bg-purple-500" />
                     <div className="timeline-card group-hover:border-purple-500/30 relative">
-                      <div className="story-box" onClick={() => setSelectedImage("/assets/pictures/involvement_00.png")}>
+                      <div className="story-box">
                         <img src="/assets/pictures/involvement_00.png" alt="Involvement" />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">CASFC Chairperson</h3>
@@ -375,6 +436,149 @@ export default function DigitalResumePage() {
                 </div>
               </motion.section>
 
+              {/* Projects */}
+              <motion.section
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true, margin: "-100px" }}
+                className="relative z-10 block"
+              >
+                <div className="flex items-center gap-6 mb-8 ml-[8px]">
+                  <div className="icon-circle border-sky-500 text-sky-400 shadow-[0_0_15px_rgba(14,165,233,0.5)]">
+                    <Code2 className="w-5 h-5" />
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Projects</h2>
+                </div>
+                
+                <div className="relative space-y-12 group">
+                  <div className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.8)]" />
+                    <div className="timeline-card group-hover:border-sky-500/30 relative">
+                      <div className="story-box">
+                        <img src="/assets/projs/pivot.png" alt="PIVOT-PROFS" />
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">PIVOT-PROFS: Profile & Records Organization for Faculty Service</h3>
+                      <div className="flex flex-wrap items-center gap-3 mb-5">
+                        <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
+                          June 2025 - Aug. 2025
+                        </span>
+                      </div>
+                      <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
+                        <li className="flex items-start">
+                          <span className="mr-3 text-sky-500 mt-1">◦</span>
+                          Conducted a system requirements gathering and developed web components from Figma to React.
+                        </li>
+                        <li className="flex items-start">
+                          <span className="mr-3 text-sky-500 mt-1">◦</span>
+                          Developed profile management and faculty portfolio modules using Axios, Laravel, and Lumen.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-sky-500/80 shadow-[0_0_8px_rgba(14,165,233,0.6)] hover:bg-sky-500" />
+                    <div className="timeline-card group-hover:border-sky-500/30 relative">
+                      <div className="story-box">
+                        <img src="/assets/designs/cosmarket.png" alt="CosMarket" />
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">CosMarket: Buy, Sell, and Rent Cosplays</h3>
+                      <div className="flex flex-wrap items-center gap-3 mb-5">
+                        <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
+                          Mar. 2025 - May 2025
+                        </span>
+                      </div>
+                      <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
+                        <li className="flex items-start">
+                          <span className="mr-3 text-sky-500/80 mt-1">◦</span>
+                          Defined IA, user persona, and journey map from analyzing posts in local cosplay markets.
+                        </li>
+                        <li className="flex items-start">
+                          <span className="mr-3 text-sky-500/80 mt-1">◦</span>
+                          Conducted a moderated usability study of 10 testers, where 80% agreed that the design was intuitive.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-sky-500/60 shadow-[0_0_8px_rgba(14,165,233,0.4)] hover:bg-sky-500" />
+                    <div className="timeline-card group-hover:border-sky-500/30 relative">
+                      <div className="story-box">
+                        <img src="/assets/projs/astra.png" alt="ICS-ASTRA" />
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">ICS-ASTRA: Alumni Synced Tracker for Relations and Advancement</h3>
+                      <div className="flex flex-wrap items-center gap-3 mb-5">
+                        <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
+                          Feb. 2025 - May 2025
+                        </span>
+                      </div>
+                      <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
+                        <li className="flex items-start">
+                          <span className="mr-3 text-sky-500/60 mt-1">◦</span>
+                          Transformed Figma prototypes into web components using Next.js and Tailwind CSS.
+                        </li>
+                        <li className="flex items-start">
+                          <span className="mr-3 text-sky-500/60 mt-1">◦</span>
+                          Developed and tested frontend modules for the profile management and registration functionalities.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-sky-500/40 shadow-[0_0_8px_rgba(14,165,233,0.3)] hover:bg-sky-500" />
+                    <div className="timeline-card group-hover:border-sky-500/30 relative">
+                      <div className="story-box">
+                        <img src="https://raw.githubusercontent.com/bernardjezua/traveler/main/docs/profile.png" alt="Traveler" />
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">Traveler: A Genshin-Inspired Slam Book Mobile Application</h3>
+                      <div className="flex flex-wrap items-center gap-3 mb-5">
+                        <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
+                          June 2024 - July 2024
+                        </span>
+                      </div>
+                      <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
+                        <li className="flex items-start">
+                          <span className="mr-3 text-sky-500/40 mt-1">◦</span>
+                          Implemented UI screens, routes, and CRUD functionalities using Dart, Flutter, and Google Firebase.
+                        </li>
+                        <li className="flex items-start">
+                          <span className="mr-3 text-sky-500/40 mt-1">◦</span>
+                          Developed a custom interface with color palettes and styling to resonate with Genshin Impact.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-sky-500/20 shadow-[0_0_8px_rgba(14,165,233,0.2)] hover:bg-sky-500" />
+                    <div className="timeline-card group-hover:border-sky-500/30 relative">
+                      <div className="story-box">
+                        <img src="/assets/projs/foodup.png" alt="FoodUP" />
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">FoodUP: Food and Restaurant Review Application</h3>
+                      <div className="flex flex-wrap items-center gap-3 mb-5">
+                        <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
+                          Feb. 2024 - June 2024
+                        </span>
+                      </div>
+                      <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
+                        <li className="flex items-start">
+                          <span className="mr-3 text-sky-500/20 mt-1">◦</span>
+                          Integrated Python using MariaDB via SQL queries for filtering and validating CRUD functionalities.
+                        </li>
+                        <li className="flex items-start">
+                          <span className="mr-3 text-sky-500/20 mt-1">◦</span>
+                          Created page designs from Figma to Tkinter and debugged data inaccuracy issues in the interface.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </motion.section>
+
               {/* Awards */}
               <motion.section
                 initial={{ opacity: 0, y: 20 }}
@@ -394,7 +598,7 @@ export default function DigitalResumePage() {
                   <div className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
                     <div className="timeline-card group-hover:border-amber-500/30 relative">
-                      <div className="story-box" onClick={() => setSelectedImage("/assets/pictures/award_00.jpg")}>
+                      <div className="story-box">
                         <img src="/assets/pictures/award_00.jpg" alt="Award" />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pr-16 md:pr-20">1st Runner Up, 42nd CS Week WarFrames Web Design Competition</h3>
@@ -438,8 +642,8 @@ export default function DigitalResumePage() {
                   <div className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.8)]" />
                     <div className="timeline-card group-hover:border-teal-500/30 relative">
-                      <div className="story-box" onClick={() => setSelectedImage("/assets/certs/14.png")}>
-                        <img src="/assets/certs/14.png" alt="Meta Front-End Developer" />
+                      <div className="relative mb-6 md:absolute md:top-4 md:right-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)]">
+                        <img src="/assets/badges/badge8.png" alt="Meta Front-End Developer" className="w-full h-full object-contain" />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pr-16 md:pr-20">Meta Front-End Developer</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -464,8 +668,8 @@ export default function DigitalResumePage() {
                   <div className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-teal-500/80 shadow-[0_0_8px_rgba(20,184,166,0.5)] hover:bg-teal-500" />
                     <div className="timeline-card group-hover:border-teal-500/30 relative">
-                      <div className="story-box" onClick={() => setSelectedImage("/assets/certs/13.png")}>
-                        <img src="/assets/certs/13.png" alt="Microsoft UX Design" />
+                      <div className="relative mb-6 md:absolute md:top-4 md:right-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)]">
+                        <img src="/assets/badges/badge7.png" alt="Microsoft UX Design" className="w-full h-full object-contain" />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pr-16 md:pr-20">Microsoft UX Design</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -490,8 +694,8 @@ export default function DigitalResumePage() {
                   <div className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-teal-500/60 shadow-[0_0_8px_rgba(20,184,166,0.4)] hover:bg-teal-500" />
                     <div className="timeline-card group-hover:border-teal-500/30 relative">
-                      <div className="story-box" onClick={() => setSelectedImage("/assets/certs/12.jpg")}>
-                        <img src="/assets/certs/12.jpg" alt="Google UX Design" />
+                      <div className="relative mb-6 md:absolute md:top-4 md:right-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)]">
+                        <img src="/assets/badges/badge6.png" alt="Google UX Design" className="w-full h-full object-contain" />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pr-16 md:pr-20">Google UX Design</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -574,21 +778,6 @@ export default function DigitalResumePage() {
         </div>
       </div>
 
-      {/* Image Preview Dialog */}
-      <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
-        <DialogContent className="max-w-[95vw] md:max-w-5xl bg-transparent border-none p-0 overflow-hidden shadow-none [&>button]:hidden flex items-center justify-center h-[90dvh]">
-          <DialogTitle className="sr-only">Image Preview</DialogTitle>
-          <DialogClose className="absolute top-4 right-4 z-[60] p-2 bg-black/60 hover:bg-black/90 rounded-full text-white backdrop-blur-md transition-all">
-             <X className="w-5 h-5" />
-             <span className="sr-only">Close</span>
-          </DialogClose>
-          {selectedImage && (
-            <div className="relative w-full h-full flex items-center justify-center px-4 md:px-12 py-12">
-              <img src={selectedImage} alt="Story preview" className="max-w-full max-h-full object-contain rounded-xl shadow-2xl" />
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
 
       {/* Scroll to Top Button */}
       <button 
