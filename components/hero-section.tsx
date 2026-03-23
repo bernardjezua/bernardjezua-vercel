@@ -9,14 +9,17 @@ import Image from "next/image";
 
 const InteractiveText = ({ text, className }: { text: string; className?: string }) => {
   return (
-    <span className={`inline-flex flex-wrap ${className}`}>
-      {text.split("").map((char, index) => (
-        <span
-          key={index}
-          className="transition-all duration-300 hover:text-bern-blue hover:-translate-y-1 hover:scale-105 cursor-default inline-block"
-          style={{ whiteSpace: char === " " ? "pre" : "normal" }}
-        >
-          {char === " " ? "\u00A0" : char}
+    <span className={`inline-flex flex-wrap justify-center md:justify-start ${className}`}>
+      {text.split(" ").map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-block whitespace-nowrap mr-[0.25em] last:mr-0">
+          {word.split("").map((char, charIndex) => (
+            <span
+              key={charIndex}
+              className="transition-all duration-300 hover:text-bern-blue hover:-translate-y-1 hover:scale-105 cursor-default inline-block"
+            >
+              {char}
+            </span>
+          ))}
         </span>
       ))}
     </span>

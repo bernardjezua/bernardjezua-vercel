@@ -167,6 +167,8 @@ export function ProjectsSection() {
                     alt={project.title}
                     fill
                     className="object-cover rounded-sm"
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
                   />
                 </div>
               </div>
@@ -277,6 +279,8 @@ export function ProjectsSection() {
                         alt={selectedProject.title}
                         fill
                         className="object-cover"
+                        draggable={false}
+                        onContextMenu={(e) => e.preventDefault()}
                       />
                     )}
                   </div>

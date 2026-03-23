@@ -2,21 +2,47 @@
 
 import { useRef, useEffect, useState } from "react"
 import { motion, useScroll, useSpring } from "framer-motion"
-import { ArrowLeft, Briefcase, GraduationCap, Award, Users, Code2, Mail, Linkedin, Github, ArrowUp, Download, BadgeCheck } from "lucide-react"
+import { Home, Briefcase, GraduationCap, Award, Users, Code2, Mail, Linkedin, Github, ArrowUp, Download, BadgeCheck, FolderKanban } from "lucide-react"
 import Link from "next/link"
 import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react"
 import "./styles.css"
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut"
+    }
+  }
+};
+
 const InteractiveText = ({ text, className }: { text: string; className?: string }) => {
   return (
-    <span className={`inline-flex flex-wrap ${className}`}>
-      {text.split("").map((char, index) => (
-        <span
-          key={index}
-          className="transition-all duration-300 hover:text-bern-blue hover:-translate-y-1 hover:scale-105 cursor-default inline-block"
-          style={{ whiteSpace: char === " " ? "pre" : "normal" }}
-        >
-          {char === " " ? "\u00A0" : char}
+    <span className={`inline-flex flex-wrap justify-center md:justify-start ${className}`}>
+      {text.split(" ").map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-block whitespace-nowrap mr-[0.25em] last:mr-0">
+          {word.split("").map((char, charIndex) => (
+            <span
+              key={charIndex}
+              className="transition-all duration-300 hover:text-bern-blue hover:-translate-y-1 hover:scale-105 cursor-default inline-block"
+            >
+              {char}
+            </span>
+          ))}
         </span>
       ))}
     </span>
@@ -50,6 +76,7 @@ export default function DigitalResumePage() {
       }, 3000)
     }
     window.addEventListener("mousemove", updateMousePosition)
+    
     return () => {
       window.removeEventListener("mousemove", updateMousePosition)
       if (idleTimeoutRef.current) clearTimeout(idleTimeoutRef.current)
@@ -149,40 +176,56 @@ export default function DigitalResumePage() {
         </ShaderGradientCanvas>
       </div>
 
-      {/* Sticky Navigation */}
-      <nav className="fixed top-0 left-0 w-full p-6 md:px-20 z-50 flex items-center justify-between pointer-events-none">
+      {/* Home Button (Top Left) */}
+      <nav className="fixed top-0 left-0 w-full p-6 md:px-12 z-[60] flex items-center justify-start pointer-events-none">
         <Link 
           href="/" 
-          className="group pointer-events-auto flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/10 text-white rounded-full px-5 py-2.5 hover:bg-white/20 transition-all shadow-lg"
+          className="group pointer-events-auto flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/10 text-white rounded-full px-5 py-2.5 hover:bg-white/20 transition-all shadow-lg active:scale-95"
         >
-          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-          <span className="text-sm font-semibold uppercase tracking-widest hidden sm:inline">Back</span>
+          <Home size={18} className="group-hover:scale-110 transition-transform" />
+          <span className="text-sm font-semibold uppercase tracking-widest hidden sm:inline">Home</span>
         </Link>
       </nav>
 
       <div className="relative z-10 w-full max-w-5xl mx-auto px-6 md:px-12 pt-24">
         {/* Redesigned Header Hero Card */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial="hidden"
+          animate="show"
+          variants={containerVariants}
           className="resume-header-card"
         >
-          {/* 1:1 Profile Picture */}
-          <div className="shrink-0 relative w-32 h-32 md:w-40 md:h-40 rounded-full md:rounded-[1.5rem] overflow-hidden border-2 border-white/20 shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-500 hover:shadow-[0_0_45px_rgba(59,130,246,0.3)] hover:border-blue-500/30 group cursor-default">
-            <img 
-              src="/assets/pictures/profilepic_00.jpg" 
-              alt="Bernard Jezua" 
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
-          </div>
+          <motion.div variants={itemVariants} className="flex flex-col items-center shrink-0 group/header scale-95 md:scale-100">
+            <div className="w-32 h-44 md:w-44 md:h-60 bg-white/5 border border-white/10 rounded-[1.2rem] md:rounded-[1.6rem] overflow-hidden shadow-2xl transition-all duration-500 hover:border-blue-500/30 hover:shadow-[0_0_50px_rgba(59,130,246,0.2)] flex flex-col backdrop-blur-md">
+              <div className="flex-grow relative overflow-hidden">
+                <img 
+                  src="/assets/pictures/profilepic_00.jpg" 
+                  alt="Bernard Jezua" 
+                  className="w-full h-full object-cover transition-all duration-700 group-hover/header:rotate-1 group-hover/header:scale-105"
+                  draggable={false}
+                  onContextMenu={(e) => e.preventDefault()}
+                />
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+              </div>
+
+              <div className="h-8 md:h-10 bg-black/60 flex flex-col items-center justify-center p-0 border-t border-white/5 relative z-10">
+                <img 
+                  src="/assets/spotifycode.png" 
+                  alt="Spotify Code" 
+                  className="w-full h-full object-cover filter brightness-125 saturate-[1.2] drop-shadow-[0_0_8px_rgba(30,215,96,0.4)] transition-all duration-500"
+                  draggable={false}
+                  onContextMenu={(e) => e.preventDefault()}
+                />
+              </div>
+            </div>
+          </motion.div>
           
           {/* Text Content */}
-          <div className="flex flex-col justify-center text-center md:text-left mt-6 md:mt-2">
+          <motion.div variants={itemVariants} className="flex flex-col justify-center text-center md:text-left md:mt-2">
             <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-white/50 mb-3 block font-medium">
               Digital Resume
             </span>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter mb-4 shadow-sm text-shadow-sm pointer-events-auto">
+            <h1 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4 shadow-sm text-shadow-sm pointer-events-auto">
               <InteractiveText text="Bernard Jezua Tandang" />
             </h1>
             <p className="text-base md:text-lg text-white/80 max-w-2xl font-light text-shadow-sm">
@@ -198,30 +241,36 @@ export default function DigitalResumePage() {
                 <Download size={16} className="group-hover:translate-y-0.5 transition-transform" />
               </a>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
+        
 
         {/* Main Content (Single Column) */}
-        <div className="flex flex-col space-y-12 mt-12">
+        <div className="flex flex-col space-y-12 mt-4">
           
           {/* Education Section */}
           <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            id="education"
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            className="section-card"
+            variants={containerVariants}
+            className="section-card scroll-mt-32"
           >
-            <div className="flex items-center gap-4 mb-8">
+            <motion.div variants={itemVariants} className="flex items-center gap-4 mb-8">
               <div className="icon-circle border-emerald-500 text-emerald-400 shadow-[0_0_15px_rgba(52,211,153,0.5)]">
                 <GraduationCap className="w-5 h-5" />
               </div>
               <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Education</h2>
-            </div>
-            <h3 className="text-white/90 font-bold mb-1 text-base md:text-lg tracking-tight">Bachelor of Science in Computer Science</h3>
-            <p className="text-white/80 font-medium mb-1 text-sm md:text-base">University of the Philippines Los Baños</p>
-            <p className="text-emerald-400/80 font-medium text-xs md:text-sm mb-4 tracking-wide uppercase">Aug. 2021 – July 2026</p>
-            <div className="relative mt-6 ml-1.5">
+            </motion.div>
+            
+            <motion.div variants={itemVariants}>
+              <h3 className="text-white/90 font-bold mb-1 text-base md:text-lg tracking-tight">Bachelor of Science in Computer Science</h3>
+              <p className="text-white/80 font-medium mb-1 text-sm md:text-base">University of the Philippines Los Baños</p>
+              <p className="text-emerald-400/80 font-medium text-xs md:text-sm mb-4 tracking-wide uppercase">Aug. 2021 – July 2026</p>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="relative mt-6 ml-1.5">
               {/* Connecting line for Education */}
               <div className="absolute left-[3px] top-2 bottom-0 w-[2px] bg-emerald-500/20" />
               
@@ -239,7 +288,7 @@ export default function DigitalResumePage() {
                   <div><strong className="text-white font-medium block mb-0.5">Organization:</strong> Alliance of Computer Science Students - UPLB</div>
                 </li>
               </ul>
-            </div>
+            </motion.div>
           </motion.section>
 
           {/* Timeline Wrapper for Experience, Involvement, Awards */}
@@ -259,23 +308,24 @@ export default function DigitalResumePage() {
               
               {/* Experience */}
               <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                id="experience"
+                initial="hidden"
+                whileInView="show"
                 viewport={{ once: true, margin: "-100px" }}
-                className="relative z-10 block"
+                variants={containerVariants}
+                className="relative z-10 block scroll-mt-32"
               >
-                <div className="flex items-center gap-6 mb-8 ml-[8px]">
+                <motion.div variants={itemVariants} className="flex items-center gap-6 mb-8 ml-[8px]">
                   <div className="icon-circle border-blue-500 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
                     <Briefcase className="w-5 h-5" />
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Experience</h2>
-                </div>
+                </motion.div>
                 
                 <div className="relative space-y-10 group">
-                  <div className="relative pl-[56px] md:pl-[64px] py-2">
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
-                    <div className="timeline-card group-hover:border-blue-500/30 relative">
+                    <div className="timeline-card hover:border-blue-500/30 relative">
                       <div className="story-box">
                         <img src="/assets/pictures/experience_00.jpg" alt="Experience" />
                       </div>
@@ -290,38 +340,39 @@ export default function DigitalResumePage() {
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
-                          <span className="mr-3 text-blue-500 mt-1">◦</span>
+                          <span className="mr-3 text-blue-500 mt-1">•</span>
                           Developed and integrated frontend components for a record system using React, Ant Design, and Sass.
                         </li>
                         <li className="flex items-start">
-                          <span className="mr-3 text-blue-500 mt-1">◦</span>
+                          <span className="mr-3 text-blue-500 mt-1">•</span>
                           Collaborated with backend developers to implement secure authentication and API communication.
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.section>
 
               {/* Involvement */}
               <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                id="involvement"
+                initial="hidden"
+                whileInView="show"
                 viewport={{ once: true, margin: "-100px" }}
-                className="relative z-10 block"
+                variants={containerVariants}
+                className="relative z-10 block scroll-mt-32"
               >
-                <div className="flex items-center gap-6 mb-8 ml-[8px]">
+                <motion.div variants={itemVariants} className="flex items-center gap-6 mb-8 ml-[8px]">
                   <div className="icon-circle border-purple-500 text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.5)]">
                     <Users className="w-5 h-5" />
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Involvement</h2>
-                </div>
+                </motion.div>
                 
-                <div className="relative space-y-12 group">
-                  <div className="relative pl-[56px] md:pl-[64px] py-2">
+                <div className="relative space-y-12">
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
-                    <div className="timeline-card group-hover:border-purple-500/30 relative">
+                    <div className="timeline-card hover:border-purple-500/30 relative">
                       <div className="story-box">
                         <img src="/assets/pictures/involvement_03.jpg" alt="Involvement" />
                       </div>
@@ -336,20 +387,20 @@ export default function DigitalResumePage() {
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
-                          <span className="mr-3 text-purple-500 mt-1">◦</span>
+                          <span className="mr-3 text-purple-500 mt-1">•</span>
                           Spearheaded welfare checks for 100+ members to monitor organizational well-being.
                         </li>
                         <li className="flex items-start">
-                          <span className="mr-3 text-purple-500 mt-1">◦</span>
+                          <span className="mr-3 text-purple-500 mt-1">•</span>
                           Executed internal activities and team-building programs focused on strengthening member relations.
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="relative pl-[56px] md:pl-[64px] py-2">
-                    <div className="timeline-dot bg-purple-500/60 shadow-[0_0_8px_rgba(168,85,247,0.4)] hover:bg-purple-500" />
-                    <div className="timeline-card group-hover:border-purple-500/30 relative">
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
+                    <div className="timeline-card hover:border-purple-500/30 relative">
                       <div className="story-box">
                         <img src="/assets/pictures/involvement_02.png" alt="Involvement" />
                       </div>
@@ -364,18 +415,23 @@ export default function DigitalResumePage() {
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
-                          <span className="mr-3 text-purple-500/60 mt-1">◦</span>
+                          <span className="mr-3 text-purple-500 mt-1">•</span>
                           Managed backstage operations and activity logistics, collaborating closely with program proponents to ensure seamless event execution.
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="relative pl-[56px] md:pl-[64px] py-2">
-                    <div className="timeline-dot bg-purple-500/80 shadow-[0_0_8px_rgba(168,85,247,0.5)] hover:bg-purple-500" />
-                    <div className="timeline-card group-hover:border-purple-500/30 relative">
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
+                    <div className="timeline-card hover:border-purple-500/30 relative">
                       <div className="story-box">
-                        <img src="/assets/pictures/involvement_01.jpg" alt="Involvement" />
+                        <img 
+                          src="/assets/pictures/involvement_01.jpg" 
+                          alt="Involvement" 
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">External Affairs Committee Member</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -388,22 +444,27 @@ export default function DigitalResumePage() {
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
-                          <span className="mr-3 text-purple-500/80 mt-1">◦</span>
+                          <span className="mr-3 text-purple-500 mt-1">•</span>
                           Facilitated communication for potential partnerships with university organizations and stakeholders.
                         </li>
                         <li className="flex items-start">
-                          <span className="mr-3 text-purple-500/80 mt-1">◦</span>
+                          <span className="mr-3 text-purple-500 mt-1">•</span>
                           Managed professional email correspondence and ensured administrative tasks aligned with council goals.
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="relative pl-[56px] md:pl-[64px] py-2">
-                    <div className="timeline-dot bg-purple-500/40 shadow-[0_0_8px_rgba(168,85,247,0.3)] hover:bg-purple-500" />
-                    <div className="timeline-card group-hover:border-purple-500/30 relative">
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
+                    <div className="timeline-card hover:border-purple-500/30 relative">
                       <div className="story-box">
-                        <img src="/assets/pictures/involvement_00.png" alt="Involvement" />
+                        <img 
+                          src="/assets/pictures/involvement_00.png" 
+                          alt="Involvement" 
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">CASFC Chairperson</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -423,40 +484,46 @@ export default function DigitalResumePage() {
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
-                          <span className="mr-3 text-purple-500/40 mt-1">◦</span>
+                          <span className="mr-3 text-purple-500 mt-1">•</span>
                           Oversee the entire council in transitioning to the next council and from online to face-to-face activities.
                         </li>
                         <li className="flex items-start">
-                          <span className="mr-3 text-purple-500/40 mt-1">◦</span>
+                          <span className="mr-3 text-purple-500 mt-1">•</span>
                           Represented the ICS Batch 2021 and handled concerns related to the batch, also helped in creating camaraderie during the pandemic.
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.section>
 
               {/* Projects */}
               <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                id="projects"
+                initial="hidden"
+                whileInView="show"
                 viewport={{ once: true, margin: "-100px" }}
-                className="relative z-10 block"
+                variants={containerVariants}
+                className="relative z-10 block scroll-mt-32"
               >
-                <div className="flex items-center gap-6 mb-8 ml-[8px]">
+                <motion.div variants={itemVariants} className="flex items-center gap-6 mb-8 ml-[8px]">
                   <div className="icon-circle border-sky-500 text-sky-400 shadow-[0_0_15px_rgba(14,165,233,0.5)]">
                     <Code2 className="w-5 h-5" />
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Projects</h2>
-                </div>
+                </motion.div>
                 
-                <div className="relative space-y-12 group">
-                  <div className="relative pl-[56px] md:pl-[64px] py-2">
+                <div className="relative space-y-12">
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.8)]" />
-                    <div className="timeline-card group-hover:border-sky-500/30 relative">
+                    <div className="timeline-card hover:border-sky-500/30 relative">
                       <div className="story-box">
-                        <img src="/assets/projs/pivot.png" alt="PIVOT-PROFS" />
+                        <img 
+                          src="/assets/projs/pivot.png" 
+                          alt="PIVOT-PROFS" 
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">PIVOT-PROFS: Profile & Records Organization for Faculty Service</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -466,22 +533,27 @@ export default function DigitalResumePage() {
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
-                          <span className="mr-3 text-sky-500 mt-1">◦</span>
+                          <span className="mr-3 text-sky-500 mt-1">•</span>
                           Conducted a system requirements gathering and developed web components from Figma to React.
                         </li>
                         <li className="flex items-start">
-                          <span className="mr-3 text-sky-500 mt-1">◦</span>
+                          <span className="mr-3 text-sky-500 mt-1">•</span>
                           Developed profile management and faculty portfolio modules using Axios, Laravel, and Lumen.
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="relative pl-[56px] md:pl-[64px] py-2">
-                    <div className="timeline-dot bg-sky-500/80 shadow-[0_0_8px_rgba(14,165,233,0.6)] hover:bg-sky-500" />
-                    <div className="timeline-card group-hover:border-sky-500/30 relative">
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.8)]" />
+                    <div className="timeline-card hover:border-sky-500/30 relative">
                       <div className="story-box">
-                        <img src="/assets/designs/cosmarket.png" alt="CosMarket" />
+                        <img 
+                          src="/assets/designs/cosmarket.png" 
+                          alt="CosMarket" 
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">CosMarket: Buy, Sell, and Rent Cosplays</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -491,22 +563,27 @@ export default function DigitalResumePage() {
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
-                          <span className="mr-3 text-sky-500/80 mt-1">◦</span>
+                          <span className="mr-3 text-sky-500 mt-1">•</span>
                           Defined IA, user persona, and journey map from analyzing posts in local cosplay markets.
                         </li>
                         <li className="flex items-start">
-                          <span className="mr-3 text-sky-500/80 mt-1">◦</span>
+                          <span className="mr-3 text-sky-500 mt-1">•</span>
                           Conducted a moderated usability study of 10 testers, where 80% agreed that the design was intuitive.
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="relative pl-[56px] md:pl-[64px] py-2">
-                    <div className="timeline-dot bg-sky-500/60 shadow-[0_0_8px_rgba(14,165,233,0.4)] hover:bg-sky-500" />
-                    <div className="timeline-card group-hover:border-sky-500/30 relative">
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.8)]" />
+                    <div className="timeline-card hover:border-sky-500/30 relative">
                       <div className="story-box">
-                        <img src="/assets/projs/astra.png" alt="ICS-ASTRA" />
+                        <img 
+                          src="/assets/projs/astra.png" 
+                          alt="ICS-ASTRA" 
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">ICS-ASTRA: Alumni Synced Tracker for Relations and Advancement</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -516,22 +593,27 @@ export default function DigitalResumePage() {
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
-                          <span className="mr-3 text-sky-500/60 mt-1">◦</span>
+                          <span className="mr-3 text-sky-500 mt-1">•</span>
                           Transformed Figma prototypes into web components using Next.js and Tailwind CSS.
                         </li>
                         <li className="flex items-start">
-                          <span className="mr-3 text-sky-500/60 mt-1">◦</span>
+                          <span className="mr-3 text-sky-500 mt-1">•</span>
                           Developed and tested frontend modules for the profile management and registration functionalities.
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="relative pl-[56px] md:pl-[64px] py-2">
-                    <div className="timeline-dot bg-sky-500/40 shadow-[0_0_8px_rgba(14,165,233,0.3)] hover:bg-sky-500" />
-                    <div className="timeline-card group-hover:border-sky-500/30 relative">
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.8)]" />
+                    <div className="timeline-card hover:border-sky-500/30 relative">
                       <div className="story-box">
-                        <img src="https://raw.githubusercontent.com/bernardjezua/traveler/main/docs/profile.png" alt="Traveler" />
+                        <img 
+                          src="https://raw.githubusercontent.com/bernardjezua/traveler/main/docs/profile.png" 
+                          alt="Traveler" 
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">Traveler: A Genshin-Inspired Slam Book Mobile Application</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -541,22 +623,27 @@ export default function DigitalResumePage() {
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
-                          <span className="mr-3 text-sky-500/40 mt-1">◦</span>
+                          <span className="mr-3 text-sky-500 mt-1">•</span>
                           Implemented UI screens, routes, and CRUD functionalities using Dart, Flutter, and Google Firebase.
                         </li>
                         <li className="flex items-start">
-                          <span className="mr-3 text-sky-500/40 mt-1">◦</span>
+                          <span className="mr-3 text-sky-500 mt-1">•</span>
                           Developed a custom interface with color palettes and styling to resonate with Genshin Impact.
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </motion.div>
 
-                  <div className="relative pl-[56px] md:pl-[64px] py-2">
-                    <div className="timeline-dot bg-sky-500/20 shadow-[0_0_8px_rgba(14,165,233,0.2)] hover:bg-sky-500" />
-                    <div className="timeline-card group-hover:border-sky-500/30 relative">
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.8)]" />
+                    <div className="timeline-card hover:border-sky-500/30 relative">
                       <div className="story-box">
-                        <img src="/assets/projs/foodup.png" alt="FoodUP" />
+                        <img 
+                          src="/assets/projs/foodup.png" 
+                          alt="FoodUP" 
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">FoodUP: Food and Restaurant Review Application</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -566,36 +653,37 @@ export default function DigitalResumePage() {
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
-                          <span className="mr-3 text-sky-500/20 mt-1">◦</span>
+                          <span className="mr-3 text-sky-500 mt-1">•</span>
                           Integrated Python using MariaDB via SQL queries for filtering and validating CRUD functionalities.
                         </li>
                         <li className="flex items-start">
-                          <span className="mr-3 text-sky-500/20 mt-1">◦</span>
+                          <span className="mr-3 text-sky-500 mt-1">•</span>
                           Created page designs from Figma to Tkinter and debugged data inaccuracy issues in the interface.
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.section>
 
               {/* Awards */}
               <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                id="awards"
+                initial="hidden"
+                whileInView="show"
                 viewport={{ once: true, margin: "-100px" }}
-                className="relative z-10 block"
+                variants={containerVariants}
+                className="relative z-10 block scroll-mt-32"
               >
-                <div className="flex items-center gap-6 mb-8 ml-[8px]">
+                <motion.div variants={itemVariants} className="flex items-center gap-6 mb-8 ml-[8px]">
                   <div className="icon-circle border-amber-500 text-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.5)]">
                     <Award className="w-5 h-5" />
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Awards</h2>
-                </div>
+                </motion.div>
                 
                 <div className="relative space-y-10 group">
-                  <div className="relative pl-[56px] md:pl-[64px] py-2">
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
                     <div className="timeline-card group-hover:border-amber-500/30 relative">
                       <div className="story-box">
@@ -613,37 +701,44 @@ export default function DigitalResumePage() {
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
-                          <span className="mr-3 text-amber-500 mt-1">◦</span>
+                          <span className="mr-3 text-amber-500 mt-1">•</span>
                           Led a 3-person team and developed Alerto.ai, a flood intelligence web app prototype. Features include a 3D flood visualization map, an AI-powered chatbot interface, and text notifications.
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.section>
 
               {/* Certifications Section */}
               <motion.section
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                id="certifications"
+                initial="hidden"
+                whileInView="show"
                 viewport={{ once: true, margin: "-100px" }}
-                className="relative z-10 block"
+                variants={containerVariants}
+                className="relative z-10 block scroll-mt-32"
               >
-                <div className="flex items-center gap-6 mb-8 ml-[8px]">
+                <motion.div variants={itemVariants} className="flex items-center gap-6 mb-8 ml-[8px]">
                   <div className="icon-circle border-teal-500 text-teal-500 shadow-[0_0_15px_rgba(20,184,166,0.5)]">
                     <BadgeCheck className="w-5 h-5" />
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Certifications</h2>
-                </div>
+                </motion.div>
                 
                 <div className="relative space-y-10 group">
                   {/* Certification 1 */}
-                  <div className="relative pl-[56px] md:pl-[64px] py-2">
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.8)]" />
-                    <div className="timeline-card group-hover:border-teal-500/30 relative">
+                    <div className="timeline-card hover:border-teal-500/30 relative">
                       <div className="relative mb-6 md:absolute md:top-4 md:right-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)]">
-                        <img src="/assets/badges/badge8.png" alt="Meta Front-End Developer" className="w-full h-full object-contain" />
+                        <img 
+                          src="/assets/badges/badge8.png" 
+                          alt="Meta Front-End Developer" 
+                          className="w-full h-full object-contain" 
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pr-16 md:pr-20">Meta Front-End Developer</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -657,19 +752,25 @@ export default function DigitalResumePage() {
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
-                          <span className="mr-3 text-teal-500 mt-1">◦</span>
+                          <span className="mr-3 text-teal-500 mt-1">•</span>
                           Designed by Meta software engineering experts, this program covers building interactive web pages with React, HTML5, and CSS. Includes hands-on projects focusing on UI/UX principles, version control, and building a full front-end application capstone.
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </motion.div>
 
                   {/* Certification 2 */}
-                  <div className="relative pl-[56px] md:pl-[64px] py-2">
-                    <div className="timeline-dot bg-teal-500/80 shadow-[0_0_8px_rgba(20,184,166,0.5)] hover:bg-teal-500" />
-                    <div className="timeline-card group-hover:border-teal-500/30 relative">
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.8)]" />
+                    <div className="timeline-card hover:border-teal-500/30 relative">
                       <div className="relative mb-6 md:absolute md:top-4 md:right-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)]">
-                        <img src="/assets/badges/badge7.png" alt="Microsoft UX Design" className="w-full h-full object-contain" />
+                        <img 
+                          src="/assets/badges/badge7.png" 
+                          alt="Microsoft UX Design" 
+                          className="w-full h-full object-contain" 
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pr-16 md:pr-20">Microsoft UX Design</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -683,19 +784,25 @@ export default function DigitalResumePage() {
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
-                          <span className="mr-3 text-teal-500 mt-1">◦</span>
+                          <span className="mr-3 text-teal-500 mt-1">•</span>
                           Earned a professional certificate in UX Design, gaining proficiency in user research, wireframing, prototyping, visual design, and accessibility.
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </motion.div>
 
                   {/* Certification 3 */}
-                  <div className="relative pl-[56px] md:pl-[64px] py-2">
-                    <div className="timeline-dot bg-teal-500/60 shadow-[0_0_8px_rgba(20,184,166,0.4)] hover:bg-teal-500" />
-                    <div className="timeline-card group-hover:border-teal-500/30 relative">
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.8)]" />
+                    <div className="timeline-card hover:border-teal-500/30 relative">
                       <div className="relative mb-6 md:absolute md:top-4 md:right-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)]">
-                        <img src="/assets/badges/badge6.png" alt="Google UX Design" className="w-full h-full object-contain" />
+                        <img 
+                          src="/assets/badges/badge6.png" 
+                          alt="Google UX Design" 
+                          className="w-full h-full object-contain" 
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pr-16 md:pr-20">Google UX Design</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -709,12 +816,12 @@ export default function DigitalResumePage() {
                       </div>
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
-                          <span className="mr-3 text-teal-500 mt-1">◦</span>
+                          <span className="mr-3 text-teal-500 mt-1">•</span>
                           Completed a 7-course series regarding UX design program covering user research, wireframing, prototyping, and usability testing.
                         </li>
                       </ul>
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.section>
 
@@ -723,29 +830,33 @@ export default function DigitalResumePage() {
 
           {/* Toolbox Section */}
           <motion.section
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            id="toolbox"
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            className="section-card"
+            variants={containerVariants}
+            className="section-card scroll-mt-32"
           >
-            <div className="flex items-center justify-center md:justify-start gap-3 mb-8">
+            <motion.div variants={itemVariants} className="flex items-center justify-center md:justify-start gap-3 mb-8">
               <Code2 className="text-rose-400 w-6 h-6" />
               <h2 className="text-2xl font-bold tracking-tight text-center md:text-left">Tools Used</h2>
-            </div>
+            </motion.div>
             
             <div className="flex flex-wrap justify-center gap-4">
               {toolboxIcons.map((icon, idx) => (
-                <div 
+                <motion.div 
                   key={idx} 
+                  variants={itemVariants}
                   className="group toolbox-icon"
                 >
                   <img 
                     src={icon} 
                     alt="Tech Stack Icon" 
                     className="w-full h-full object-contain transition-transform duration-300 drop-shadow-[0_0_5px_rgba(255,255,255,0.2)] group-hover:scale-110 group-hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]" 
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
                   />
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.section>

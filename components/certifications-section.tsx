@@ -214,6 +214,8 @@ export function CertificationsSection() {
                       width={80}
                       height={80}
                       className="w-full h-full object-contain"
+                      draggable={false}
+                      onContextMenu={(e) => e.preventDefault()}
                     />
                   </div>
                 </motion.div>
@@ -308,6 +310,8 @@ export function CertificationsSection() {
                     alt={selectedCertification.title}
                     fill
                     className="object-contain"
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
                   />
                 )}
               </div>

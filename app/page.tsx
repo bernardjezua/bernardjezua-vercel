@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect } from "react";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { LoadingScreen } from "@/components/loading-screen";
@@ -11,6 +14,10 @@ import { ContactSection } from "@/components/contact-section";
 import { FloatingActionButton } from "@/components/floating-action-btn";
 
 export default function Home() {
+  useEffect(() => {
+    // Standard effect for initialization if needed
+  }, [])
+
   return (
     <LoadingScreen>
       <div className="bg-[#0a0a0a] min-h-screen">

@@ -134,6 +134,8 @@ export function DesignsSection() {
                     alt={design.title}
                     fill
                     className="object-cover rounded-sm"
+                    draggable={false}
+                    onContextMenu={(e) => e.preventDefault()}
                   />
                 </div>
               </div>
@@ -223,6 +225,8 @@ export function DesignsSection() {
                         alt={selectedDesign.title}
                         fill
                         className="object-cover"
+                        draggable={false}
+                        onContextMenu={(e) => e.preventDefault()}
                       />
                     )}
                   </div>

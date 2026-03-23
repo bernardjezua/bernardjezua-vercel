@@ -1,5 +1,5 @@
 .resume-header-card {
-  @apply relative w-full rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-md p-6 md:p-10 shadow-2xl flex flex-col md:flex-row items-center gap-6 md:gap-8;
+  @apply relative w-full rounded-[2rem] border border-white/10 bg-white/5 backdrop-blur-md p-6 md:p-10 shadow-2xl flex flex-col md:flex-row items-center gap-4 md:gap-8;
 }
 
 .download-btn {
