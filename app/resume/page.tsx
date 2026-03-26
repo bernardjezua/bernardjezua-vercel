@@ -5,6 +5,9 @@ import { motion, useScroll, useSpring } from "framer-motion"
 import { Home, Briefcase, GraduationCap, Award, Users, Code2, Mail, Linkedin, Github, ArrowUp, Download, BadgeCheck, FolderKanban } from "lucide-react"
 import Link from "next/link"
 import { ShaderGradientCanvas, ShaderGradient } from "@shadergradient/react"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
+import { ChevronDown, X } from "lucide-react"
 import "./styles.css"
 
 const containerVariants = {
@@ -55,6 +58,7 @@ export default function DigitalResumePage() {
   const idleTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const [showTopBtn, setShowTopBtn] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null)
 
   // Smooth springs for the comet cursor
   const springX = useSpring(0, { stiffness: 800, damping: 40 })
@@ -326,10 +330,13 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
                     <div className="timeline-card hover:border-blue-500/30 relative">
-                      <div className="story-box">
+                      <div 
+                        className="story-box story-box-blue"
+                        onClick={() => setSelectedImage({ src: "/assets/pictures/experience_00.jpg", alt: "Experience" })}
+                      >
                         <img src="/assets/pictures/experience_00.jpg" alt="Experience" />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">Software Engineer Intern</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">Software Engineer Intern</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-blue-500/10 text-blue-400 border-blue-500/20">
                           June 2025 - Aug 2025
@@ -373,10 +380,13 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
                     <div className="timeline-card hover:border-purple-500/30 relative">
-                      <div className="story-box">
+                      <div 
+                        className="story-box story-box-purple"
+                        onClick={() => setSelectedImage({ src: "/assets/pictures/involvement_03.jpg", alt: "Involvement" })}
+                      >
                         <img src="/assets/pictures/involvement_03.jpg" alt="Involvement" />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">Membership Division Head</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">Membership Division Head</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-purple-500/10 text-purple-400 border-purple-500/20">
                           Sept. 2025 – Present
@@ -401,10 +411,13 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
                     <div className="timeline-card hover:border-purple-500/30 relative">
-                      <div className="story-box">
+                      <div 
+                        className="story-box story-box-purple"
+                        onClick={() => setSelectedImage({ src: "/assets/pictures/involvement_02.png", alt: "Involvement" })}
+                      >
                         <img src="/assets/pictures/involvement_02.png" alt="Involvement" />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">Programs Committee Member</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">Programs Committee Member</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-purple-500/10 text-purple-400 border-purple-500/20">
                           Nov. 2023 - Feb. 2024
@@ -425,7 +438,10 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
                     <div className="timeline-card hover:border-purple-500/30 relative">
-                      <div className="story-box">
+                      <div 
+                        className="story-box story-box-purple"
+                        onClick={() => setSelectedImage({ src: "/assets/pictures/involvement_01.jpg", alt: "Involvement" })}
+                      >
                         <img 
                           src="/assets/pictures/involvement_01.jpg" 
                           alt="Involvement" 
@@ -433,7 +449,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">External Affairs Committee Member</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">External Affairs Committee Member</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-purple-500/10 text-purple-400 border-purple-500/20">
                           Sept. 2023 – Apr. 2024
@@ -458,7 +474,10 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
                     <div className="timeline-card hover:border-purple-500/30 relative">
-                      <div className="story-box">
+                      <div 
+                        className="story-box story-box-purple"
+                        onClick={() => setSelectedImage({ src: "/assets/pictures/involvement_00.png", alt: "Involvement" })}
+                      >
                         <img 
                           src="/assets/pictures/involvement_00.png" 
                           alt="Involvement" 
@@ -466,14 +485,14 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">CASFC Chairperson</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">CASFC Chairperson</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-purple-500/10 text-purple-400 border-purple-500/20">
                           Aug. 2022 – Oct. 2022
                         </span>
                       </div>
                       
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 mt-4 text-white/90 tracking-tight pr-16 md:pr-20">ICS Representative</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 mt-4 text-white/90 tracking-tight pl-16 md:pl-20">ICS Representative</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-purple-500/10 text-purple-400 border-purple-500/20">
                           Sept. 2021 – Aug. 2022
@@ -517,7 +536,10 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.8)]" />
                     <div className="timeline-card hover:border-sky-500/30 relative">
-                      <div className="story-box">
+                      <div 
+                        className="story-box story-box-sky"
+                        onClick={() => setSelectedImage({ src: "/assets/projs/pivot.png", alt: "PIVOT-PROFS" })}
+                      >
                         <img 
                           src="/assets/projs/pivot.png" 
                           alt="PIVOT-PROFS" 
@@ -525,7 +547,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">PIVOT-PROFS: Profile & Records Organization for Faculty Service</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">PIVOT-PROFS: Profile & Records Organization for Faculty Service</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
                           June 2025 - Aug. 2025
@@ -547,7 +569,10 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.8)]" />
                     <div className="timeline-card hover:border-sky-500/30 relative">
-                      <div className="story-box">
+                      <div 
+                        className="story-box story-box-sky"
+                        onClick={() => setSelectedImage({ src: "/assets/designs/cosmarket.png", alt: "CosMarket" })}
+                      >
                         <img 
                           src="/assets/designs/cosmarket.png" 
                           alt="CosMarket" 
@@ -555,7 +580,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">CosMarket: Buy, Sell, and Rent Cosplays</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">CosMarket: Buy, Sell, and Rent Cosplays</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
                           Mar. 2025 - May 2025
@@ -577,7 +602,10 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.8)]" />
                     <div className="timeline-card hover:border-sky-500/30 relative">
-                      <div className="story-box">
+                      <div 
+                        className="story-box story-box-sky"
+                        onClick={() => setSelectedImage({ src: "/assets/projs/astra.png", alt: "ICS-ASTRA" })}
+                      >
                         <img 
                           src="/assets/projs/astra.png" 
                           alt="ICS-ASTRA" 
@@ -585,7 +613,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">ICS-ASTRA: Alumni Synced Tracker for Relations and Advancement</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">ICS-ASTRA: Alumni Synced Tracker for Relations and Advancement</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
                           Feb. 2025 - May 2025
@@ -607,7 +635,10 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.8)]" />
                     <div className="timeline-card hover:border-sky-500/30 relative">
-                      <div className="story-box">
+                      <div 
+                        className="story-box story-box-sky"
+                        onClick={() => setSelectedImage({ src: "https://raw.githubusercontent.com/bernardjezua/traveler/main/docs/profile.png", alt: "Traveler" })}
+                      >
                         <img 
                           src="https://raw.githubusercontent.com/bernardjezua/traveler/main/docs/profile.png" 
                           alt="Traveler" 
@@ -615,7 +646,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">Traveler: A Genshin-Inspired Slam Book Mobile Application</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">Traveler: A Genshin-Inspired Slam Book Mobile Application</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
                           June 2024 - July 2024
@@ -637,7 +668,10 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.8)]" />
                     <div className="timeline-card hover:border-sky-500/30 relative">
-                      <div className="story-box">
+                      <div 
+                        className="story-box story-box-sky"
+                        onClick={() => setSelectedImage({ src: "/assets/projs/foodup.png", alt: "FoodUP" })}
+                      >
                         <img 
                           src="/assets/projs/foodup.png" 
                           alt="FoodUP" 
@@ -645,7 +679,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pr-16 md:pr-20">FoodUP: Food and Restaurant Review Application</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">FoodUP: Food and Restaurant Review Application</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
                           Feb. 2024 - June 2024
@@ -686,10 +720,13 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
                     <div className="timeline-card group-hover:border-amber-500/30 relative">
-                      <div className="story-box">
+                      <div 
+                        className="story-box story-box-amber"
+                        onClick={() => setSelectedImage({ src: "/assets/pictures/award_00.jpg", alt: "Award" })}
+                      >
                         <img src="/assets/pictures/award_00.jpg" alt="Award" />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pr-16 md:pr-20">1st Runner Up, 42nd CS Week WarFrames Web Design Competition</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pl-16 md:pl-20">1st Runner Up, 42nd CS Week WarFrames Web Design Competition</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-amber-500/10 text-amber-400 border-amber-500/20">
                           Feb. 2026
@@ -731,7 +768,7 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.8)]" />
                     <div className="timeline-card hover:border-teal-500/30 relative">
-                      <div className="relative mb-6 md:absolute md:top-4 md:right-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)]">
+                    <div className="relative mb-6 md:absolute md:top-4 md:left-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] border border-teal-500/30">
                         <img 
                           src="/assets/badges/badge8.png" 
                           alt="Meta Front-End Developer" 
@@ -740,7 +777,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pr-16 md:pr-20">Meta Front-End Developer</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pl-16 md:pl-20">Meta Front-End Developer</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-teal-500/10 text-teal-400 border-teal-500/20">
                           Feb. 2026
@@ -763,7 +800,7 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.8)]" />
                     <div className="timeline-card hover:border-teal-500/30 relative">
-                      <div className="relative mb-6 md:absolute md:top-4 md:right-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)]">
+                    <div className="relative mb-6 md:absolute md:top-4 md:left-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] border border-teal-500/30">
                         <img 
                           src="/assets/badges/badge7.png" 
                           alt="Microsoft UX Design" 
@@ -772,7 +809,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pr-16 md:pr-20">Microsoft UX Design</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pl-16 md:pl-20">Microsoft UX Design</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-teal-500/10 text-teal-400 border-teal-500/20">
                           Nov. 2025
@@ -795,7 +832,7 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.8)]" />
                     <div className="timeline-card hover:border-teal-500/30 relative">
-                      <div className="relative mb-6 md:absolute md:top-4 md:right-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)]">
+                    <div className="relative mb-6 md:absolute md:top-4 md:left-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] border border-teal-500/30">
                         <img 
                           src="/assets/badges/badge6.png" 
                           alt="Google UX Design" 
@@ -804,7 +841,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pr-16 md:pr-20">Google UX Design</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pl-16 md:pl-20">Google UX Design</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-teal-500/10 text-teal-400 border-teal-500/20">
                           May 2025
@@ -898,6 +935,49 @@ export default function DigitalResumePage() {
       >
         <ArrowUp size={20} className="group-hover:-translate-y-0.5 transition-transform duration-300" />
       </button>
+
+      {/* Image Preview Modal */}
+      <Dialog 
+        open={!!selectedImage} 
+        onOpenChange={(open) => !open && setSelectedImage(null)}
+      >
+        <DialogContent className="w-auto max-w-[95vw] h-auto max-h-[95dvh] bg-black/95 border-white/10 p-0 overflow-hidden flex flex-col items-center justify-center [&>button]:hidden z-[200] rounded-xl">
+           {/* Custom Close/Back Button */}
+           <div className="absolute top-4 left-4 z-50">
+            <DialogClose asChild>
+              <Button 
+                variant="ghost" 
+                className="text-white hover:bg-white/20 hover:text-white gap-2 px-3 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none backdrop-blur-md bg-black/20 rounded-full border border-white/10"
+              >
+                <X size={18} />
+                <span className="text-sm font-bold uppercase tracking-widest hidden sm:inline-block">Close</span>
+              </Button>
+            </DialogClose>
+          </div>
+
+          <div className="relative p-2 sm:p-4 flex flex-col items-center">
+            {selectedImage && (
+              <div className="relative flex items-center justify-center">
+                <img
+                  src={selectedImage.src}
+                  alt={selectedImage.alt}
+                  className="max-w-[90vw] max-h-[80vh] object-contain rounded-lg shadow-2xl"
+                  draggable={false}
+                  onContextMenu={(e) => e.preventDefault()}
+                />
+              </div>
+            )}
+            
+            {selectedImage && (
+              <div className="mt-4 text-center px-4 pb-2">
+                <h3 className="text-lg md:text-xl font-bold tracking-tight text-white/90">
+                  {selectedImage.alt}
+                </h3>
+              </div>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
 
     </main>
   )
