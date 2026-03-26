@@ -336,7 +336,7 @@ export default function DigitalResumePage() {
                       >
                         <img src="/assets/pictures/experience_00.jpg" alt="Experience" />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">Software Engineer Intern</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight md:pr-24">Software Engineer Intern</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-blue-500/10 text-blue-400 border-blue-500/20">
                           June 2025 - Aug 2025
@@ -386,7 +386,7 @@ export default function DigitalResumePage() {
                       >
                         <img src="/assets/pictures/involvement_03.jpg" alt="Involvement" />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">Membership Division Head</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight md:pr-24">Membership Division Head</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-purple-500/10 text-purple-400 border-purple-500/20">
                           Sept. 2025 – Present
@@ -417,7 +417,7 @@ export default function DigitalResumePage() {
                       >
                         <img src="/assets/pictures/involvement_02.png" alt="Involvement" />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">Programs Committee Member</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight md:pr-24">Programs Committee Member</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-purple-500/10 text-purple-400 border-purple-500/20">
                           Nov. 2023 - Feb. 2024
@@ -449,7 +449,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">External Affairs Committee Member</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight md:pr-24">External Affairs Committee Member</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-purple-500/10 text-purple-400 border-purple-500/20">
                           Sept. 2023 – Apr. 2024
@@ -485,14 +485,14 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">CASFC Chairperson</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight md:pr-24">CASFC Chairperson</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-purple-500/10 text-purple-400 border-purple-500/20">
                           Aug. 2022 – Oct. 2022
                         </span>
                       </div>
                       
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 mt-4 text-white/90 tracking-tight pl-16 md:pl-20">ICS Representative</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 mt-4 text-white/90 tracking-tight md:pr-24">ICS Representative</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-purple-500/10 text-purple-400 border-purple-500/20">
                           Sept. 2021 – Aug. 2022
@@ -547,7 +547,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">PIVOT-PROFS: Profile & Records Organization for Faculty Service</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight md:pr-24">PIVOT-PROFS: Profile & Records Organization for Faculty Service</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
                           June 2025 - Aug. 2025
@@ -580,7 +580,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">CosMarket: Buy, Sell, and Rent Cosplays</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight md:pr-24">CosMarket: Buy, Sell, and Rent Cosplays</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
                           Mar. 2025 - May 2025
@@ -613,7 +613,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">ICS-ASTRA: Alumni Synced Tracker for Relations and Advancement</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight md:pr-24">ICS-ASTRA: Alumni Synced Tracker for Relations and Advancement</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
                           Feb. 2025 - May 2025
@@ -646,7 +646,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">Traveler: A Genshin-Inspired Slam Book Mobile Application</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight md:pr-24">Traveler: A Genshin-Inspired Slam Book Mobile Application</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
                           June 2024 - July 2024
@@ -679,7 +679,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight pl-16 md:pl-20">FoodUP: Food and Restaurant Review Application</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight md:pr-24">FoodUP: Food and Restaurant Review Application</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
                           Feb. 2024 - June 2024
@@ -726,7 +726,7 @@ export default function DigitalResumePage() {
                       >
                         <img src="/assets/pictures/award_00.jpg" alt="Award" />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pl-16 md:pl-20">1st Runner Up, 42nd CS Week WarFrames Web Design Competition</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight md:pr-24">1st Runner Up, 42nd CS Week WarFrames Web Design Competition</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-amber-500/10 text-amber-400 border-amber-500/20">
                           Feb. 2026
@@ -768,7 +768,7 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.8)]" />
                     <div className="timeline-card hover:border-teal-500/30 relative">
-                    <div className="relative mb-6 md:absolute md:top-4 md:left-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] border border-teal-500/30">
+                    <div className="relative mb-6 md:absolute md:top-4 md:right-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] border border-teal-500/30">
                         <img 
                           src="/assets/badges/badge8.png" 
                           alt="Meta Front-End Developer" 
@@ -777,7 +777,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pl-16 md:pl-20">Meta Front-End Developer</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight md:pr-24">Meta Front-End Developer</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-teal-500/10 text-teal-400 border-teal-500/20">
                           Feb. 2026
@@ -800,7 +800,7 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.8)]" />
                     <div className="timeline-card hover:border-teal-500/30 relative">
-                    <div className="relative mb-6 md:absolute md:top-4 md:left-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] border border-teal-500/30">
+                    <div className="relative mb-6 md:absolute md:top-4 md:right-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] border border-teal-500/30">
                         <img 
                           src="/assets/badges/badge7.png" 
                           alt="Microsoft UX Design" 
@@ -809,7 +809,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pl-16 md:pl-20">Microsoft UX Design</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight md:pr-24">Microsoft UX Design</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-teal-500/10 text-teal-400 border-teal-500/20">
                           Nov. 2025
@@ -832,7 +832,7 @@ export default function DigitalResumePage() {
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-teal-500 shadow-[0_0_8px_rgba(20,184,166,0.8)]" />
                     <div className="timeline-card hover:border-teal-500/30 relative">
-                    <div className="relative mb-6 md:absolute md:top-4 md:left-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] border border-teal-500/30">
+                    <div className="relative mb-6 md:absolute md:top-4 md:right-4 w-16 h-16 md:w-20 md:h-20 flex items-center justify-center shrink-0 z-20 rounded-full transition-all duration-300 hover:shadow-[0_0_25px_rgba(20,184,166,0.4)] border border-teal-500/30">
                         <img 
                           src="/assets/badges/badge6.png" 
                           alt="Google UX Design" 
@@ -841,7 +841,7 @@ export default function DigitalResumePage() {
                           onContextMenu={(e) => e.preventDefault()}
                         />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight pl-16 md:pl-20">Google UX Design</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight md:pr-24">Google UX Design</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-teal-500/10 text-teal-400 border-teal-500/20">
                           May 2025
@@ -874,8 +874,10 @@ export default function DigitalResumePage() {
             variants={containerVariants}
             className="section-card scroll-mt-32"
           >
-            <motion.div variants={itemVariants} className="flex items-center justify-center md:justify-start gap-3 mb-8">
-              <Code2 className="text-rose-400 w-6 h-6" />
+            <motion.div variants={itemVariants} className="flex items-center justify-center md:justify-start gap-4 mb-8">
+              <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center shadow-[0_0_15px_rgba(251,113,133,0.4)] border border-rose-400/20 shrink-0">
+                <Code2 className="text-rose-400 w-6 h-6" />
+              </div>
               <h2 className="text-2xl font-bold tracking-tight text-center md:text-left">Tools Used</h2>
             </motion.div>
             
