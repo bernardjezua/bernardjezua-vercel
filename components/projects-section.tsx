@@ -83,10 +83,10 @@ export function ProjectsSection() {
       date: "February - June 2024",
     },
     {
-      title: "HATID: An E-Commerce Application",
+      title: "HATID: Agricultural E-Commerce Web Application",
       image: "/assets/projs/hatid.png",
       description:
-        "HATID is an e-commerce platform design idea for the Department of Agriculture (DA) to efficiently manage the distribution of agricultural products to the public market.",
+        "HATID is an e-commerce solution designed for the Department of Agriculture (DA). HATID (meaning 'to deliver' or 'to bring') streamlines the distribution of agricultural products, connecting farmers directly to the public market through an efficient, transparent, and user-friendly digital ecosystem.",
       links: [{ text: "GitHub", url: "https://github.com/bernardjezua/hatid" }],
       skills: ["React", "Express", "Node.js", "MongoDB", "Tailwind CSS"],
       date: "November 2023 - January 2024",
