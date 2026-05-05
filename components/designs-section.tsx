@@ -159,30 +159,31 @@ export function DesignsSection() {
               </div>
 
               <div className="flex justify-between items-start gap-4">
-                <div className="flex-1 min-w-0 pr-4">
+                <div className="flex-1 min-w-0">
                   <h3 className="text-xl md:text-2xl font-bold mb-3 group-hover:text-bern-blue transition-colors duration-300 truncate whitespace-normal">
                     {design.title}
                   </h3>
-                  <div className="flex flex-wrap gap-2 mb-2">
-                    {design.award && (
-                      <span className="px-2 py-1 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-500 text-[10px] uppercase font-bold tracking-widest rounded-sm border border-yellow-500/30">
-                        🏆 {design.award}
-                      </span>
-                    )}
-                    {design.skills.slice(0, 3).map((skill) => (
-                      <span
-                        key={skill}
-                        className="design-skill-badge"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
                 </div>
                 <div className="design-arrow-btn">
                   <ArrowUpRight className="absolute w-5 h-5 transition-transform duration-300 group-hover:translate-x-[150%] group-hover:-translate-y-[150%]" />
                   <ArrowUpRight className="absolute w-5 h-5 -translate-x-[150%] translate-y-[150%] transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0" />
                 </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2 mb-2 mt-2">
+                {design.award && (
+                  <span className="px-2 py-1 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-500 text-[10px] uppercase font-bold tracking-widest rounded-sm border border-yellow-500/30">
+                    🏆 {design.award}
+                  </span>
+                )}
+                {design.skills.slice(0, 3).map((skill) => (
+                  <span
+                    key={skill}
+                    className="design-skill-badge"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
             </motion.div>
           ))}

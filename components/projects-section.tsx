@@ -174,25 +174,26 @@ export function ProjectsSection() {
               </div>
 
               <div className="flex justify-between items-start gap-4">
-                <div>
+                <div className="flex-1 min-w-0">
                   <h3 className="text-xl md:text-2xl font-bold mb-3 group-hover:text-bern-blue transition-colors duration-300">
                     {project.title}
                   </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {project.skills.slice(0, 3).map((skill) => (
-                      <span
-                        key={skill}
-                        className="project-skill-badge"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
                 </div>
                 <div className="project-arrow-btn">
                   <ArrowUpRight className="absolute w-5 h-5 transition-transform duration-300 group-hover:translate-x-[150%] group-hover:-translate-y-[150%]" />
                   <ArrowUpRight className="absolute w-5 h-5 -translate-x-[150%] translate-y-[150%] transition-transform duration-300 group-hover:translate-x-0 group-hover:translate-y-0" />
                 </div>
+              </div>
+
+              <div className="flex flex-wrap gap-2 mt-2">
+                {project.skills.slice(0, 3).map((skill) => (
+                  <span
+                    key={skill}
+                    className="project-skill-badge"
+                  >
+                    {skill}
+                  </span>
+                ))}
               </div>
             </motion.div>
           ))}
