@@ -104,7 +104,7 @@ export function AboutSection() {
                   <FolderKanban className="h-4 w-4 md:h-5 md:w-5 text-white" />
                 </div>
                 <h4 className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold mb-2 text-white shadow-sm leading-tight tracking-tight">Building Things</h4>
-                <p className="text-white/90 text-[11px] md:text-xs lg:text-sm font-medium leading-relaxed">10+ web and mobile projects completed during my years in the university.</p>
+                <p className="text-white/90 text-[11px] md:text-xs lg:text-sm font-medium leading-relaxed">15+ software and design projects done throughout my years as a student. 2x recognized as a UX Design awardee (1st Runner-Up).</p>
               </div>
             </div>
           </motion.div>

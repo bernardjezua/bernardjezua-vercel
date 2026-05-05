@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowUpRight, ExternalLink, ChevronDown } from "lucide-react"
+import { ArrowUpRight, ExternalLink, ChevronDown, ChevronUp } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
@@ -25,13 +25,16 @@ interface Design {
 
 export function DesignsSection() {
   const [selectedDesign, setSelectedDesign] = useState<Design | null>(null)
+  const [showAll, setShowAll] = useState(false)
 
   const designs: Design[] = [
     {
       title: "Trackify: An Inventory Management System for University Logistics",
       image: "/assets/designs/trackify.png",
       description: "Trackify is an inventory management system built to handle demands for campus institutions. It has features such as real-time borrow tracking, barcode integration, overdue return alerts, damage logs, bulk processing, and analytical reports. The system aims to make the inventory process easier for property custodians and logistical staff. This design won 2nd place out of 35 teams in the Enterprise category for the Protothon 2026, an international online UX design competition hosted by DubsTech UW and Design Buddies.",
-      links: [{text: "View Prototype", url: "https://www.figma.com/proto/hQF02ka1GxlybupM4Nlux3/Trackify-by-memoa.dev?node-id=0-1&t=j3AbChMaV5Bwysgt-1"}, {text: "Slide Deck", url: "https://canva.link/4dufmvv0e0qtcxf"}],
+      links: [
+        {text: "View Prototype", url: "https://www.figma.com/proto/hQF02ka1GxlybupM4Nlux3/Trackify-by-memoa.dev?node-id=0-1&t=j3AbChMaV5Bwysgt-1"},
+        {text: "Presentation", url: "https://canva.link/4dufmvv0e0qtcxf"}],
       skills: ["Figma", "Canva"],
       date: "May 2026",
       award: "1st Runner-Up"
@@ -40,7 +43,10 @@ export function DesignsSection() {
       title: "Alerto.ai: A Nationwide Flood Intelligence Powered by Project NOAH",
       image: "/assets/designs/alerto.png",
       description: "Alerto is a centralized, AI-driven intelligence web app prototype for Filipinos to visualize real-time flood risks, understand contributing factors, and prepare for potential disaster. It's main features consist of three, a nationwide 3D map, an AI assisted chat bot, and text alerts. Alerto scored 88.875 and placed 1st Runner Up among 17 teams in the 42nd Computer Science Week WarFrames Web Design Competition.",
-      links: [{text: "View Prototype", url: "https://www.figma.com/design/J2JAe6kOOFEN7oFOHiucg8/Alerto.ai-by-Indev.UG?node-id=0-1&m=dev&t=dhLHF9Qfsx5rg5rj-1"}],
+      links: [
+        {text: "View Prototype", url: "https://www.figma.com/design/J2JAe6kOOFEN7oFOHiucg8/Alerto.ai-by-Indev.UG?node-id=0-1&m=dev&t=dhLHF9Qfsx5rg5rj-1"},
+        {text: "Presentation", url: "https://drive.google.com/file/d/1GcXBJGfhshyTrNnbnc6DkQDgDivSTnJT/view?usp=drive_link"},
+      ],
       skills: ["Figma"],
       date: "February 2026",
       award: "1st Runner-Up"
@@ -89,17 +95,20 @@ export function DesignsSection() {
       skills: ["Figma", "Photoshop", "Canva"],
       date: "Mar - May 2024",
     },
-    {
-      title: "Tic Tac Toe: Galaxy Edition",
-      image: "/assets/designs/tictac.png",
-      description: "A cosmic twist on the classic game! Play Tic Tac Toe against a friend or an AI with a stunning galaxy-themed design. Featuring our own Moon and our neighbor, Mars as the game pieces. May the best cosmic being win!",
-      links: [
-        { text: "View", url: "https://www.figma.com/proto/zCbU0k4iwFtB5iqcFvYr0g/Tic-Tac-Toe?page-id=0%3A1&node-id=27-2&viewport=972%2C233%2C0.38&t=RU4itHnDbUHLmwmw-1&scaling=min-zoom&content-scaling=fixed" },
-      ],
-      skills: ["Figma", "Canva"],
-      date: "Jan 2024",
-    },
+    // {
+    //   title: "Tic Tac Toe: Galaxy Edition",
+    //   image: "/assets/designs/tictac.png",
+    //   description: "A cosmic twist on the classic game! Play Tic Tac Toe against a friend or an AI with a stunning galaxy-themed design. Featuring our own Moon and our neighbor, Mars as the game pieces. May the best cosmic being win!",
+    //   links: [
+    //     { text: "View", url: "https://www.figma.com/proto/zCbU0k4iwFtB5iqcFvYr0g/Tic-Tac-Toe?page-id=0%3A1&node-id=27-2&viewport=972%2C233%2C0.38&t=RU4itHnDbUHLmwmw-1&scaling=min-zoom&content-scaling=fixed" },
+    //   ],
+    //   skills: ["Figma", "Canva"],
+    //   date: "Jan 2024",
+    // },
   ]
+
+  const visibleDesigns = showAll ? designs : designs.slice(0, 6)
+  const hasMoreToShow = designs.length > 6
 
   return (
     <section id="designs" className="py-32 px-8 md:px-20 border-t border-white/10 bg-[#121212] text-white">
@@ -120,17 +129,17 @@ export function DesignsSection() {
             </h3>
           </div>
           <p className="max-w-xs text-white/50 text-sm ">
-            Showcasing high-fidelity prototypes and user-centric design solutions.
+            Showcasing high-fidelity prototypes and user-centric design solutions. Click on a card to interact with my prototypes. You can also view case studies or presentations if available.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mt-12">
-          {designs.map((design, index) => (
+          {visibleDesigns.map((design, index) => (
             <motion.div
               key={design.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index < 6 ? index * 0.1 : (index - 6) * 0.1 }}
               viewport={{ once: true }}
               className="group design-card"
               onClick={() => setSelectedDesign(design)}
@@ -178,6 +187,32 @@ export function DesignsSection() {
             </motion.div>
           ))}
         </div>
+
+        {hasMoreToShow && (
+          <div className="flex justify-center mt-16">
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="group view-all-btn"
+            >
+              <span className="text-xs font-bold uppercase tracking-[0.2em] mr-3">
+                {showAll ? "Show Less" : "View All Designs"}
+              </span>
+              <div className="relative w-4 h-4 overflow-hidden flex items-center justify-center">
+                {showAll ? (
+                  <>
+                    <ChevronUp className="absolute w-4 h-4 transition-transform duration-300 group-hover:-translate-y-[150%]" />
+                    <ChevronUp className="absolute w-4 h-4 translate-y-[150%] transition-transform duration-300 group-hover:translate-y-0" />
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="absolute w-4 h-4 transition-transform duration-300 group-hover:translate-y-[150%]" />
+                    <ChevronDown className="absolute w-4 h-4 -translate-y-[150%] transition-transform duration-300 group-hover:translate-y-0" />
+                  </>
+                )}
+              </div>
+            </button>
+          </div>
+        )}
       </div>
 
       <Dialog
@@ -283,7 +318,7 @@ export function DesignsSection() {
                 
                 <div className="flex flex-wrap gap-3 w-full">
                   {selectedDesign?.links?.map((link, i) => (
-                    <Button key={i} asChild variant={i === 0 ? "default" : "outline"} className={`rounded-none uppercase tracking-widest text-[10px] sm:text-xs font-bold gap-2 py-4 px-6 ${i === 0 ? "bg-bern-blue hover:bg-bern-blue/90 text-white hover:text-white" : "border-white/10 text-white hover:bg-white/5 hover:text-white"}`}>
+                    <Button key={i} asChild variant={i === 0 ? "default" : "outline"} className={`rounded-none uppercase tracking-widest text-[10px] sm:text-xs font-bold gap-2 py-4 px-6 ${i === 0 ? "bg-bern-blue hover:bg-bern-blue/90 text-white hover:text-white" : "bg-white text-black hover:bg-zinc-200 border-none hover:text-black"}`}>
                       <a
                         href={link.url}
                         target="_blank"

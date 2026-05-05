@@ -128,6 +128,10 @@ export default function DigitalResumePage() {
     "https://profilinator.rishav.dev/skills-assets/mongodb-original-wordmark.svg",
     "https://profilinator.rishav.dev/skills-assets/firebase.png",
     "https://profilinator.rishav.dev/skills-assets/git-scm-icon.svg",
+    "https://cdn.brandfetch.io/id9mVQlyB1/w/400/h/400/theme/dark/icon.jpeg?c=1dxbfHSJFAPEGdCLU4o5B",
+    "https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg",
+    "https://upload.wikimedia.org/wikipedia/commons/b/b6/Adobe_Photoshop_Lightroom_CC_logo.svg",
+    "https://cdn-1.webcatalog.io/catalog/adobe-stock/adobe-stock-icon-filled-256.webp?v=1714773139376",
   ]
 
   return (
@@ -538,6 +542,72 @@ export default function DigitalResumePage() {
                     <div className="timeline-card hover:border-sky-500/30 relative">
                       <div 
                         className="story-box story-box-sky"
+                        onClick={() => setSelectedImage({ src: "/assets/designs/trackify.png", alt: "Trackify" })}
+                      >
+                        <img 
+                          src="/assets/designs/trackify.png" 
+                          alt="Trackify" 
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight md:pr-24">Trackify: An Inventory Management System for University Logistics</h3>
+                      <div className="flex flex-wrap items-center gap-3 mb-5">
+                        <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
+                          May 2026
+                        </span>
+                      </div>
+                      <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
+                        <li className="flex items-start">
+                          <span className="mr-3 text-sky-500 mt-1">•</span>
+                          Designed a high-fidelity enterprise inventory system within a 24-hour timeframe, ensuring design system consistency and scalability.
+                        </li>
+                        <li className="flex items-start">
+                          <span className="mr-3 text-sky-500 mt-1">•</span>
+                          Optimized large-scale logistics with real-time tracking, barcode integration, automated alerts, and comprehensive analytical reporting.
+                        </li>
+                      </ul>
+                    </div>
+                  </motion.div>
+
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.8)]" />
+                    <div className="timeline-card hover:border-sky-500/30 relative">
+                      <div 
+                        className="story-box story-box-sky"
+                        onClick={() => setSelectedImage({ src: "/assets/designs/payonnect.png", alt: "Payonnect" })}
+                      >
+                        <img 
+                          src="/assets/designs/payonnect.png" 
+                          alt="Payonnect" 
+                          draggable={false}
+                          onContextMenu={(e) => e.preventDefault()}
+                        />
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 tracking-tight md:pr-24">Payonnect: Smart Umbrella Sharing System</h3>
+                      <div className="flex flex-wrap items-center gap-3 mb-5">
+                        <span className="badge bg-sky-500/10 text-sky-400 border-sky-500/20">
+                          Oct 2025
+                        </span>
+                      </div>
+                      <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
+                        <li className="flex items-start">
+                          <span className="mr-3 text-sky-500 mt-1">•</span>
+                          Simulated the user workflow for borrowing and returning an umbrella using QR codes.
+                        </li>
+                        <li className="flex items-start">
+                          <span className="mr-3 text-sky-500 mt-1">•</span>
+                          Implemented typography, color palette, and UI screens for tracking rentals, payments, and updates.
+                        </li>
+                      </ul>
+                    </div>
+                  </motion.div>
+
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-sky-500 shadow-[0_0_8px_rgba(14,165,233,0.8)]" />
+                    <div className="timeline-card hover:border-sky-500/30 relative">
+                      <div 
+                        className="story-box story-box-sky"
                         onClick={() => setSelectedImage({ src: "/assets/projs/pivot.png", alt: "PIVOT-PROFS" })}
                       >
                         <img 
@@ -721,10 +791,10 @@ export default function DigitalResumePage() {
                     <div className="timeline-dot bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
                     <div className="timeline-card group-hover:border-amber-500/30 relative">
                       <div 
-                        className="story-box story-box-amber"
+                        className="story-box !bg-transparent !border-none !shadow-none"
                         onClick={() => setSelectedImage({ src: "/assets/pictures/award_01.png", alt: "Award" })}
                       >
-                        <img src="/assets/pictures/award_01.png" alt="Award" />
+                        <img src="/assets/pictures/award_01.png" alt="Award" className="!object-contain" />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight md:pr-24">1st Runner Up - Enterprise Track, Protothon 2026: The Online UX Hackathon</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -739,7 +809,7 @@ export default function DigitalResumePage() {
                       <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
                         <li className="flex items-start">
                           <span className="mr-3 text-amber-500 mt-1">•</span>
-                          Co-developed Trackify within 24 hours, an inventory management system for university logistics. Our mockup features involve real-time borrow tracking, barcode integration, overdue return alerts, damage logs, bulk processing, and analytical reports.
+                          Designed Trackify within 24 hours, an inventory management system for university logistics. Our mockup features involve real-time borrow tracking, barcode integration, overdue return alerts, damage logs, bulk processing, and analytical reports.
                         </li>
                         <li className="flex items-start">
                           <span className="mr-3 text-amber-500 mt-1">•</span>
@@ -979,13 +1049,13 @@ export default function DigitalResumePage() {
         open={!!selectedImage} 
         onOpenChange={(open) => !open && setSelectedImage(null)}
       >
-        <DialogContent className="w-auto max-w-[95vw] h-auto max-h-[95dvh] bg-black/95 border-white/10 p-0 overflow-hidden flex flex-col items-center justify-center [&>button]:hidden z-[200] rounded-xl">
+        <DialogContent className="w-auto max-w-[95vw] h-auto max-h-[95dvh] bg-black/95 border-white/10 p-0 overflow-hidden flex flex-col items-center justify-center [&>button]:hidden z-[200] rounded-xl group">
            {/* Custom Close/Back Button */}
-           <div className="absolute top-4 left-4 z-50">
+           <div className="absolute top-6 right-6 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <DialogClose asChild>
               <Button 
                 variant="ghost" 
-                className="text-white hover:bg-white/20 hover:text-white gap-2 px-3 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none backdrop-blur-md bg-black/20 rounded-full border border-white/10"
+                className="text-white hover:bg-white/20 hover:text-white gap-2 px-4 py-2 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:outline-none backdrop-blur-md bg-black/40 rounded-full border border-white/10"
               >
                 <X size={18} />
                 <span className="text-sm font-bold uppercase tracking-widest hidden sm:inline-block">Close</span>
@@ -999,18 +1069,10 @@ export default function DigitalResumePage() {
                 <img
                   src={selectedImage.src}
                   alt={selectedImage.alt}
-                  className="max-w-[90vw] max-h-[80vh] object-contain rounded-lg shadow-2xl"
+                  className="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl"
                   draggable={false}
                   onContextMenu={(e) => e.preventDefault()}
                 />
-              </div>
-            )}
-            
-            {selectedImage && (
-              <div className="mt-4 text-center px-4 pb-2">
-                <h3 className="text-lg md:text-xl font-bold tracking-tight text-white/90">
-                  {selectedImage.alt}
-                </h3>
               </div>
             )}
           </div>

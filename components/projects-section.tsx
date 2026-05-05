@@ -140,11 +140,11 @@ export function ProjectsSection() {
               /02 Projects
             </h2>
             <h3 className="text-4xl md:text-6xl font-bold tracking-tighter">
-              FEATURED <br className="hidden md:block" /> WORKS.
+              SOFTWARE <br className="hidden md:block" /> DEVELOPMENT.
             </h3>
           </div>
           <p className="max-w-xs text-white/50 text-sm ">
-            A collection of software development projects designed to solve real-world problems.
+            A collection of software development projects designed to solve real-world problems. Click on the card to learn more. You may also visit working sites and GitHub repositories if available.
           </p>
         </motion.div>
 
