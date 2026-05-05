@@ -722,11 +722,43 @@ export default function DigitalResumePage() {
                     <div className="timeline-card group-hover:border-amber-500/30 relative">
                       <div 
                         className="story-box story-box-amber"
+                        onClick={() => setSelectedImage({ src: "/assets/pictures/award_01.png", alt: "Award" })}
+                      >
+                        <img src="/assets/pictures/award_01.png" alt="Award" />
+                      </div>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight md:pr-24">1st Runner Up - Enterprise Track, Protothon 2026: The Online UX Hackathon</h3>
+                      <div className="flex flex-wrap items-center gap-3 mb-5">
+                        <span className="badge bg-amber-500/10 text-amber-400 border-amber-500/20">
+                          May 2026
+                        </span>
+                        <span className="badge-outline flex items-center gap-1.5">
+                          <Award className="w-3 h-3 text-amber-500" />
+                          UX Design
+                        </span>
+                      </div>
+                      <ul className="space-y-3 text-white/70 leading-relaxed font-light text-sm md:text-base">
+                        <li className="flex items-start">
+                          <span className="mr-3 text-amber-500 mt-1">•</span>
+                          Co-developed Trackify within 24 hours, an inventory management system for university logistics. Our mockup features involve real-time borrow tracking, barcode integration, overdue return alerts, damage logs, bulk processing, and analytical reports.
+                        </li>
+                        <li className="flex items-start">
+                          <span className="mr-3 text-amber-500 mt-1">•</span>
+                          Trackify placed 2nd out of 35 teams in the Enterprise track and received positive feedback from experienced designers as judges.
+                        </li>
+                      </ul>
+                    </div>
+                  </motion.div>
+
+                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
+                    <div className="timeline-dot bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
+                    <div className="timeline-card group-hover:border-amber-500/30 relative">
+                      <div 
+                        className="story-box story-box-amber"
                         onClick={() => setSelectedImage({ src: "/assets/pictures/award_00.jpg", alt: "Award" })}
                       >
                         <img src="/assets/pictures/award_00.jpg" alt="Award" />
                       </div>
-                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight md:pr-24">1st Runner Up, 42nd CS Week WarFrames Web Design Competition</h3>
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight md:pr-24">1st Runner Up, 42nd Computer Science Week Warframes Web Design Competition</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
                         <span className="badge bg-amber-500/10 text-amber-400 border-amber-500/20">
                           Feb. 2026
@@ -740,6 +772,10 @@ export default function DigitalResumePage() {
                         <li className="flex items-start">
                           <span className="mr-3 text-amber-500 mt-1">•</span>
                           Led a 3-person team and developed Alerto.ai, a flood intelligence web app prototype. Features include a 3D flood visualization map, an AI-powered chatbot interface, and text notifications.
+                        </li>
+                        <li className="flex items-start">
+                          <span className="mr-3 text-amber-500 mt-1">•</span>
+                          Alerto.ai scored 88.875 and placed 1st Runner Up among 17 teams in the competition.
                         </li>
                       </ul>
                     </div>

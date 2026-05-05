@@ -28,9 +28,18 @@ export function DesignsSection() {
 
   const designs: Design[] = [
     {
+      title: "Trackify: An Inventory Management System for University Logistics",
+      image: "/assets/designs/trackify.png",
+      description: "Trackify is an inventory management system built to handle demands for campus institutions. It has features such as real-time borrow tracking, barcode integration, overdue return alerts, damage logs, bulk processing, and analytical reports. The system aims to make the inventory process easier for property custodians and logistical staff. This design won 2nd place out of 35 teams in the Enterprise category for the Protothon 2026, an international online UX design competition hosted by DubsTech UW and Design Buddies.",
+      links: [{text: "View Prototype", url: "https://www.figma.com/proto/hQF02ka1GxlybupM4Nlux3/Trackify-by-memoa.dev?node-id=0-1&t=j3AbChMaV5Bwysgt-1"}, {text: "Slide Deck", url: "https://canva.link/4dufmvv0e0qtcxf"}],
+      skills: ["Figma", "Canva"],
+      date: "May 2026",
+      award: "1st Runner-Up"
+    },
+    {
       title: "Alerto.ai: A Nationwide Flood Intelligence Powered by Project NOAH",
       image: "/assets/designs/alerto.png",
-      description: "Alerto is a centralized, AI-driven intelligence web app prototype for Filipinos to visualize real-time flood risks, understand contributing factors, and prepare for potential disaster. It's main features consist of three, a nationwide 3D map, an AI assisted chat bot, and text alerts. Alerto placed 1st Runner-Up at the 42nd CS Week WarFrames Web Design Competition.",
+      description: "Alerto is a centralized, AI-driven intelligence web app prototype for Filipinos to visualize real-time flood risks, understand contributing factors, and prepare for potential disaster. It's main features consist of three, a nationwide 3D map, an AI assisted chat bot, and text alerts. Alerto scored 88.875 and placed 1st Runner Up among 17 teams in the 42nd Computer Science Week WarFrames Web Design Competition.",
       links: [{text: "View Prototype", url: "https://www.figma.com/design/J2JAe6kOOFEN7oFOHiucg8/Alerto.ai-by-Indev.UG?node-id=0-1&m=dev&t=dhLHF9Qfsx5rg5rj-1"}],
       skills: ["Figma"],
       date: "February 2026",
