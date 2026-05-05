@@ -282,7 +282,7 @@ export function DesignsSection() {
                 </div>
                 
                 <div className="flex flex-wrap gap-3 w-full">
-                  {selectedDesign?.links?.filter(l => !l.url.includes("figma.com")).map((link, i) => (
+                  {selectedDesign?.links?.map((link, i) => (
                     <Button key={i} asChild variant={i === 0 ? "default" : "outline"} className={`rounded-none uppercase tracking-widest text-[10px] sm:text-xs font-bold gap-2 py-4 px-6 ${i === 0 ? "bg-bern-blue hover:bg-bern-blue/90 text-white hover:text-white" : "border-white/10 text-white hover:bg-white/5 hover:text-white"}`}>
                       <a
                         href={link.url}
