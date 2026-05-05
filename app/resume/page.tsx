@@ -824,9 +824,9 @@ export default function DigitalResumePage() {
                     <div className="timeline-card group-hover:border-amber-500/30 relative">
                       <div 
                         className="story-box story-box-amber"
-                        onClick={() => setSelectedImage({ src: "/assets/pictures/award_00.jpg", alt: "Award" })}
+                        onClick={() => setSelectedImage({ src: "/assets/pictures/award_00.png", alt: "Award" })}
                       >
-                        <img src="/assets/pictures/award_00.jpg" alt="Award" />
+                        <img src="/assets/pictures/award_00.png" alt="Award" />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight md:pr-24">1st Runner Up, 42nd Computer Science Week Warframes Web Design Competition</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -1050,6 +1050,9 @@ export default function DigitalResumePage() {
         onOpenChange={(open) => !open && setSelectedImage(null)}
       >
         <DialogContent className="w-auto max-w-[95vw] h-auto max-h-[95dvh] bg-black/95 border-white/10 p-0 overflow-hidden flex flex-col items-center justify-center [&>button]:hidden z-[200] rounded-xl group">
+          <DialogHeader className="sr-only">
+            <DialogTitle>{selectedImage?.alt || "Image Preview"}</DialogTitle>
+          </DialogHeader>
            {/* Custom Close/Back Button */}
            <div className="absolute top-6 right-6 z-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <DialogClose asChild>
