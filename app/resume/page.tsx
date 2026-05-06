@@ -241,11 +241,11 @@ export default function DigitalResumePage() {
             </p>
             <div className="mt-8 flex justify-center md:justify-start">
               <a 
-                href="/assets/Bernard_FrontendDev_Resume.pdf" 
-                download="Bernard_FrontendDev_Resume.pdf"
+                href="/assets/Bernard_UXDesigner_CV.pdf" 
+                download="Bernard_UXDesigner_CV.pdf"
                 className="download-btn"
               >
-                <span>Download Resume</span>
+                <span>Download CV</span>
                 <Download size={16} className="group-hover:translate-y-0.5 transition-transform" />
               </a>
             </div>
