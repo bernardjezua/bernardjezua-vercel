@@ -34,7 +34,7 @@ export function HighlightsSection() {
       subtitle: "Professional Certification",
       date: "February 2026",
       badge: "/assets/badges/badge8.png",
-      certImage: "/assets/certs/12.jpg",
+      certImage: "/assets/certs/14.png",
       postLink: "https://www.linkedin.com/posts/bernardjezua_metacertified-webdev-frontend-ugcPost-7424086362292641793-UKgD?utm_source=share&utm_medium=member_desktop&rcm=ACoAADsvmXABsIbnwuyqSDf0cVtW8ZC3Am_aw4Y",
       type: "cert"
     },
@@ -52,7 +52,7 @@ export function HighlightsSection() {
       subtitle: "Professional Certification",
       date: "May 2025",
       badge: "/assets/badges/badge6.png",
-      certImage: "/assets/certs/14.png",
+      certImage: "/assets/certs/12.jpg",
       postLink: "https://www.linkedin.com/posts/bernardjezua_uxdesign-ugcPost-7324722598628462594-wkiu?utm_source=share&utm_medium=member_desktop&rcm=ACoAADsvmXABsIbnwuyqSDf0cVtW8ZC3Am_aw4Y",
       type: "cert"
     }
