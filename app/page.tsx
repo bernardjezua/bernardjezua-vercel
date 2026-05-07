@@ -24,8 +24,8 @@ export default function Home() {
         <Header />
         <HeroSection />
         <AboutSection />
-        <ProjectsSection />
         <DesignsSection />
+        <ProjectsSection />
         <SkillsSection />
         <CertificationsSection />
         <FloatingActionButton />

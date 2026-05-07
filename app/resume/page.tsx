@@ -412,7 +412,7 @@ export default function DigitalResumePage() {
                     </div>
                   </motion.div>
 
-                  <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
+                  {/* <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
                     <div className="timeline-card hover:border-purple-500/30 relative">
                       <div 
@@ -437,7 +437,7 @@ export default function DigitalResumePage() {
                         </li>
                       </ul>
                     </div>
-                  </motion.div>
+                  </motion.div> */}
 
                   <motion.div variants={itemVariants} className="relative pl-[56px] md:pl-[64px] py-2">
                     <div className="timeline-dot bg-purple-500 shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
@@ -791,10 +791,10 @@ export default function DigitalResumePage() {
                     <div className="timeline-dot bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.8)]" />
                     <div className="timeline-card group-hover:border-amber-500/30 relative">
                       <div 
-                        className="story-box !bg-transparent !border-none !shadow-none"
+                        className="story-box story-box-amber"
                         onClick={() => setSelectedImage({ src: "/assets/pictures/award_01.png", alt: "Award" })}
                       >
-                        <img src="/assets/pictures/award_01.png" alt="Award" className="!object-contain" />
+                        <img src="/assets/pictures/award_01.png" alt="Award" />
                       </div>
                       <h3 className="text-xl md:text-2xl font-bold mb-3 text-white/90 leading-snug tracking-tight md:pr-24">1st Runner Up - Enterprise Track, Protothon 2026: The Online UX Hackathon</h3>
                       <div className="flex flex-wrap items-center gap-3 mb-5">

@@ -122,11 +122,43 @@ export function HeroSection() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           <span className="text-[10px] md:text-sm uppercase tracking-[0.4em] text-white/50 mb-6 block font-medium pointer-events-auto">
-            UI/UX Designer & Frontend Developer
+            UX Designer & Frontend Developer
           </span>
           <h1 className="text-5xl md:text-6xl lg:text-[7vw] font-bold leading-[0.8] text-white z-30 relative pointer-events-auto select-none">
             <InteractiveText text="CRAFTING" /> <br />
-            <InteractiveText text="STELLAR" className="text-white/40" />{" "}
+            <div className="relative inline-block mt-2 md:mt-4">
+              <span className="relative z-10 px-2">
+                <InteractiveText text="STELLAR" className="text-[#8B5CF6]" />
+              </span>
+              <motion.div 
+                initial={{ scaleX: 0, opacity: 0 }}
+                animate={{ scaleX: 1, opacity: 1 }}
+                transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
+                className="absolute inset-0 bg-[#8B5CF6]/30 rounded-md z-0 border border-[#8B5CF6]/40 origin-center"
+              >
+                {/* Corner Handles */}
+                <div className="absolute top-0 left-0 w-1.5 h-1.5 bg-[#8B5CF6] -translate-x-1/2 -translate-y-1/2 rounded-sm" />
+                <div className="absolute top-0 right-0 w-1.5 h-1.5 bg-[#8B5CF6] translate-x-1/2 -translate-y-1/2 rounded-sm" />
+                <div className="absolute bottom-0 left-0 w-1.5 h-1.5 bg-[#8B5CF6] -translate-x-1/2 translate-y-1/2 rounded-sm" />
+                <div className="absolute bottom-0 right-0 w-1.5 h-1.5 bg-[#8B5CF6] translate-x-1/2 translate-y-1/2 rounded-sm" />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 10, y: 10 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ delay: 2, duration: 0.5 }}
+                className="absolute -right-14 -bottom-3 z-[100] flex items-center"
+              >
+                <div className="relative flex flex-col items-start translate-x-[2px] translate-y-[2px]">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#8B5CF6] drop-shadow-[0_0_10px_rgba(139,92,246,0.5)]">
+                    <path d="M5.65376 12.3673H5.46026L5.31717 12.4976L0.500002 16.8829L0.500002 1.19841L11.7841 12.3673H5.65376Z" fill="currentColor" stroke="white" strokeWidth="1.2"/>
+                  </svg>
+                  <div className="bg-[#8B5CF6] text-white text-[10px] md:text-xs font-bold px-2.5 py-1 rounded-full whitespace-nowrap shadow-[0_0_20px_rgba(0,0,0,0.5)] border border-white/40 -mt-1 ml-4 relative z-[110] tracking-widest">
+                    Me
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+{" "}
             <InteractiveText text="EXPERIENCES." className="text-white/40" />
           </h1>
 

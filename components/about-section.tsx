@@ -1,7 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { GraduationCap, Briefcase, FolderKanban, User, Brain } from "lucide-react"
+import { GraduationCap, Briefcase, FolderKanban, User, Brain, Trophy, Heart } from "lucide-react"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { HighlightsSection } from "./highlights-section"
 
 export function AboutSection() {
 
@@ -22,7 +24,7 @@ export function AboutSection() {
             THE HUMAN <br /> BEHIND THE PIXELS.
           </h3>
           <p className="max-w-xs text-black/60 text-sm ">
-            I enjoy talking to people, empathizing with them, and coming up with design solutions.
+            I enjoy talking to people, empathizing with them, and coming up with design solutions. Hover the cards to know more about me!
           </p>
         </motion.div>
 
@@ -33,7 +35,7 @@ export function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="relative overflow-hidden rounded-[1.5rem] aspect-[2/5] md:aspect-[4/5] lg:aspect-[3/4] group cursor-pointer shadow-sm"
+            className="relative overflow-hidden rounded-[1.5rem] aspect-[2/5] md:aspect-[4/5] lg:aspect-[3/4] group shadow-sm"
           >
             <img 
               src="/assets/pictures/profilepic_00.jpg" 
@@ -61,7 +63,7 @@ export function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             viewport={{ once: true }}
-            className="relative overflow-hidden rounded-[1.5rem] aspect-[2/5] md:aspect-[4/5] lg:aspect-[3/4] group cursor-pointer shadow-sm"
+            className="relative overflow-hidden rounded-[1.5rem] aspect-[2/5] md:aspect-[4/5] lg:aspect-[3/4] group shadow-sm"
           >
             <img 
               src="/assets/pictures/profilepic_01.jpg" 
@@ -89,7 +91,7 @@ export function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
             viewport={{ once: true }}
-            className="relative overflow-hidden rounded-[1.5rem] aspect-[2/5] md:aspect-[4/5] lg:aspect-[3/4] group cursor-pointer shadow-sm"
+            className="relative overflow-hidden rounded-[1.5rem] aspect-[2/5] md:aspect-[4/5] lg:aspect-[3/4] group shadow-sm"
           >
             <img 
               src="/assets/pictures/profilepic_03.jpg" 
@@ -115,7 +117,7 @@ export function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
-            className="relative overflow-hidden rounded-[1.5rem] aspect-[2/5] md:aspect-[4/5] lg:aspect-[3/4] group cursor-pointer shadow-sm"
+            className="relative overflow-hidden rounded-[1.5rem] aspect-[2/5] md:aspect-[4/5] lg:aspect-[3/4] group shadow-sm"
           >
             <img 
               src="/assets/pictures/profilepic_02.jpg" 
@@ -135,6 +137,8 @@ export function AboutSection() {
             </div>
           </motion.div>
         </div>
+
+        <HighlightsSection />
       </div>
     </section>
   )

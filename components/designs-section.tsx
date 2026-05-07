@@ -42,7 +42,7 @@ export function DesignsSection() {
     {
       title: "Alerto.ai: A Nationwide Flood Intelligence Powered by Project NOAH",
       image: "/assets/designs/alerto.png",
-      description: "Alerto is a centralized, AI-driven intelligence web app prototype for Filipinos to visualize real-time flood risks, understand contributing factors, and prepare for potential disaster. It's main features consist of three, a nationwide 3D map, an AI assisted chat bot, and text alerts. Alerto scored 88.875 and placed 1st Runner Up among 17 teams in the 42nd Computer Science Week WarFrames Web Design Competition.",
+      description: "Alerto is a centralized, AI-driven intelligence web app prototype for Filipinos to visualize real-time flood risks, understand contributing factors, and prepare for potential disaster. It's main features consist of three, a nationwide 3D map, an AI assisted chat bot, and text alerts. Alerto scored 88.875 and placed 1st Runner Up among 17 teams in the 42nd Computer Science Week Warframes Web Design Competition.",
       links: [
         {text: "View Prototype", url: "https://www.figma.com/design/J2JAe6kOOFEN7oFOHiucg8/Alerto.ai-by-Indev.UG?node-id=0-1&m=dev&t=dhLHF9Qfsx5rg5rj-1"},
         {text: "Presentation", url: "https://drive.google.com/file/d/1GcXBJGfhshyTrNnbnc6DkQDgDivSTnJT/view?usp=drive_link"},
@@ -122,7 +122,7 @@ export function DesignsSection() {
         >
           <div>
             <h2 className="text-xs uppercase tracking-[0.4em] text-white/40 mb-4 block font-medium">
-              /03 Designs
+              /02 Designs
             </h2>
             <h3 className="text-4xl md:text-6xl font-bold tracking-tighter">
               VISUAL <br className="hidden md:block" /> EXPERIMENTS.
